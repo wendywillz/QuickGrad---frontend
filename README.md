@@ -1,4 +1,4 @@
-# QuickGraden frontend
+# QuickGrade frontend
 After cloning the repo/pulling it down kindly run the following command 
 `yarn` to install all necessary dependencies
 `yarn install --dev` to install all dev dependencies
