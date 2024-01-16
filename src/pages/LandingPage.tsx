@@ -24,13 +24,13 @@ function LandingPage() {
               <div className="logo">
                 <img className="quick-grade-logo" src="../assets/logo.svg" alt="QuickGrade logo image" />
               </div>
-              <div>
+              <div className="title-wrapper">
                 {" "}
-                <h1>QuickGrade</h1>
+                <h1 className="quick-grade-title">QuickGrade</h1>
               </div>
             </div>
-            <div>
-              <h4>Unlock your exam potential with our management system.</h4>
+            <div className="unlock-your-potential">
+              <h4 >Unlock your exam potential with our management system.</h4>
             </div>
           </div>
 
@@ -39,6 +39,7 @@ function LandingPage() {
             <form className="landing-page-form"  onSubmit={handleSubmit}>
               <div className="form-label">
                 <label className="landing-page-form-label" htmlFor="userRole">Sign in As:</label>
+                
                 <select
                   id="userRole"
                   name="userRole"
