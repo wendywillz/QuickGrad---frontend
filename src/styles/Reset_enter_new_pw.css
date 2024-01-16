@@ -13,7 +13,7 @@
   font-size: 24px;
   font-weight: 600;
   margin-top: 0.5rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .container {
@@ -36,6 +36,7 @@
   height: 2.1875rem;
   border: 1px solid #d0d5dd;
   padding: 8px;
+  margin-bottom: 1.5rem;
   border-radius: 100px;
   color: linear-gradient(0deg, #d0d5dd, #d0d5dd),
     linear-gradient(0deg, #ffffff, #ffffff);
@@ -49,7 +50,7 @@
   font-size: 1rem;
   color: #101828;
   width: 100%;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .logo {
@@ -60,9 +61,6 @@
   margin-top: 80px;
 }
 
-.form label {
-  font-weight: 300;
-}
 
 .form-inner-container {
   display: flex;
