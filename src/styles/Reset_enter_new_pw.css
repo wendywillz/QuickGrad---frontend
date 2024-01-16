@@ -1,14 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
 
-html, body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
+.re-enter-password-wrapper {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .form-title {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   align-self: center;
   color: rgba(16, 24, 40, 1);
   font-size: 24px;
@@ -19,7 +18,7 @@ html, body {
 
 .container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   max-width: 451px;
   margin: 100px auto;
   background-color: white;
@@ -29,32 +28,35 @@ html, body {
 }
 
 .form-container {
-  width: 100%; 
+  width: 100%;
   margin-top: -10px;
 }
 
-input {
+.re-enter-password-input {
   height: 2.1875rem;
-  border: 1px solid rgba(71, 84, 103, 1);
+  border: 1px solid #d0d5dd;
   padding: 8px;
   border-radius: 100px;
-  color: linear-gradient(0deg, #D0D5DD, #D0D5DD),
-  linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  color: linear-gradient(0deg, #d0d5dd, #d0d5dd),
+    linear-gradient(0deg, #ffffff, #ffffff);
 }
-
-label {
+.re-enter-password-input::placeholder {
+  color: #98a2b3;
+}
+.re-enter-password-label {
   margin-top: 0.3rem;
-  font-family: 'Inter', 'sans-serif';
-  font-size: 16px;
+  font-family: "Inter", "sans-serif";
+  font-size: 1rem;
   color: #101828;
-  width: 100%; 
+  width: 100%;
+  font-weight: 700;
 }
 
 .logo {
-  width: 237px; 
+  width: 237px;
   height: 3.5rem;
   align-self: center;
-  background-color: #2D00F7;
+  background-color: #2d00f7;
   margin-top: 80px;
 }
 
@@ -68,15 +70,16 @@ label {
 }
 
 .btn {
-  background-color: #2D00F7;
+  background-color: #2d00f7;
   margin-top: 1.5625rem;
   height: 2.75rem;
   padding: 0.75rem;
   border: none;
+  margin-bottom: 1rem;
   border-radius: 100px;
   color: white;
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .btn:hover {
@@ -97,7 +100,7 @@ h1 {
 }
 
 .header img {
-  width: 237px; 
-  height: auto; 
+  width: 237px;
+  height: auto;
   margin-bottom: -30px;
 }
