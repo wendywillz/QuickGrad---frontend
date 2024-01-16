@@ -1,4 +1,4 @@
-// import '../styles/reset_otp.css'
+import '../styles/reset_otp.css'
 
 function ResetOtp() {
   return (
