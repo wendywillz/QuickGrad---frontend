@@ -1,17 +1,18 @@
-import '../styles/reset_otp.css'
-
+import "../styles/reset_otp.css";
+import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
 function ResetOtp() {
   return (
-    <div>
-      <div className="logo">
-        <header>
-          <img src="/quick.png" alt="Quickgrade Logo" />
-        </header>
-      </div>
+    <div className="reset-otp-body-wrapper">
+      <header className="header">
+        <img src={quickgradelogo} alt="Quickgrade Logo" />
+      </header>
 
       <div className="app">
-        <h1>Reset Password</h1>
-        <p>Enter the OTP sent to your email:</p>
+        <h1 className="reset-otp-heading">Reset Password</h1>
+        <label className="reset-otp-label">
+          Enter the OTP sent to your email:
+        </label>
+
         <form action="#" method="post">
           <input
             type="text"
@@ -19,9 +20,12 @@ function ResetOtp() {
             name="otp"
             placeholder="Enter OTP"
             required
+            className="reset-otp-input"
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" className="reset-otp-input-btn">
+            Submit
+          </button>
         </form>
       </div>
     </div>
