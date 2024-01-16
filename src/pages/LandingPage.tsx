@@ -22,7 +22,7 @@ function LandingPage() {
           <div className="sectionA">
             <div className="title1">
               <div className="logo">
-                <img className="quick-grade-logo" src="src/assets/logo.svg" alt="QuickGrade logo image" />
+                <img className="quick-grade-logo" src="../assets/logo.svg" alt="QuickGrade logo image" />
               </div>
               <div className="title-wrapper">
                 {" "}
@@ -57,7 +57,7 @@ function LandingPage() {
 
               {/* <button type="submit">Get Started</button> */}
 
-              <a href="#"><img src="src/assets/landing-btn.svg" alt="" /></a>
+              <a href="#"><img src="../assets/landing-btn.svg" alt="" /></a>
             </form>
           </div>
         </div>
