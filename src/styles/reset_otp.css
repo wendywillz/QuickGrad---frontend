@@ -9,7 +9,7 @@
 .app {
   text-align: center;
   width: 441px;
-  height: 254px;
+  min-height: 254px;
   margin: 5rem auto;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@ p {
 .reset-otp-input-btn {
   width: 100%;
   padding: 10px;
-  background-color: #1a1ad8;
+  background-color: rgba(45, 0, 247, 1);
   color: white;
   border: none;
   border-radius: 100px;
