@@ -1,5 +1,6 @@
 import "../styles/Reset_enter_new_pw.css";
 import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
+
 const ResetEnterNewPasswordPage = () => {
   return (
     <div className="re-enter-password-wrapper">
@@ -24,7 +25,7 @@ const ResetEnterNewPasswordPage = () => {
                 className="re-enter-password-input"
               />
 
-              <br />
+              
               <label
                 className="re-enter-password-label"
                 htmlFor="confirm-password"
