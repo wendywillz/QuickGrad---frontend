@@ -1,5 +1,5 @@
-import { LeftImageWrapper } from "../components/Login_background";
-import "../components/Login_style.css";
+import { LeftImageWrapper } from "../styled_components/Login_background";
+import "../styles/Login_style.css";
 
 interface Props {
   id_or_email: string;
@@ -20,7 +20,7 @@ export function LoginPage(props: Props) {
           <form className="login-form">
             <h1 className="form-title">{props.form_title}</h1>
             <div className="field">
-              <label className="form-label">{props.id_or_email}</label>
+              <label className="label">{props.id_or_email}</label>
               <input
                 className="input"
                 type="text"

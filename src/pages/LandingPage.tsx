@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import "../LandingPage.css";
+import "../styles/LandingPage.css";
 
 function LandingPage() {
   const [userRole, setUserRole] = useState(""); // State to manage user type selection
@@ -22,7 +22,7 @@ function LandingPage() {
           <div className="sectionA">
             <div className="title1">
               <div className="logo">
-                <img src="src/assets/logo.svg" alt="QuickGrade logo image" />
+                <img className="quick-grade-logo" src="src/assets/logo.svg" alt="QuickGrade logo image" />
               </div>
               <div>
                 {" "}
@@ -36,9 +36,9 @@ function LandingPage() {
 
           <div className="sectionB">
             {/* Form */}
-            <form onSubmit={handleSubmit}>
+            <form className="landing-page-form"  onSubmit={handleSubmit}>
               <div className="form-label">
-                <label htmlFor="userRole">Sign in As:</label>
+                <label className="landing-page-form-label" htmlFor="userRole">Sign in As:</label>
                 <select
                   id="userRole"
                   name="userRole"

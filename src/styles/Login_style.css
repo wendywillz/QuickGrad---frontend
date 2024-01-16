@@ -73,12 +73,7 @@
 .field {
   margin-bottom: 1rem;
 }
-.form-label {
-  font-size: 1rem;
-  font-weight: 800;
-  font-family: var(--label-font);
-  color: var(--label-color);
-}
+
 input {
   height: 3rem;
   width: 100%;
@@ -98,6 +93,8 @@ label {
   display: block;
   color: var(--label-color);
   font-family: var(--label-font);
+  font-size: 1rem;
+  font-weight: 800
 }
 
 .password-icon-wrapper {
