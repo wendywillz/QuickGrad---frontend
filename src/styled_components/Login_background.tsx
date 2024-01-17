@@ -14,7 +14,7 @@ export const LeftImageWrapper = styled.div<LeftImageWrapperProps>`
   height: 100%;
   width: 50%;
   max-width: 50%;
-  padding: 3rem;
+  padding: 3.5rem;
   text-align: left;
   font-family: var(--main-font);
   position: relative;

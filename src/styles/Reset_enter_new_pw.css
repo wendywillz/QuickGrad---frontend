@@ -16,7 +16,7 @@
   margin-bottom: 2rem;
 }
 
-.container {
+.re-enter-password-container {
   display: flex;
   flex-direction: column;
   max-width: 451px;
@@ -53,24 +53,13 @@
   font-weight: 600;
 }
 
-.logo {
-  width: 237px;
-  height: 3.5rem;
-  align-self: center;
-  background-color: #2d00f7;
-  margin-top: 80px;
-}
-
-
 .form-inner-container {
   display: flex;
   flex-direction: column;
 }
 
 .btn {
-background-color: rgba(45, 0, 247, 1);
-
-
+  background-color: rgba(45, 0, 247, 1);
 
   margin-top: 1.5625rem;
   height: 2.75rem;

@@ -40,6 +40,8 @@
   font-weight: 700;
   font-family: var(--main-font);
   margin-bottom: 0.5rem;
+  text-align: left;
+  align-self: flex-start;
   color: rgba(238, 117, 108, 0.801);
 }
 .moto-wrapper {

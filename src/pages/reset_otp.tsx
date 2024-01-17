@@ -1,5 +1,5 @@
 import "../styles/reset_otp.css";
-import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
+import quickgradelogo from "../assets/quick_grade_logo_with_text_blue.png";
 function ResetOtp() {
   return (
     <div className="reset-otp-body-wrapper">
