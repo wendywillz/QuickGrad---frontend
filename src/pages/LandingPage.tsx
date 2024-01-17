@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 import "../styles/LandingPage.css";
-
+import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
 function LandingPage() {
   const [userRole, setUserRole] = useState(""); // State to manage user type selection
 
@@ -21,25 +21,23 @@ function LandingPage() {
         <div className="container">
           <div className="sectionA">
             <div className="title1">
-              <div className="logo">
-                <img className="quick-grade-logo" src="../assets/logo.svg" alt="QuickGrade logo image" />
-              </div>
-              <div className="title-wrapper">
-                {" "}
-                <h1 className="quick-grade-title">QuickGrade</h1>
-              </div>
+              <img src={quickgradelogo} alt="logo png" />
             </div>
-            <div className="unlock-your-potential">
-              <h4 >Unlock your exam potential with our management system.</h4>
+            <div>
+              <h4 className="unlock-your-potential">
+                Unlock your exam potential with our management system.
+              </h4>
             </div>
           </div>
 
           <div className="sectionB">
             {/* Form */}
-            <form className="landing-page-form"  onSubmit={handleSubmit}>
+            <form className="landing-page-form" onSubmit={handleSubmit}>
               <div className="form-label">
-                <label className="landing-page-form-label" htmlFor="userRole">Sign in As:</label>
-                
+                <label className="landing-page-form-label" htmlFor="userRole">
+                  Sign in As:
+                </label>
+
                 <select
                   id="userRole"
                   name="userRole"
@@ -57,7 +55,7 @@ function LandingPage() {
 
               {/* <button type="submit">Get Started</button> */}
 
-              <a href="#"><img src="../assets/landing-btn.svg" alt="" /></a>
+              <button className="landing-page-get-started-btn">Get Started</button>
             </form>
           </div>
         </div>
