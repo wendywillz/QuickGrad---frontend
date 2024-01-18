@@ -37,13 +37,14 @@ function App() {
             />
           }
         />
-        <Route path="/students/signup" element={<StudentSignUpPage />} />
+
         <Route path="/reset_otp" element={<ResetOtp />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route
           path="/re-enter-password"
           element={<ResetEnterNewPasswordPage />}
         />
+        <Route path="/student/signup" element={<StudentSignUpPage />} />
         <Route path="/users/dashboard" element={<Dashboard />} />
         <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
       </Routes>
