@@ -1,13 +1,13 @@
 import "../styles/verify-email.css";
 import quickgradelogo from "../assets/quick_grade_logo_with_text_blue.png";
-function ResetOtp() {
+function VerifyEmail() {
   return (
     <div className="verify-email-body-wrapper">
-      <header className="header">
+      <header className="headerEmail">
         <img src={quickgradelogo} alt="Quickgrade Logo" />
       </header>
 
-      <div className="app">
+      <div className="appEmail">
         <h1 className="verify-email-heading"> Verify your Email Address </h1>
         <label className="verify-email-label">Input your email address:</label>
 
@@ -30,4 +30,4 @@ function ResetOtp() {
   );
 }
 
-export default ResetOtp;
+export default VerifyEmail;

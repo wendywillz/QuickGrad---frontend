@@ -6,7 +6,7 @@
   max-height: 100%;
 
 }
-.app {
+.appEmail {
   text-align: center;
   width: 441px;
   min-height: 254px;
@@ -22,7 +22,7 @@
   border-radius: 8px;
 }
 
-.header {
+.headerEmail {
   margin-top: 5rem;
   text-align: center;
   font-size: 80px;
@@ -32,23 +32,18 @@
   margin-bottom: 2rem;
 }
 
-.header img {
+.headerEmail img {
   width: 237px;
   height: auto;
   margin-bottom: -30px;
 }
 
-h1 {
+.appEmail h1 {
   text-align: center;
   color: black;
   font-size: 25px;
   font-weight: 600;
   margin-top: -5%;
-}
-
-p {
-  text-align: left;
-  font-size: 15px;
 }
 .verify-email-heading{
   margin-bottom: 2rem;
