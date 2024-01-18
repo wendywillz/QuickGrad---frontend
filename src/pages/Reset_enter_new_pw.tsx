@@ -4,7 +4,7 @@ import quickgradelogo from "../assets/quick_grade_logo_with_text_blue.png";
 const ResetEnterNewPasswordPage = () => {
   return (
     <div className="re-enter-password-wrapper">
-      <div className="header">
+      <div className="re-enter-password-header">
         <img src={quickgradelogo} alt="logo png" />
       </div>
       <div className="re-enter-password-container">
@@ -18,7 +18,7 @@ const ResetEnterNewPasswordPage = () => {
               </label>
               <input
                 type="password"
-                placeholder="Enter your new Password"
+                placeholder="Enter your new password"
                 name="Enter your new password"
                 id="password"
                 required
@@ -34,14 +34,14 @@ const ResetEnterNewPasswordPage = () => {
               </label>
               <input
                 type="password"
-                placeholder="Confirm New Password"
+                placeholder="Confirm password"
                 name="confirm-password"
                 id="confirm-password"
                 required
                 className="re-enter-password-input"
               />
 
-              <button className="btn">Reset Password</button>
+              <button className="re-enter-password-btn">Reset Password</button>
             </div>
           </form>
         </div>

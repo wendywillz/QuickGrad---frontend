@@ -56,8 +56,16 @@ function LandingPage() {
               {/* <button type="submit">Get Started</button> */}
 
               <button className="landing-page-get-started-btn">Get Started</button>
-            </form>
+
+              <div className="landing-page-login">
+            <p>No account? Register <a className="landing-page-redirect" href="#">here</a></p>
           </div>
+              
+            </form>
+            
+          </div>
+         
+          
         </div>
 
         <div className="footer">

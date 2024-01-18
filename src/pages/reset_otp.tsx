@@ -3,11 +3,11 @@ import quickgradelogo from "../assets/quick_grade_logo_with_text_blue.png";
 function ResetOtp() {
   return (
     <div className="reset-otp-body-wrapper">
-      <header className="header">
+      <header className="reset-otp-header">
         <img src={quickgradelogo} alt="Quickgrade Logo" />
       </header>
 
-      <div className="app">
+      <div className="reset-otp-app">
         <h1 className="reset-otp-heading">Reset Password</h1>
         <label className="reset-otp-label">
           Enter the OTP sent to your email:
