@@ -24,9 +24,7 @@
 
     @media screen and (max-width: 600px) {
       width: 100%;
-      
     }
-    
   }
 }
 
@@ -63,17 +61,12 @@
 
   @media screen and (max-width: 850px) {
     width: 60%;
-    
-
 
     @media screen and (max-width: 600px) {
       width: 80%;
       padding: 20px 20px;
-      
-  
     }
   }
-  
 }
 
 .landing-page-form {
@@ -85,7 +78,6 @@
   width: 100%;
   height: auto;
   padding: 40px 0px;
-  
 }
 
 .form-label {
@@ -140,16 +132,17 @@
   margin-bottom: 20px;
 }
 
-
-.landing-page-login{
+.landing-page-register-here {
   width: 100%;
-  color: rgba(45, 0, 247, 1);
-  background-color: white;
-  font-size: 20px;
-
-  
+  font-size: 14px;
+}
+.no-account-register {
+  color: #000000;
 }
 
+.register-here {
+  color: rgba(45, 0, 247, 1);
+}
 .footer {
   background-color: rgba(24, 73, 169, 1);
   width: 100%;
@@ -174,10 +167,8 @@
   line-height: 20px;
   padding: 30px 100px;
 
-
   @media screen and (max-width: 750px) {
     padding: 30px 50px;
-    
 
     @media screen and (max-width: 600px) {
       padding: 30px 50px;
@@ -185,12 +176,8 @@
       gap: 30px;
       width: 100%;
       margin: 0px auto;
-    
     }
-    
-    
   }
-
 }
 
 .footer-container div {
@@ -200,7 +187,6 @@
     width: 80%;
     margin: 0px auto;
     padding: 0px auto;
-    
   }
 }
 .footer-container div:nth-child(1) {
@@ -208,16 +194,11 @@
 
   @media screen and (max-width: 600px) {
     text-align: center;
-    
   }
-
-
 }
 
 .footer-container div:nth-child(2) {
   text-align: center;
-
-  
 }
 
 .footer-container div:nth-child(3) {
@@ -225,7 +206,6 @@
 
   @media screen and (max-width: 600px) {
     text-align: center;
-    
   }
 }
 

@@ -9,13 +9,14 @@ import VerifyEmail from "./pages/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "./pages/Reset_enter_new_pw";
 import Dashboard from "./pages/Dashboard";
 import LecturerDashboard from "./pages/LecturerDashboard";
+import StudentSignUpPage from "./pages/signUpPage";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
-          path="/signin"
+          path="/students/signin"
           element={
             <LoginPage
               form_title="Sign into QuickGrade"
@@ -26,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/lecturer_signin"
+          path="/lecturers/signin"
           element={
             <LoginPage
               form_title="Sign into QuickGrade"
@@ -36,11 +37,16 @@ function App() {
             />
           }
         />
+
         <Route path="/reset_otp" element={<ResetOtp />} />
-        <Route path="/verify-email" element ={<VerifyEmail/>}/>
-        <Route path="/re-enter-password" element={<ResetEnterNewPasswordPage />} />
-        <Route path="/users/dashboard" element={<Dashboard />} />
-        <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route
+          path="/re-enter-password"
+          element={<ResetEnterNewPasswordPage />}
+        />
+        <Route path="/students/signup" element={<StudentSignUpPage />} />
+        <Route path="/students/dashboard" element={<Dashboard />} />
+        <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
       </Routes>
     </>
   );
