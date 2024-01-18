@@ -8,6 +8,7 @@ interface Props {
   backgroundImage: string;
 }
 export function LoginPage(props: Props) {
+  console.log("Rendering LoginPage for lecturer_signin");
   return (
     <div className="main-body-wrapper">
       <div className="inner-body-wrapper">

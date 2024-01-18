@@ -1,19 +1,44 @@
-import { useState, FormEvent } from "react"
-import "../styles/LandingPage.css"
-import quickgradelogo from "../assets/quick_grade_logo_with_text.png"
+import { useState, FormEvent, ChangeEvent } from "react";
+import "../styles/LandingPage.css";
+import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 function LandingPage() {
-  const [userRole, setUserRole] = useState("") // State to manage user type selection
+  const [userRole, setUserRole] = useState(""); // State to manage user type selection
+  const navigate = useNavigate();
+  console.log("Navigate function:", navigate);
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3000/${userRole}`).then((res) => {
+  //     if (res.status === 200) {
+  //       if (res.data === "lecturer") {
+  //         navigate("/lecturer_signin");
+  //       }
+  //     }
+  //   });
+  // }, [userRole, navigate]);
 
-  const handleUserRoleChange = (event: FormEvent) => {
-    setUserRole((event.currentTarget as HTMLSelectElement).value)
-  }
+  const handleUserRoleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setUserRole((event.currentTarget as HTMLSelectElement).value);
+  };
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    console.log("userRole: ", userRole);
+    try {
+      const res = await axios.get(`http://localhost:3000/${userRole}`);
+
+      if (res.status === 200 && res.data.role === "lecturer") {
+        navigate("/lecturer_signin");
+      } else if (res.status === 200 && res.data.role === "student") {
+        navigate("/student_signin/");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
 
     // redirect to a different page based on user type
-    console.log("Form submitted with user type:", userRole)
-  }
+  };
 
   return (
     <>

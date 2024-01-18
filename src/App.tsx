@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
-          path="/signin"
+          path="/student_signin/"
           element={
             <LoginPage
               form_title="Sign into QuickGrade"
@@ -26,7 +26,7 @@ function App() {
           }
         />
         <Route
-          path="/lecturer_signin"
+          path="/lecturer_signin/"
           element={
             <LoginPage
               form_title="Sign into QuickGrade"
