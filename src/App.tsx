@@ -5,6 +5,7 @@ import lecturer_login_page_bg from "./assets/lecturer_signin_bg.png";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ResetOtp from "./pages/reset_otp";
+import VerifyEmail from "./pages/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "./pages/Reset_enter_new_pw";
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           }
         />
         <Route path="/reset_otp" element={<ResetOtp />} />
+        <Route path="/verify-email" element ={<VerifyEmail/>}/>
         <Route path="/re-enter-password" element={<ResetEnterNewPasswordPage />} />
       </Routes>
     </>
