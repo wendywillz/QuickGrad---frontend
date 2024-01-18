@@ -1,0 +1,163 @@
+@import url(
+"https://fonts.googleapis.com/css2?family=Inter&display=swap"
+);
+
+.entire-signup-page-container{
+    position: relative;
+    font-family: "Inter", sans-serif;
+}
+
+.main-body-container{
+    display: flex;
+}
+
+.image-card-section{
+    width: 708px
+}
+.signup-overlay{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 708px;
+    height: 947.5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+/*
+.page-title-container{
+    position: absolute;
+    top:56px;
+    left:48px;
+    z-index: 2;
+    
+}
+*/
+
+.signup-uni-title{
+    color: #912018;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 45px;
+    letter-spacing: 0.25px;
+    text-align: left;
+    position: absolute;
+    top:56px;
+    left:48px;
+    z-index: 2;
+}
+
+
+
+.signup-page-title-note{
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    position: absolute;
+    top:130px;
+    left:48px;
+    z-index: 2;
+}
+
+.sign-in-redirect{
+    text-decoration-line: none;
+}
+
+.whole-sign-up-form-container{
+    border: 1px;
+    width: 480px;
+    height:709px;
+    background-color: #F9FAFB;
+    position: absolute;
+    top:117.5px ;
+    left:842px;
+    box-shadow: 0px 2px 8px 0px #00000014;
+}
+
+.top-sign-in-message{
+    width: 252px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+    position: absolute;
+    top: 32px;
+    left: 208px;
+}
+
+.sign-in-form-container{
+    width:320px;
+    height: 484px;
+    gap:56px;
+   
+}
+
+.sign-in-form-message{
+    text-align: left;
+    position: absolute;
+    top: 80px;
+    left: 80px;
+}
+.sign-up-form{
+    position: absolute;
+    top: 132px;
+    left:80px;
+}
+
+.signup-form-labels{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #212121;
+    margin: 1px;
+    
+
+
+
+}
+.signup-form-inputs{
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 296px;
+    height: 24px;
+    padding: 12px;
+    gap: 8px;
+    margin: 3px;
+
+}
+
+.signup-form-submit-button{
+    width: 320px;
+    height: 48px;
+    border-radius: 100px;
+    padding: 12px, 16px, 12px, 16px; 
+    gap: 8px;
+    color: white;
+    background-color: #2D00F7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+
+
+}
+
+.signup-footer-contents{  
+    border: 1px solid grey;
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
