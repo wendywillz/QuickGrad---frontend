@@ -1,19 +1,19 @@
-import { useState, FormEvent } from "react";
-import "../styles/LandingPage.css";
-import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
+import { useState, FormEvent } from "react"
+import "../styles/LandingPage.css"
+import quickgradelogo from "../assets/quick_grade_logo_with_text.png"
 function LandingPage() {
-  const [userRole, setUserRole] = useState(""); // State to manage user type selection
+  const [userRole, setUserRole] = useState("") // State to manage user type selection
 
   const handleUserRoleChange = (event: FormEvent) => {
-    setUserRole((event.currentTarget as HTMLSelectElement).value);
-  };
+    setUserRole((event.currentTarget as HTMLSelectElement).value)
+  }
 
   const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+    event.preventDefault()
 
     // redirect to a different page based on user type
-    console.log("Form submitted with user type:", userRole);
-  };
+    console.log("Form submitted with user type:", userRole)
+  }
 
   return (
     <>
@@ -80,7 +80,7 @@ function LandingPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default LandingPage;
+export default LandingPage

@@ -7,6 +7,8 @@ import LandingPage from "./pages/LandingPage";
 import ResetOtp from "./pages/reset_otp";
 import VerifyEmail from "./pages/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "./pages/Reset_enter_new_pw";
+import Dashboard from "./pages/Dashboard";
+import LecturerDashboard from "./pages/LecturerDashboard";
 function App() {
   return (
     <>
@@ -37,6 +39,8 @@ function App() {
         <Route path="/reset_otp" element={<ResetOtp />} />
         <Route path="/verify-email" element ={<VerifyEmail/>}/>
         <Route path="/re-enter-password" element={<ResetEnterNewPasswordPage />} />
+        <Route path="/users/dashboard" element={<Dashboard />} />
+        <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
       </Routes>
     </>
   );
