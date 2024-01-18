@@ -29,9 +29,9 @@ function LandingPage() {
       const res = await axios.get(`http://localhost:3000/${userRole}`);
 
       if (res.status === 200 && res.data.role === "lecturer") {
-        navigate("/lecturer_signin");
+        navigate("/lecturers/signin");
       } else if (res.status === 200 && res.data.role === "student") {
-        navigate("/student_signin");
+        navigate("/students/signin");
       }
     } catch (error) {
       console.log("error", error);
@@ -87,7 +87,7 @@ function LandingPage() {
               <div className="landing-page-register-here">
                 <p className="no-account-register">
                   No account? Register{" "}
-                  <Link to="" className="login-here">
+                  <Link to="/students/signup" className="login-here">
                     here
                   </Link>
                 </p>

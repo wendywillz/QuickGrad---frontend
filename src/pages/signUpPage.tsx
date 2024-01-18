@@ -1,83 +1,179 @@
+import { ChangeEvent, FormEvent, useState } from "react";
+import "../styles/signUpPageStyle.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import pagepic from "../assets/sign_up_page_bg_pic copy.png";
+import axios from "axios";
 
-import "../styles/signUpPageStyle.css"
-import pagepic from "../assets/sign_up_page_bg_pic copy.png"
+function StudentSignUpPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [faculty, setFaculty] = useState("");
+  const [department, setDepartment] = useState("");
+  const handleUSerEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail((event.currentTarget as HTMLInputElement).value);
+  };
+  const handleUserPassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword((event.currentTarget as HTMLInputElement).value);
+  };
+  const handleUserFaculty = (event: ChangeEvent<HTMLInputElement>) => {
+    setFaculty((event.currentTarget as HTMLInputElement).value);
+  };
+  const handleUserDepartment = (event: ChangeEvent<HTMLInputElement>) => {
+    setDepartment((event.currentTarget as HTMLInputElement).value);
+  };
 
-function StudentSignUpPage(){
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    console.log("userRole: ", email);
+    try {
+      const currentRoute = location.pathname;
+      console.log("currentRoute: ", currentRoute);
+      if (currentRoute === "/students/signup") {
+        const res = await axios.post(`http://localhost:3000/students/signup`, {
+          email: email,
+          password: password,
+          department: department,
+          faculty: faculty,
+        });
+        // checking the response
+        if (res.status === 200 && res.data.existingStudentError) {
+          navigate("/students/signin");
+        } else if (res.status === 200 && res.data.successfulSignup) {
+          navigate("/students/signin");
+        }
+      } else if (currentRoute === "/lecturers/signup") {
+        const res = await axios.post(`http://localhost:3000/lecturers/signup`, {
+          email: email,
+          password: password,
+          department: department,
+          faculty: faculty,
+        });
+        // checking the response
+        if (res.status === 200 && res.data.existingLecturerError) {
+          navigate("/lecturers/signin");
+        } else if (res.status === 200 && res.data.successfulSignup) {
+          navigate("/lecturers/signin");
+        }
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+
+    // redirect to a different page based on user type
+  };
   return (
-
     <div className="entire-signup-page-container">
-            <div className="main-body-container">
-
-
-            <div className="image-card-section">
-                <div className="signup-overlay"></div>
-                <div className="image-card-container">
-                    <img src={pagepic} alt="two graduants smiling" className="signup-page-photo"/>
-                </div>
-                <div className="page-title-container">
-                    <h4 className="signup-uni-title">Camouoflage University</h4>
-                    <h2 className="signup-page-title-note">Inspiring greatness through education</h2>
-                </div>
-            </div>
-
-
-            <div className="form-section">
-                <div className="whole-sign-up-form-container"> 
-
-                    <div className="top-sign-in-message">
-                        Already Created an Account? <a href="/signin" className="sign-in-redirect">Sign in</a> here.
-                    </div>
-
-                    <div className="sign-in-form-container">
-                        <div className="sign-in-form-message">
-                            Create QuickGrade Account
-                        </div>
-
-                        <form className="sign-up-form" action="/INSERT-ENDPOINT" method="post">
-
-                            <label className="signup-form-labels" htmlFor="studentNameInput"> Name</label> <br></br>
-                            <input className="signup-form-inputs" placeholder="Enter name" id="studentNameInput" name="name"/><br></br>
-
-                            <label className="signup-form-labels" htmlFor="emailInput">Email</label><br></br>
-                            <input className="signup-form-inputs" placeholder="Enter email" id="emailInput" name="email"/><br></br>
-
-                            <label className="signup-form-labels" htmlFor="facultyInput">Faculty</label><br></br>
-                            <input className="signup-form-inputs" placeholder="Enter faculty" id="facultyInput" name="faculty"/><br></br>
-
-                            <label  className="signup-form-labels"htmlFor="departmentInput">Department</label><br></br>
-                            <input className="signup-form-inputs" placeholder="Enter department" id="departmentInput" name="department"/><br></br>
-
-                            <label className="signup-form-labels" htmlFor="studentIdInput">Student Identification Number</label><br></br>
-                            <input className="signup-form-inputs" placeholder="Enter your Registration number" id="studentIdInput" name="studentId"/><br></br>
-
-                            <label className= "signup-form-labels" htmlFor="passwordInput">Password</label><br></br>
-                            <input className= "signup-form-inputs" placeholder="Enter password" id="passwordInput" name="passwordInput"/><br></br>
-
-                            <button className="signup-form-submit-button" type="submit">Sign up</button>
-
-                        </form>
-
-                        
-
-                    </div>
-                </div>
-                    
-            </div>
-
-            
-            </div>
-
-            <footer className="signup-footer-contents">
-            <p className="footer-website-name">QuickGrade</p>
-            <p className="footer-rights-notice">QuickGrade Inc. All Rights Reserved</p>
-            <div className="footer-links">
-                <a href="/INSERT-LINK">Privacy</a>
-                <a href="/INSERT-LINK">Terms</a>
-            </div>
-        
-        </footer>
+      <div className="main-body-container">
+        <div className="image-card-section">
+          <div className="signup-overlay"></div>
+          <div className="image-card-container">
+            <img
+              src={pagepic}
+              alt="two graduants smiling"
+              className="signup-page-photo"
+            />
+          </div>
+          <div className="page-title-container">
+            <h4 className="signup-uni-title">Camouoflage University</h4>
+            <h2 className="signup-page-title-note">
+              Inspiring greatness through education
+            </h2>
+          </div>
         </div>
-  )
+
+        <div className="form-section">
+          <div className="whole-sign-up-form-container">
+            <div className="top-sign-in-message">
+              Already Created an Account?{" "}
+              <a href="/signin" className="sign-in-redirect">
+                Sign in
+              </a>{" "}
+              here.
+            </div>
+
+            <div className="sign-in-form-container">
+              <div className="sign-in-form-message">
+                Create QuickGrade Account
+              </div>
+
+              <form className="sign-up-form" onSubmit={handleSubmit}>
+                <label className="signup-form-labels" htmlFor="emailInput">
+                  Email
+                </label>
+                <br></br>
+                <input
+                  className="signup-form-inputs"
+                  placeholder="Enter email"
+                  id="emailInput"
+                  name="email"
+                  value={email}
+                  onChange={handleUSerEmail}
+                />
+                <br></br>
+                <label className="signup-form-labels" htmlFor="facultyInput">
+                  Faculty
+                </label>
+                <br></br>
+                <input
+                  className="signup-form-inputs"
+                  placeholder="Enter faculty"
+                  id="facultyInput"
+                  name="faculty"
+                  value={faculty}
+                  onChange={handleUserFaculty}
+                />
+                <br></br>
+                <label className="signup-form-labels" htmlFor="departmentInput">
+                  Department
+                </label>
+                <br></br>
+                <input
+                  className="signup-form-inputs"
+                  placeholder="Enter department"
+                  id="departmentInput"
+                  name="department"
+                  value={department}
+                  onChange={handleUserDepartment}
+                />
+                <br></br>
+
+                <br></br>
+                <label className="signup-form-labels" htmlFor="passwordInput">
+                  Password
+                </label>
+                <br></br>
+                <input
+                  className="signup-form-inputs"
+                  placeholder="Enter password"
+                  id="passwordInput"
+                  name="passwordInput"
+                  value={password}
+                  onChange={handleUserPassword}
+                />
+                <br></br>
+                <button className="signup-form-submit-button" type="submit">
+                  Sign up
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer className="signup-footer-contents">
+        <p className="footer-website-name">QuickGrade</p>
+        <p className="footer-rights-notice">
+          QuickGrade Inc. All Rights Reserved
+        </p>
+        <div className="footer-links">
+          <a href="/INSERT-LINK">Privacy</a>
+          <a href="/INSERT-LINK">Terms</a>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
-export default StudentSignUpPage
+export default StudentSignUpPage;

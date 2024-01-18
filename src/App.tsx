@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
-          path="/student_signin"
+          path="/students/signin"
           element={
             <LoginPage
               form_title="Sign into QuickGrade"
@@ -27,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/lecturer_signin"
+          path="/lecturers/signin"
           element={
             <LoginPage
               form_title="Sign into QuickGrade"
@@ -44,9 +44,9 @@ function App() {
           path="/re-enter-password"
           element={<ResetEnterNewPasswordPage />}
         />
-        <Route path="/student/signup" element={<StudentSignUpPage />} />
-        <Route path="/users/dashboard" element={<Dashboard />} />
-        <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
+        <Route path="/students/signup" element={<StudentSignUpPage />} />
+        <Route path="/students/dashboard" element={<Dashboard />} />
+        <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
       </Routes>
     </>
   );
