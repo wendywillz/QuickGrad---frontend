@@ -3,7 +3,7 @@ import "../styles/LandingPage.css";
 import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 function LandingPage() {
   const [userRole, setUserRole] = useState(""); // State to manage user type selection
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function LandingPage() {
       if (res.status === 200 && res.data.role === "lecturer") {
         navigate("/lecturer_signin");
       } else if (res.status === 200 && res.data.role === "student") {
-        navigate("/student_signin/");
+        navigate("/student_signin");
       }
     } catch (error) {
       console.log("error", error);
@@ -80,17 +80,20 @@ function LandingPage() {
 
               {/* <button type="submit">Get Started</button> */}
 
-              <button className="landing-page-get-started-btn">Get Started</button>
+              <button className="landing-page-get-started-btn">
+                Get Started
+              </button>
 
-              <div className="landing-page-login">
-            <p>No account? Register <a className="landing-page-redirect" href="#">here</a></p>
-          </div>
-              
+              <div className="landing-page-register-here">
+                <p className="no-account-register">
+                  No account? Register{" "}
+                  <Link to="" className="login-here">
+                    here
+                  </Link>
+                </p>
+              </div>
             </form>
-            
           </div>
-         
-          
         </div>
 
         <div className="footer">
