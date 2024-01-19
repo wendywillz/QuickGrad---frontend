@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import "./signUpPageStyle.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import pagepic from "../../assets/sign_up_page_bg_pic copy.png";
+import icon from "../../assets/Icon copy.png"
 import axios from "axios";
 
 function StudentSignUpPage() {
@@ -136,19 +137,23 @@ function StudentSignUpPage() {
                 />
                 <br></br>
 
-                <br></br>
                 <label className="signup-form-labels" htmlFor="passwordInput">
                   Password
                 </label>
                 <br></br>
                 <input
-                  className="signup-form-inputs"
+                  className="signup-form-pw-input"
                   placeholder="Enter password"
                   id="passwordInput"
                   name="passwordInput"
                   value={password}
                   onChange={handleUserPassword}
                 />
+                 <img
+                  src={icon}
+                  alt="a lock icon"
+                  className="password-icon"
+                  />
                 <br></br>
                 <button className="signup-form-submit-button" type="submit">
                   Sign up
@@ -165,8 +170,8 @@ function StudentSignUpPage() {
           QuickGrade Inc. All Rights Reserved
         </p>
         <div className="footer-links">
-          <a href="/INSERT-LINK">Privacy</a>
-          <a href="/INSERT-LINK">Terms</a>
+          <a href="/INSERT-LINK" className="signup-page-footer-link">Privacy</a>
+          <a href="/INSERT-LINK" className="signup-page-footer-link">Terms</a>
         </div>
       </footer>
     </div>
