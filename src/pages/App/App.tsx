@@ -7,7 +7,7 @@ import LandingPage from "../landingPage/LandingPage";
 import EnterOtp from "../enter-otp/enter_otp";
 import VerifyEmail from "../verify-email/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
-import Dashboard from "../studentDashboard/lecturerDashboard";
+import Dashboard from "../studentDashboard/StudentsDashboard";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
 import StudentSignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";

@@ -1,16 +1,35 @@
 import './Dashboard.css'
 
+
+// function myFunction() {
+//   var x = document.getElementById("myLinks");
+//   if (x.style.display === "block") {
+//     x.style.display = "none";
+//   } else {
+//     x.style.display = "block";
+//   }
+// }
+
 function Dashboard () {
+  // const x = document.getElementById("myLinks");
+  // if (x.style.display === "block") {
+  //   x.style.display = "none";
+  // } else {
+  //   x.style.display = "block";
+  // }
+
     return (
         <div className="dashboard">
-        {/* <div className="div"> */}
-          <section className="frame">
-            <div className="frame-2">
+          <section className="hero">
+            <div className="hero-content">
               <div className="notification-wrapper">
                 <img className="img" src="https://c.animaapp.com/IX1zE9E9/img/notification.svg" />
               </div>
               <div className="text-wrapper">Welcome, 22/23/07/019</div>
             </div>
+              {/* <a href="javascript:void(0);" className="icon" onclick="myFunction()">
+              <i className="fa fa-bars"></i>
+              </a> */}
           </section>
           {/* Sidebar */}
           <div className="text-wrapper-2">Dashboard</div>
@@ -145,7 +164,6 @@ function Dashboard () {
               </div>
             </div>
           </main>
-        {/* </div> */}
       </div>
     )
   }
