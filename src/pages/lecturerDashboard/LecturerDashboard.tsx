@@ -1,5 +1,5 @@
-import '../styles/Dashboard.css'
-import '../assets/menu-board.png'
+import '../studentDashboard/Dashboard.css'
+import '../../assets/menu-board.png'
 function LecturerDashboard () {
     return (
         <div className="dashboard">

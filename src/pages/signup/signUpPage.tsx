@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import "../styles/signUpPageStyle.css";
-import { useLocation, useNavigate } from "react-router-dom";
-import pagepic from "../assets/sign_up_page_bg_pic copy.png";
+import "./signUpPageStyle.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import pagepic from "../../assets/sign_up_page_bg_pic copy.png";
 import axios from "axios";
 
 function StudentSignUpPage() {
@@ -39,7 +39,7 @@ function StudentSignUpPage() {
         });
         // checking the response
         if (res.status === 200 && res.data.existingStudentError) {
-          navigate("/students/signin");
+          navigate("/students/signup");
         } else if (res.status === 200 && res.data.successfulSignup) {
           navigate("/students/signin");
         }
@@ -52,7 +52,7 @@ function StudentSignUpPage() {
         });
         // checking the response
         if (res.status === 200 && res.data.existingLecturerError) {
-          navigate("/lecturers/signin");
+          navigate("/lecturers/signup");
         } else if (res.status === 200 && res.data.successfulSignup) {
           navigate("/lecturers/signin");
         }
@@ -86,11 +86,8 @@ function StudentSignUpPage() {
         <div className="form-section">
           <div className="whole-sign-up-form-container">
             <div className="top-sign-in-message">
-              Already Created an Account?{" "}
-              <a href="/signin" className="sign-in-redirect">
-                Sign in
-              </a>{" "}
-              here.
+              Already Created an Account? Sign in
+              <Link to="/students/signin"> here</Link>
             </div>
 
             <div className="sign-in-form-container">

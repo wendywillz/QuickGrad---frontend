@@ -1,6 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import "../styles/LandingPage.css";
-import quickgradelogo from "../assets/quick_grade_logo_with_text.png";
+import "./LandingPage.css";
+import quickgradelogo from "../../assets/quick_grade_logo_with_text.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -108,7 +108,7 @@ function LandingPage() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default LandingPage
+export default LandingPage;

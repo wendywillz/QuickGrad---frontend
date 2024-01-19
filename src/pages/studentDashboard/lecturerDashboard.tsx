@@ -1,4 +1,4 @@
-import '../styles/Dashboard.css'
+import './Dashboard.css'
 
 function Dashboard () {
     return (
@@ -148,6 +148,6 @@ function Dashboard () {
         {/* </div> */}
       </div>
     )
-  };
+  }
 
   export default Dashboard;

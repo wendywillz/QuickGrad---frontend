@@ -1,22 +1,23 @@
 import axios from "axios";
-import { LeftImageWrapper } from "../styled_components/Login_background";
-import "../styles/Login_style.css";
+import { LeftImageWrapper } from "./Login_background";
+import "./Login_style.css";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 interface Props {
   id_or_email: string;
   placeholder: string;
   form_title: string;
   backgroundImage: string;
+  userType: string;
 }
 
 export function LoginPage(props: Props) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [userId, setID] = useState("");
+  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const handleUserID = (event: ChangeEvent<HTMLInputElement>) => {
-    setID((event.currentTarget as HTMLInputElement).value);
+    setUserId((event.currentTarget as HTMLInputElement).value);
   };
   const handlePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword((event.currentTarget as HTMLInputElement).value);
@@ -28,27 +29,35 @@ export function LoginPage(props: Props) {
     try {
       const currentRoute = location.pathname;
       console.log("currentRoute: ", currentRoute);
-      if (currentRoute === "/student_signin") {
-        const res = await axios.post(`http://localhost:3000/students/signup`, {
-          studentId: userId,
+      if (currentRoute === "/students/signin") {
+        const res = await axios.post(`http://localhost:3000/students/login`, {
+          matricNo: userId,
           password: password,
         });
         // checking the response
-        if (res.status === 200 && res.data.role === "lecturer") {
-          navigate("/lecturer_signin");
-        } else if (res.status === 200 && res.data.role === "student") {
-          navigate("/student_signin/");
+        if (res.status === 200 && res.data.successfulLogin) {
+          navigate("/students/dashboard");
+        } else if (
+          (res.status === 200 && res.data.inValidPassword) ||
+          res.data.studentNotFoundError ||
+          res.data.internalServerError
+        ) {
+          navigate("/students/signin");
         }
-      } else if (currentRoute === "/lecturer_signin/") {
-        const res = await axios.post(`http://localhost:3000/students/signup`, {
-          studentId: userId,
+      } else if (currentRoute === "/lecturers/signin") {
+        const res = await axios.post(`http://localhost:3000/lecturers/login`, {
+          employeeID: userId,
           password: password,
         });
         // checking the response
-        if (res.status === 200 && res.data.role === "lecturer") {
-          navigate("/lecturer_signin");
-        } else if (res.status === 200 && res.data.role === "student") {
-          navigate("/student_signin/");
+        if (res.status === 200 && res.data.successfulLogin) {
+          navigate("/lecturers/dashboard");
+        } else if (
+          (res.status === 200 && res.data.inValidPassword) ||
+          res.data.lecturerNotFoundError ||
+          res.data.internalServerError
+        ) {
+          navigate("/lecturers/signin");
         }
       }
     } catch (error) {
@@ -91,7 +100,10 @@ export function LoginPage(props: Props) {
                   placeholder="Enter password"
                 />
               </div>
-              <p className="forgot-password">Forgot password?</p>
+              <Link className="forgot-password" to={props.userType}>
+                {" "}
+                forgot password?
+              </Link>
             </div>
             <button className="sign-in-btn">Sign in</button>
           </form>
