@@ -47,6 +47,7 @@
 .moto-wrapper {
   color: #fff;
   font-size: 1rem;
+  line-height: normal;
 }
 .login-form-wrapper {
   height: 100%;
@@ -66,24 +67,25 @@
   padding: 15% 10%;
   text-align: left;
 }
-.form-title {
+.login-form-title {
   font-size: 2rem;
   font-weight: 400;
+  line-height: normal;
   font-family: var(--main-font);
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 .field {
   margin-bottom: 1rem;
 }
 
-input {
+.login-form-input {
   height: 3rem;
   width: 100%;
   border-radius: 4px;
   padding: 1rem;
   border: 1px solid var(--input-border);
 }
-input::placeholder {
+.login-form-input::placeholder {
   display: block;
   font-size: 14px;
 
@@ -91,12 +93,14 @@ input::placeholder {
   color: var(--placeholder-color);
 }
 
-label {
+.login-form-label {
   display: block;
   color: var(--label-color);
   font-family: var(--label-font);
   font-size: 1rem;
-  font-weight: 800
+  margin-top: 0.7rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
 }
 
 .password-icon-wrapper {
@@ -111,9 +115,10 @@ label {
   border: 1px solid var(--input-border);
 }
 
-.password-icon {
+.login-form-password-icon {
   font-size: 1rem;
   margin-left: 0;
+  margin-right: 0.5rem;
 }
 
 .password_input {
@@ -123,9 +128,11 @@ label {
 .password_input:focus {
   outline: none !important;
 }
-.forgot-password {
+.login-form-forgot-password {
   color: var(--forget-password-color);
   font-size: 0.9rem;
+  line-height: normal;
+  margin-bottom: 0.5rem;
 }
 .sign-in-btn {
   background-color: var(--button-color);
@@ -141,7 +148,7 @@ label {
   margin-top: 1rem;
   transition: all 0.3s ease-in-out;
 }
-footer {
+.login-form-footer {
   display: flex;
   border-top: 1px solid rgba(52, 64, 84, 1);
   height: 10%;

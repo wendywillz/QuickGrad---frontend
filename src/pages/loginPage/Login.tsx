@@ -77,11 +77,11 @@ export function LoginPage(props: Props) {
 
         <div className="login-form-wrapper">
           <form className="login-form" onSubmit={handleSubmit}>
-            <h1 className="form-title">{props.form_title}</h1>
+            <h1 className="login-form-title">{props.form_title}</h1>
             <div className="field">
-              <label className="label">{props.id_or_email}</label>
+              <label className="login-form-label">{props.id_or_email}</label>
               <input
-                className="input"
+                className="login-form-input"
                 type="text"
                 value={userId}
                 onChange={handleUserID}
@@ -89,9 +89,9 @@ export function LoginPage(props: Props) {
               />
             </div>
             <div className="field">
-              <label className="label">Password</label>
+              <label className="login-form-label">Password</label>
               <div className="password-icon-wrapper">
-                <i className="fa-solid fa-lock password-icon"></i>
+                <i className="fa-solid fa-lock login-form-password-icon"></i>
                 <input
                   className="password_input"
                   type="text"
@@ -100,7 +100,7 @@ export function LoginPage(props: Props) {
                   placeholder="Enter password"
                 />
               </div>
-              <Link className="forgot-password" to={props.userType}>
+              <Link className="login-form-forgot-password" to={props.userType}>
                 {" "}
                 forgot password?
               </Link>
@@ -109,7 +109,7 @@ export function LoginPage(props: Props) {
           </form>
         </div>
       </div>
-      <footer>
+      <footer className="login-form-footer">
         <div className="inner-footer-wrapper">
           <div className="left-footer-text-wrapper">
             <p className="footer-text">QuickGrade</p>

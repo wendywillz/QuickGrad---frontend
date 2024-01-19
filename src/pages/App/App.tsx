@@ -5,11 +5,11 @@ import lecturer_login_page_bg from "../../assets/lecturer_signin_bg.png";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "../landingPage/LandingPage";
 import EnterOtp from "../enter-otp/enter_otp";
-import VerifyEmail from "../verify-email/VerifyEmailPage";
+// import VerifyEmail from "../verify-email/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
 import Dashboard from "../studentDashboard/StudentsDashboard";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
-import StudentSignUpPage from "../signup/signUpPage";
+import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 function App() {
@@ -50,31 +50,92 @@ function App() {
           path="/lecturers/confirm-email"
           element={<EnterOtp enter_otp_heading="Verify OTP" />}
         />
-        <Route path="lecturers/forgot-password" element={<ForgotPassword />} />
-        <Route path="students/forgot-password" element={<ForgotPassword />} />
-        <Route path="/verify-email" element={<VerifyEmail />} />
+
+        {/* forgot password page
+        where you enter your email
+        */}
         <Route
-          path="/re-enter-password"
+          path="/lecturers/forgot-password"
+          element={<ForgotPassword location="/lecturers/signin" />}
+        />
+        <Route
+          path="/students/forgot-password"
+          element={<ForgotPassword location="/students/signin" />}
+        />
+        {/* <Route path="/verify-email" element={<VerifyEmail />} /> */}
+
+        {/* we ve sent your password reset link
+         check your email page
+         */}
+        <Route
+          path="/students/reset-password/check-your-email"
+          element={
+            <CheckYourEmail
+              information="We sent a password reset link to your email. Please click the link to
+              reset your password."
+              location="/students/forgot-password"
+              location_text="Click here to resend"
+            />
+          }
+        />
+        <Route
+          path="/lecturers/reset-password/check-your-email"
+          element={
+            <CheckYourEmail
+              information="We sent a password reset link to your email. Please click the link to
+              reset your password."
+              location="/lecturers/forgot-password"
+              location_text="Click here to resend"
+            />
+          }
+        />
+
+        {/* display password reset page where you
+        enter new password confirm new password
+        */}
+        <Route
+          path="/students/reset-password/:token"
           element={<ResetEnterNewPasswordPage />}
         />
-        <Route path="/students/signup" element={<StudentSignUpPage />} />
-        <Route path="/lecturers/signup" element={<StudentSignUpPage />} />
+        <Route
+          path="/lecturers/reset-password"
+          element={<ResetEnterNewPasswordPage />}
+        />
+
+        <Route
+          path="/students/signup"
+          element={<SignUpPage signin_link="/students/signin" />}
+        />
+        <Route
+          path="/lecturers/signup"
+          element={<SignUpPage signin_link="/lecturers/signin" />}
+        />
         <Route path="/students/dashboard" element={<Dashboard />} />
+
+        {/* check your email for matric no/employee ID  */}
         <Route
           path="/students/check-your-email"
           element={
             <CheckYourEmail
-              userType="Registration Number"
-              location="/students/sigin"
+              information="We sent your Registration Number and password to your verified email,
+              kindly use the detail to login."
+              location="/students/signin"
+              location_text="proceed to login"
             />
           }
         />
         <Route
           path="/lecturers/check-your-email"
           element={
-            <CheckYourEmail userType="EmployeeID" location="/students/sigin" />
+            <CheckYourEmail
+              information="We sent your EmployeeID and password to your verified email,
+            kindly use the detail to login."
+              location="/lecturers/signin"
+              location_text="proceed to login"
+            />
           }
         />
+
         <Route path="/students/dashboard" element={<Dashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
       </Routes>

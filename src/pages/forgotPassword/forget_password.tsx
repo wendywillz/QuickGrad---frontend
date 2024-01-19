@@ -5,7 +5,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 
-export function ForgotPassword() {
+interface ForgotPasswordProps {
+  location: string;
+}
+export function ForgotPassword(props: ForgotPasswordProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -29,7 +32,7 @@ export function ForgotPassword() {
         if (res.status === 200 && res.data.studentNotFoundError) {
           navigate("/students/forgot-password");
         } else if (res.status === 200 && res.data.linkSentSuccessfully) {
-          navigate("/students/signin");
+          navigate("/students/reset-password/check-your-email");
         }
       } else if (currentRoute === "/lecturers/forgot-password") {
         const res = await axios.post(
@@ -42,7 +45,7 @@ export function ForgotPassword() {
         if (res.status === 200 && res.data.studentNotFoundError) {
           navigate("/lecturers/forgot-password");
         } else if (res.status === 200 && res.data.linkSentSuccessfully) {
-          navigate("/lecturers/signin");
+          navigate("/lecturers/reset-password/check-your-email");
         }
       }
     } catch (error) {
@@ -78,7 +81,7 @@ export function ForgotPassword() {
           <button type="submit" className="reset-otp-input-btn">
             Forgot Password
           </button>
-          <Link to="/" className="back-end-login-input-btn">
+          <Link to={props.location} className="back-end-login-input-btn">
             Back to Login
           </Link>
         </form>
