@@ -134,10 +134,13 @@
 
 .landing-page-register-here {
   width: 100%;
-  font-size: 14px;
+  
 }
 .no-account-register {
   color: #000000;
+  font-size: 14px;
+  height: 20px;
+  
 }
 
 .register-here {
