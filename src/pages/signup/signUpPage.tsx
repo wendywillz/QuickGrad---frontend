@@ -2,10 +2,12 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import "./signUpPageStyle.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import pagepic from "../../assets/sign_up_page_bg_pic copy.png";
-import icon from "../../assets/Icon copy.png"
 import axios from "axios";
 
-function StudentSignUpPage() {
+interface SignUpPageProps {
+  signin_link: string;
+}
+function SignUpPage(props: SignUpPageProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -42,7 +44,7 @@ function StudentSignUpPage() {
         if (res.status === 200 && res.data.existingStudentError) {
           navigate("/students/signup");
         } else if (res.status === 200 && res.data.successfulSignup) {
-          navigate("/students/signin");
+          navigate("/students/check-your-email");
         }
       } else if (currentRoute === "/lecturers/signup") {
         const res = await axios.post(`http://localhost:3000/lecturers/signup`, {
@@ -55,7 +57,7 @@ function StudentSignUpPage() {
         if (res.status === 200 && res.data.existingLecturerError) {
           navigate("/lecturers/signup");
         } else if (res.status === 200 && res.data.successfulSignup) {
-          navigate("/lecturers/signin");
+          navigate("/lecturers/check-your-email");
         }
       }
     } catch (error) {
@@ -88,7 +90,7 @@ function StudentSignUpPage() {
           <div className="whole-sign-up-form-container">
             <div className="top-sign-in-message">
               Already Created an Account? Sign in
-              <Link to="/students/signin"> here</Link>
+              <Link to={props.signin_link}> here</Link>
             </div>
 
             <div className="sign-in-form-container">
@@ -137,23 +139,19 @@ function StudentSignUpPage() {
                 />
                 <br></br>
 
+                <br></br>
                 <label className="signup-form-labels" htmlFor="passwordInput">
                   Password
                 </label>
                 <br></br>
                 <input
-                  className="signup-form-pw-input"
+                  className="signup-form-inputs"
                   placeholder="Enter password"
                   id="passwordInput"
                   name="passwordInput"
                   value={password}
                   onChange={handleUserPassword}
                 />
-                 <img
-                  src={icon}
-                  alt="a lock icon"
-                  className="password-icon"
-                  />
                 <br></br>
                 <button className="signup-form-submit-button" type="submit">
                   Sign up
@@ -164,18 +162,22 @@ function StudentSignUpPage() {
         </div>
       </div>
 
-      <footer className="signup-footer-contents">
-        <p className="footer-website-name">QuickGrade</p>
-        <p className="footer-rights-notice">
-          QuickGrade Inc. All Rights Reserved
-        </p>
-        <div className="footer-links">
-          <a href="/INSERT-LINK" className="signup-page-footer-link">Privacy</a>
-          <a href="/INSERT-LINK" className="signup-page-footer-link">Terms</a>
+      <footer className="login-form-footer">
+        <div className="inner-footer-wrapper">
+          <div className="left-footer-text-wrapper">
+            <p className="footer-text">QuickGrade</p>
+          </div>
+          <div className="center-footer-text-wrapper">
+            <p className="footer-text">QuickGrade Inc. All rights Reserved</p>
+          </div>
+          <div className="right-footer-text-wrapper">
+            <p className="footer-text privacy">Privacy</p>
+            <p className="footer-text terms">Terms</p>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
 
-export default StudentSignUpPage;
+export default SignUpPage;
