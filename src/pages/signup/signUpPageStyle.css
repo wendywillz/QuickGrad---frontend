@@ -1,10 +1,10 @@
-@import url(
-"https://fonts.googleapis.com/css2?family=Inter&display=swap"
-);
+@import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@700&family=Inter:wght@300;400;600&family=Libre+Baskerville&family=Orbitron&family=Public+Sans&display=swap");
 
 .entire-signup-page-container{
     position: relative;
     font-family: "Inter", sans-serif;
+    height: 100%;
+    width:100%;
 }
 
 .main-body-container{
@@ -12,15 +12,17 @@
 }
 
 .image-card-section{
-    width: 708px
+    width: 708px;
+    height:max-content;
+    position: relative;
 }
 .signup-overlay{
+    width: 100%;
+    height: 99.3%;
+    background-color: rgba(0, 0, 0, 0.6);
     position:absolute;
     top: 0;
     left: 0;
-    width: 708px;
-    height: 947.5px;
-    background-color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
     z-index: 1;
 }
@@ -62,6 +64,10 @@
     top:130px;
     left:48px;
     z-index: 2;
+}
+
+.signup-page-photo{
+    height: 100%;
 }
 
 .sign-in-redirect{
@@ -129,9 +135,26 @@
     border-radius: 4px;
     width: 296px;
     height: 24px;
-    padding: 12px;
+    padding:12px;
+    margin: 3px 3px 3px 3px;
     gap: 8px;
-    margin: 3px;
+
+}
+
+.signup-form-pw-input{
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 290px;
+    height: 24px;
+    padding:12px 0px 12px 30px;
+    margin: 3px 3px 3px 3px;
+    gap: 8px;
+}
+
+.password-icon{
+    position: relative;
+    right:318px;
+    top:3px;
 
 }
 
@@ -148,16 +171,45 @@
     line-height: 22px;
     letter-spacing: 0.15000000596046448px;
     text-align: center;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-left: 7px;
 
 
+}
+
+.signup-horizontal-line{
+    position: absolute;
+    width: 203%;
 }
 
 .signup-footer-contents{  
-    border: 1px solid grey;
+    border-top: 1px solid grey;
     display:flex;
     justify-content: space-between;
-    width: 100%;
+    width: 203%;
+    height:100%;
+    position: relative;
+    margin-top: -6px;
 }
+.footer-website-name{
+position: absolute;
+left: 0;
+}
+
+.footer-rights-notice{
+position: absolute;
+left: 45%
+}
+
+.footer-links{
+display: flex;
+justify-content: space-between;
+position: absolute;
+right: 6%;
+}
+
+.signup-page-footer-link{
+    margin: 5px;
+}
+
 
