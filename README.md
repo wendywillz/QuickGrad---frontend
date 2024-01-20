@@ -9,5 +9,5 @@ note: there's no dis/lib folder you don't have to worry, your work is compiled o
 
 # Routes
 There's routing in the project, the signing page can be viewed at `localhost:port/signin`
-kindly include other routes as you work on them.
+kindly include other routes as you work on them;
 
