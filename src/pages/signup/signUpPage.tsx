@@ -3,7 +3,8 @@ import "./signUpPageStyle.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import pagepic from "../../assets/sign_up_page_bg_pic copy.png";
 import axios from "axios";
-
+import Footer from "../../components/footer/footer";
+import MainButton from "../../components/buttons/mainButton";
 interface SignUpPageProps {
   signin_link: string;
 }
@@ -153,29 +154,13 @@ function SignUpPage(props: SignUpPageProps) {
                   onChange={handleUserPassword}
                 />
                 <br></br>
-                <button className="signup-form-submit-button" type="submit">
-                  Sign up
-                </button>
+                <MainButton button_text="Sign up" />
               </form>
             </div>
           </div>
         </div>
       </div>
-
-      <footer className="login-form-footer">
-        <div className="inner-footer-wrapper">
-          <div className="left-footer-text-wrapper">
-            <p className="footer-text">QuickGrade</p>
-          </div>
-          <div className="center-footer-text-wrapper">
-            <p className="footer-text">QuickGrade Inc. All rights Reserved</p>
-          </div>
-          <div className="right-footer-text-wrapper">
-            <p className="footer-text privacy">Privacy</p>
-            <p className="footer-text terms">Terms</p>
-          </div>
-        </div>
-      </footer>
+      <Footer footer_text="blue-text" />
     </div>
   );
 }

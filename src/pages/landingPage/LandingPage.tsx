@@ -4,6 +4,8 @@ import quickgradelogo from "../../assets/quick_grade_logo_with_text.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Footer from "../../components/footer/footer";
+import MainButton from "../../components/buttons/mainButton";
 function LandingPage() {
   const [userRole, setUserRole] = useState(""); // State to manage user type selection
   const navigate = useNavigate();
@@ -79,10 +81,7 @@ function LandingPage() {
               </div>
 
               {/* <button type="submit">Get Started</button> */}
-
-              <button className="landing-page-get-started-btn">
-                Get Started
-              </button>
+              <MainButton button_text="Get Started" />
 
               <div className="landing-page-register-here">
                 <p className="no-account-register">
@@ -96,16 +95,7 @@ function LandingPage() {
           </div>
         </div>
 
-        <div className="footer">
-          <div className="footer-container">
-            <div>Quickgrade</div>
-            <div>QuickGrade Inc. All rights Reserved</div>
-            <div>
-              <span>Privacy</span>
-              <span>Terms</span>
-            </div>
-          </div>
-        </div>
+        <Footer footer_background="optional-footer-background" />
       </div>
     </>
   );

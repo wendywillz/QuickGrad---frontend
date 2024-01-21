@@ -41,8 +41,8 @@
 }
 */
 
-.form-section{
-    width: 50%;
+.form-section {
+  width: 50%;
 }
 
 .signup-uni-title {
@@ -156,58 +156,6 @@
   top: 3px;
 }
 
-.signup-form-submit-button {
-  width: 320px;
-  height: 48px;
-  border-radius: 100px;
-  padding: 12px, 16px, 12px, 16px;
-  gap: 8px;
-  color: white;
-  background-color: #2d00f7;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: 0.15000000596046448px;
-  text-align: center;
-  margin-top: 20px;
-  margin-left: 7px;
-}
-
 .signup-horizontal-line {
   position: absolute;
-}
-
-.login-form-footer {
-  display: flex;
-  border-top: 1px solid rgba(52, 64, 84, 1);
-  height: 10%;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-}
-
-.inner-footer-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 80%;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
-}
-.left-footer-text-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.right-footer-text-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.right-footer-text-wrapper > p {
-  margin-left: 2.5rem;
-}
-.privacy,
-.terms {
-  color: var(--forget-password-color);
 }

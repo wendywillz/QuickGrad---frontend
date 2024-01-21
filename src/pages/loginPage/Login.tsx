@@ -1,8 +1,10 @@
 import axios from "axios";
 import { LeftImageWrapper } from "./Login_background";
 import "./Login_style.css";
+import Footer from "../../components/footer/footer";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import MainButton from "../../components/buttons/mainButton";
 interface Props {
   id_or_email: string;
   placeholder: string;
@@ -102,27 +104,14 @@ export function LoginPage(props: Props) {
               </div>
               <Link className="login-form-forgot-password" to={props.userType}>
                 {" "}
-                forgot password?
+                Forgot password?
               </Link>
             </div>
-            <button className="sign-in-btn">Sign in</button>
+            <MainButton button_text="Sign in" />
           </form>
         </div>
       </div>
-      <footer className="login-form-footer">
-        <div className="inner-footer-wrapper">
-          <div className="left-footer-text-wrapper">
-            <p className="footer-text">QuickGrade</p>
-          </div>
-          <div className="center-footer-text-wrapper">
-            <p className="footer-text">QuickGrade Inc. All rights Reserved</p>
-          </div>
-          <div className="right-footer-text-wrapper">
-            <p className="footer-text privacy">Privacy</p>
-            <p className="footer-text terms">Terms</p>
-          </div>
-        </div>
-      </footer>
+      <Footer footer_text="blue-text" />
     </div>
   );
 }
