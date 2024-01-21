@@ -3,6 +3,7 @@ import quickgradelogo from "../../assets/quick_grade_logo_with_text_blue.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
+import MainButton from "../../components/buttons/mainButton";
 
 interface EnterOtpProps {
   enter_otp_heading: string;
@@ -87,10 +88,7 @@ function EnterOtp(props: EnterOtpProps) {
             onChange={handleUserOtp}
             className="reset-otp-input"
           />
-
-          <button type="submit" className="reset-otp-input-btn">
-            Submit
-          </button>
+          <MainButton button_text="Submit" />
         </form>
       </div>
     </div>

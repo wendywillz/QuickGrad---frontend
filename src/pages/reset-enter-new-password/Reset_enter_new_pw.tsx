@@ -1,5 +1,6 @@
 import "./Reset_enter_new_pw.css";
 import quickgradelogo from "../../assets/quick_grade_logo_with_text_blue.png";
+import MainButton from "../../components/buttons/mainButton";
 
 const ResetEnterNewPasswordPage = () => {
   return (
@@ -39,10 +40,7 @@ const ResetEnterNewPasswordPage = () => {
                 required
                 className="re-enter-password-input"
               />
-
-              <button className="re-enter-password-btn" type="submit">
-                Reset Password
-              </button>
+              <MainButton button_text="Reset PAssword" />
             </div>
           </form>
         </div>

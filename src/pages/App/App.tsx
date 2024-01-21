@@ -7,11 +7,12 @@ import LandingPage from "../landingPage/LandingPage";
 import EnterOtp from "../enter-otp/enter_otp";
 // import VerifyEmail from "../verify-email/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
-import Dashboard from "../studentDashboard/StudentsDashboard";
+import StudentDashboard from "../studentDashboard/StudentsDashboard";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
 import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
+
 function App() {
   return (
     <>
@@ -110,7 +111,6 @@ function App() {
           path="/lecturers/signup"
           element={<SignUpPage signin_link="/lecturers/signin" />}
         />
-        <Route path="/students/dashboard" element={<Dashboard />} />
 
         {/* check your email for matric no/employee ID  */}
         <Route
@@ -136,7 +136,7 @@ function App() {
           }
         />
 
-        <Route path="/students/dashboard" element={<Dashboard />} />
+        <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
       </Routes>
     </>

@@ -3,6 +3,7 @@ import quickgradelogo from "../../assets/quick_grade_logo_with_text_blue.png";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
+import MainButton from "../../components/buttons/mainButton";
 import axios from "axios";
 
 interface ForgotPasswordProps {
@@ -77,10 +78,7 @@ export function ForgotPassword(props: ForgotPasswordProps) {
             value={email}
             onChange={handleUserEmail}
           />
-
-          <button type="submit" className="reset-otp-input-btn">
-            Forgot Password
-          </button>
+          <MainButton button_text="Forgot Password" />
           <Link to={props.location} className="back-end-login-input-btn">
             Back to Login
           </Link>
