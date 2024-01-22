@@ -120,7 +120,7 @@ function App() {
               information="We sent your Registration Number and password to your verified email,
               kindly use the detail to login."
               location="/students/signin"
-              location_text="proceed to login"
+              location_text="Proceed to login"
             />
           }
         />
@@ -131,7 +131,7 @@ function App() {
               information="We sent your EmployeeID and password to your verified email,
             kindly use the detail to login."
               location="/lecturers/signin"
-              location_text="proceed to login"
+              location_text="Proceed to login"
             />
           }
         />

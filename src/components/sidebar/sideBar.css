@@ -210,7 +210,7 @@
   position: relative;
   flex: 0 0 auto;
   border-radius: 8px;
-
+  color: #ffffff;
   @media screen and (max-width: 768px) {
     width: fit-content;
   }
@@ -220,11 +220,12 @@
   background-color: var(--white);
   border-radius: 6px;
   margin-left: 1rem;
+  color: rgba(0, 79, 255, 1);
 }
 
 .text-wrapper-6 {
   font-weight: var(--body-text-normal-16-font-weight);
-  color: var(--white);
+  color: inherit;
   position: relative;
   width: fit-content;
   font-family: var(--body-text-normal-16-font-family);
@@ -233,19 +234,4 @@
   line-height: var(--body-text-normal-16-line-height);
   white-space: nowrap;
   font-style: var(--body-text-normal-16-font-style);
-}
-
-.text-wrapper-6:hover {
-  font-weight: bold;
-  color: var(--primary-500);
-}
-
-@media screen and (max-width: 768px) {
-  .text-wrapper-6:hover {
-    transition: background-color 0.3s ease;
-  }
-
-  .text-wrapper-6:hover {
-    background-color: var(--white);
-  }
 }

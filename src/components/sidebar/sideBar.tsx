@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import "./sideBar.css";
-
 interface SideBarChildren {
   children: {
     sidebarElement: ReactNode;

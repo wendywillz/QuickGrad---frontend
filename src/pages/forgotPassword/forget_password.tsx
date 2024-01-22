@@ -18,36 +18,23 @@ export function ForgotPassword(props: ForgotPasswordProps) {
   };
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log("userRole: ", email);
+    const baseURL = location.pathname.startsWith("/students")
+      ? "http://localhost:3000/students"
+      : location.pathname.startsWith("/lecturers")
+      ? "http://localhost:3000/lecturers"
+      : "";
     try {
-      const currentRoute = location.pathname;
-      console.log("currentRoute: ", currentRoute);
-      if (currentRoute === "/students/forgot-password") {
-        const res = await axios.post(
-          `http://localhost:3000/students/reset-password`,
-          {
-            email: email,
-          }
-        );
-        // checking the response
-        if (res.status === 200 && res.data.studentNotFoundError) {
-          navigate("/students/forgot-password");
-        } else if (res.status === 200 && res.data.linkSentSuccessfully) {
-          navigate("/students/reset-password/check-your-email");
-        }
-      } else if (currentRoute === "/lecturers/forgot-password") {
-        const res = await axios.post(
-          `http://localhost:3000/lecturers/reset-password`,
-          {
-            email: email,
-          }
-        );
-        // checking the response
-        if (res.status === 200 && res.data.studentNotFoundError) {
-          navigate("/lecturers/forgot-password");
-        } else if (res.status === 200 && res.data.linkSentSuccessfully) {
-          navigate("/lecturers/reset-password/check-your-email");
-        }
+      const res = await axios.post(`${baseURL}/reset-password`, {
+        email: email,
+      });
+
+      // checking the response
+      if (res.status === 200 && res.data.userNotFoundError) {
+        navigate(`${baseURL}/forgot-password`);
+      } else if (res.status === 200 && res.data.linkSentSuccessfully) {
+        baseURL.includes("/students")
+          ? navigate("/students/reset-password/check-your-email")
+          : navigate("/lecturers/reset-password/check-your-email");
       }
     } catch (error) {
       console.log("error", error);
