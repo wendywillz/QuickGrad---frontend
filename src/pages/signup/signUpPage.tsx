@@ -45,7 +45,7 @@ function SignUpPage(props: SignUpPageProps) {
         if (res.status === 200 && res.data.existingStudentError) {
           navigate("/students/signup");
         } else if (res.status === 200 && res.data.successfulSignup) {
-          navigate("/students/check-your-email");
+          navigate("/students/confirm-email");
         }
       } else if (currentRoute === "/lecturers/signup") {
         const res = await axios.post(`http://localhost:3000/lecturers/signup`, {
@@ -58,7 +58,7 @@ function SignUpPage(props: SignUpPageProps) {
         if (res.status === 200 && res.data.existingLecturerError) {
           navigate("/lecturers/signup");
         } else if (res.status === 200 && res.data.successfulSignup) {
-          navigate("/lecturers/check-your-email");
+          navigate("/lecturers/confirm-email");
         }
       }
     } catch (error) {
