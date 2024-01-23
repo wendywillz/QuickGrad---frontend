@@ -32,13 +32,13 @@ function EnterOtp(props: EnterOtpProps) {
         // checking the response
         if (
           res.status === 200 &&
-          (res.data.studentNotSignupError ||
+          (res.data.invalidOtp ||
             res.data.expiredOtpError ||
             res.data.internalServerError)
         ) {
           navigate("/students/confirm-email");
         } else if (res.status === 200 && res.data.OtpVerificationSuccess) {
-          navigate("/students/signin");
+          navigate("/students/check-your-email");
         }
       } else if (currentRoute === "/lecturers/confirm-email") {
         const res = await axios.post(
@@ -50,13 +50,13 @@ function EnterOtp(props: EnterOtpProps) {
         // checking the response
         if (
           res.status === 200 &&
-          (res.data.lecturerNotSignupError ||
+          (res.data.invalidOtp ||
             res.data.expiredOtpError ||
             res.data.internalServerError)
         ) {
           navigate("/lecturers/confirm-email");
         } else if (res.status === 200 && res.data.OtpVerificationSuccess) {
-          navigate("/lecturers/signin");
+          navigate("/lecturers/check-your-email");
         }
       }
     } catch (error) {
