@@ -63,6 +63,7 @@
   --body-2-regular-line-height: 20px;
   --body-2-regular-font-style: normal;
 }
+
 .side-bar-default {
   display: inline-flex;
   flex-direction: column;
