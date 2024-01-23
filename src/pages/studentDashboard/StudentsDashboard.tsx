@@ -26,7 +26,7 @@ function StudentDashboard() {
                   className="img-feat"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-menu.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/students/dashboard" className="text-wrapper-6">
                   Dashboard
                 </Link>
               </div>
@@ -35,7 +35,7 @@ function StudentDashboard() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-book-square.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/students/dashboard/enrolled-courses" className="text-wrapper-6">
                   Enrolled Courses
                 </Link>
               </div>
