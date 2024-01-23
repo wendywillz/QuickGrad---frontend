@@ -8,7 +8,11 @@ import MainButton from "../../components/buttons/mainButton";
 interface SignUpPageProps {
   signin_link: string;
 }
+
+
+
 function SignUpPage(props: SignUpPageProps) {
+
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -80,9 +84,9 @@ function SignUpPage(props: SignUpPageProps) {
             />
           </div>
           <div className="page-title-container">
-            <h4 className="signup-uni-title">Camouoflage University</h4>
+            <h4 className="signup-uni-title">Camouflage University</h4>
             <h2 className="signup-page-title-note">
-              Inspiring greatness through education
+              Inspiring greatness through education.
             </h2>
           </div>
         </div>
@@ -100,6 +104,7 @@ function SignUpPage(props: SignUpPageProps) {
               </div>
 
               <form className="sign-up-form" onSubmit={handleSubmit}>
+
                 <label className="signup-form-labels" htmlFor="emailInput">
                   Email
                 </label>
@@ -112,11 +117,10 @@ function SignUpPage(props: SignUpPageProps) {
                   value={email}
                   onChange={handleUSerEmail}
                 />
-                <br></br>
+        
                 <label className="signup-form-labels" htmlFor="facultyInput">
                   Faculty
                 </label>
-                <br></br>
                 <input
                   className="signup-form-inputs"
                   placeholder="Enter faculty"
@@ -125,11 +129,10 @@ function SignUpPage(props: SignUpPageProps) {
                   value={faculty}
                   onChange={handleUserFaculty}
                 />
-                <br></br>
+    
                 <label className="signup-form-labels" htmlFor="departmentInput">
                   Department
                 </label>
-                <br></br>
                 <input
                   className="signup-form-inputs"
                   placeholder="Enter department"
@@ -138,22 +141,19 @@ function SignUpPage(props: SignUpPageProps) {
                   value={department}
                   onChange={handleUserDepartment}
                 />
-                <br></br>
-
-                <br></br>
+     
                 <label className="signup-form-labels" htmlFor="passwordInput">
                   Password
                 </label>
-                <br></br>
                 <input
-                  className="signup-form-inputs"
+                  className="signup-form-pw-input"
                   placeholder="Enter password"
                   id="passwordInput"
                   name="passwordInput"
                   value={password}
                   onChange={handleUserPassword}
                 />
-                <br></br>
+                
                 <MainButton button_text="Sign up" />
               </form>
             </div>
