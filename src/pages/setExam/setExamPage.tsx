@@ -2,6 +2,8 @@ import "./setExamStyle.css";
 import addButton from "../../assets/add_button_logo copy.png";
 import nextArrow from "../../assets/next_section_arrow copy.png";
 import FormRowAndSelection from "./formRow";
+import SideBar from "../../components/sidebar/sideBar";
+import { Link } from "react-router-dom";
 
 function SetExamPage() {
   let count = 1;
@@ -10,9 +12,63 @@ function SetExamPage() {
   };
 
   return (
+    <>
+    {/* Sidebar */}
+    <div className="text-wrapper-2">Dashboard</div>
+      <SideBar>
+        {{
+          sidebarElement: (
+            <>
+              <div className="feature-2">
+                <img
+                  className="img-feat"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-menu.svg"
+                />
+                <Link to="/" className="text-wrapper-6">
+                  Dashboard
+                </Link>
+              </div>
+              <div className="feature-2">
+                <img
+                  className="img-2"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-book-square.svg"
+                />
+                <Link to="/" className="text-wrapper-6">
+                  Courses
+                </Link>
+              </div>
+              <div className="feature-2">
+                <img
+                  className="img-2"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
+                />
+                <Link to="/" className="text-wrapper-6">
+                  Set Exams
+                </Link>
+              </div>
+              <div className="feature-2">
+                <img
+                  className="img-2"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
+                />
+                <Link to="/" className="text-wrapper-6">
+                  Grade Exams
+                </Link>
+              </div>
+              <div className="feature-2">
+                <img className="img-2" src="./img/refresh-square-2.png" />
+                <Link to="/" className="text-wrapper-6">
+                  Results
+                </Link>
+              </div>
+            </>
+          ),
+        }}
+      </SideBar>
+      {/* Main content */}
     <main className="set-exams-page-main-section">
       <div className="set-exams-page-main-section-title-container">
-        <h1 className="set-exams-page-main-section-title">[SET EXAMS]</h1>
+        <h1 className="set-exams-page-main-section-title">Set Exams</h1>
       </div>
 
       <div className="set-exams-page-all-forms">
@@ -186,6 +242,13 @@ function SetExamPage() {
                   name="instructions"
                 />
               </div>
+
+              <div className="set-exam-page-session-form-button-container">
+              <form className="set-exam-page-session-form-button-form" action="#" method="post">
+                  <button className="set-exam-page-session-form-button" type="submit"> + </button>
+              </form>
+              </div>
+
             </form>
           </div>
         </div>
@@ -224,22 +287,7 @@ function SetExamPage() {
               <div>
                 <FormRowAndSelection count={count} />
               </div>
-              <div className="hiddenfunction">{increaseCount()}</div>
-
-              <div>
-                <FormRowAndSelection count={count} />
-              </div>
-              <div className="hiddenfunction">{increaseCount()}</div>
-
-              <div>
-                <FormRowAndSelection count={count} />
-              </div>
-              <div className="hiddenfunction">{increaseCount()}</div>
-
-              <div>
-                <FormRowAndSelection count={count} />
-              </div>
-              <div className="hiddenfunction">{increaseCount()}</div>
+              
             </div>
           </div>
         </div>
@@ -259,6 +307,7 @@ function SetExamPage() {
         </form>
       </div>
     </main>
+    </>
   );
 }
 

@@ -25,7 +25,7 @@ function FormRowAndSelection(props: Props){
 <div className="set-exams-page-questions-form-multiple-choice-questions-container">
     <div className="set-exams-page-questions-form-multiple-choice-question-and-number">
         <label className="set-exams-page-questions-form-multiple-choice-question-number" htmlFor="questionInput">{props.count}</label>
-    <input className="set-exams-page-questions-form-multiple-choice-question" type="text"/> <br/>
+    <input className="set-exams-page-questions-form-multiple-choice-question" type="text" placeholder="Type question"/> <br/>
 
     </div>
     
@@ -36,26 +36,26 @@ function FormRowAndSelection(props: Props){
         <span className="set-exams-page-answer-value">A.</span> 
         <span className="set-exams-page-answer-text">Option 1</span>
     </label>
-    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="aInput" value="A"/>
+    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="aInput" value="A" name="answer"/>
 
     <label className="set-exams-page-questions-form-multiple-choice-answer-label" htmlFor="bInput">
         <span className="set-exams-page-answer-value">B.</span> 
         <span className="set-exams-page-answer-text">Option 2</span>
     </label>
-    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="bInput" value="B"/>
+    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="bInput" value="B" name="answer"/>
 
     <label className="set-exams-page-questions-form-multiple-choice-answer-label" htmlFor="cInput">
         <span className="set-exams-page-answer-value">C.</span> 
         <span className="set-exams-page-answer-text">Option 3</span>
     </label>
-    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="cInput" value="C"/>
+    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="cInput" value="C" name="answer"/>
 
    
     <label className="set-exams-page-questions-form-multiple-choice-answer-label" htmlFor="dInput">
         <span className="set-exams-page-answer-value">D.</span> 
         <span className="set-exams-page-answer-text">Option 4</span>
     </label>
-    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="dInput" value="D"/>
+    <input className="set-exams-page-questions-form-multiple-choice-answer" type="radio" id="dInput" value="D" name="answer"/>
 
 </div>
 
