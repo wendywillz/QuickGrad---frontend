@@ -15,12 +15,13 @@ import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
 import SetExamPage from "../setExam/setExamPage";
+import StudentsResults from "../studentsresults/Students-Results";
+
 
 function App() {
   return (
     <>
       <Routes>
-
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/students/signin"
@@ -145,8 +146,16 @@ function App() {
         <Route path="/lecturers/dashboard/set-exams" element={<SetExamPage />} />
         <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
-
+        <Route
+          path="/students/dashboard/enrolled-courses"
+          element={<StudentEnrolledCourses />}
+        />
+        <Route
+          path="/students/dashboard/take-exams/instructions"
+          element={<StudentTakeExamsInstructions />}
+        />
       </Routes>
+      <Route path="/students/results" element={<StudentsResults />} />;
     </>
   );
 }
