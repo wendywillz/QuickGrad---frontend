@@ -14,6 +14,7 @@ import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
+import SetExamPage from "../setExam/setExamPage";
 
 function App() {
   return (
@@ -141,6 +142,7 @@ function App() {
 
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
+        <Route path="/lecturers/dashboard/set-exams" element={<SetExamPage />} />
         <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
 
