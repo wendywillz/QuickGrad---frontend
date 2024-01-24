@@ -90,7 +90,6 @@ function LecturerDashboard() {
               </div>
             </div>
             <div className="frame-10">
-              <div className="frame-11">
                 <div className="frame-12-lecturer">
                   <div className="text-wrapper-8">Course Code</div>
                   <div className="text-wrapper-8">Department</div>
@@ -151,7 +150,6 @@ function LecturerDashboard() {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
