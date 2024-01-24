@@ -21,6 +21,7 @@ import CompletedExamTheory from "../completed exam/completedExamTheory";
 import CompletedExamOBJ from "../completed exam/completedExamObj";
 import QuizForm from "../setExamPage/setExam";
 
+
 function App() {
   return (
     <>
@@ -158,6 +159,8 @@ function App() {
         <Route path="/students/dashboard/completed-exam-theory" element={<CompletedExamTheory />} />;
         <Route path="/students/dashboard/completed-exam-obj" element={<CompletedExamOBJ />} />;
         
+
+        <Route path="lecturers/set-exam" element={<SetExamPage />} />
         <Route path="/set-exams" element={<QuizForm />} />
         <Route
           path="/students/dashboard/enrolled-courses"

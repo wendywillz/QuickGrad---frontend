@@ -45,6 +45,11 @@ function StudentDashboard() {
     fetchData();
   }, [selectedSemester]); // The empty dependency array ensures that this effect runs only once on mount
 
+  const [isClicked, setIsClicked] = useState(false);
+  function handleIsClicked() {
+    setIsClicked(!isClicked);
+  }
+  const linkClassName = `${isClicked ? "clicked" : "feature-2"}`;
   return (
     <div className="dashboard">
       {studentData && (
@@ -66,7 +71,7 @@ function StudentDashboard() {
         {{
           sidebarElement: (
             <>
-              <div className="feature-2">
+              <div onClick={handleIsClicked} className={linkClassName}>
                 <img
                   className="img-feat"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-menu.svg"
@@ -75,7 +80,7 @@ function StudentDashboard() {
                   Dashboard
                 </Link>
               </div>
-              <div className="feature-2">
+              <div onClick={handleIsClicked} className={linkClassName}>
                 <img
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-book-square.svg"
@@ -87,12 +92,15 @@ function StudentDashboard() {
                   Enrolled Courses
                 </Link>
               </div>
-              <div className="feature-2">
+              <div onClick={handleIsClicked} className={linkClassName}>
                 <img
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/students/dashboard/enrolled-courses"
+                  className="text-wrapper-6"
+                >
                   Results
                 </Link>
               </div>
