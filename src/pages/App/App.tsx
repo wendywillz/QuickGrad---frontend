@@ -17,7 +17,6 @@ import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studen
 import SetExamPage from "../setExam/setExamPage";
 import StudentsResults from "../studentsresults/Students-Results";
 
-
 function App() {
   return (
     <>
@@ -144,16 +143,10 @@ function App() {
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
         <Route path="/lecturers/dashboard/set-exams" element={<SetExamPage />} />
+
         <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
-        <Route
-          path="/students/dashboard/enrolled-courses"
-          element={<StudentEnrolledCourses />}
-        />
-        <Route
-          path="/students/dashboard/take-exams/instructions"
-          element={<StudentTakeExamsInstructions />}
-        />
+        
       </Routes>
       <Route path="/students/results" element={<StudentsResults />} />;
     </>
