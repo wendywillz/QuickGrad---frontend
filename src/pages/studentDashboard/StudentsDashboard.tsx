@@ -99,7 +99,6 @@ function StudentDashboard() {
               </div>
             </div>
             <div className="frame-10">
-              {/* <div className="frame-11"> */}
               <div className="frame-12">
                 <div className="text-wrapper-8">Course Code</div>
                 <div className="text-wrapper-9">Course Title</div>
@@ -116,7 +115,7 @@ function StudentDashboard() {
                     </button>
                   </div>
                 </div>
-                <div className="frame-16">
+                <div className="frame-14">
                   <div className="text-wrapper-10">BCH 201</div>
                   <div className="text-wrapper-11">Nutrition and Diet</div>
                   <div className="text-wrapper-11">4 Units</div>
@@ -126,7 +125,7 @@ function StudentDashboard() {
                     </button>
                   </div>
                 </div>
-                <div className="frame-18">
+                <div className="frame-14">
                   <div className="text-wrapper-10">BCH 212</div>
                   <div className="text-wrapper-11">Blood &amp; Body Fluids</div>
                   <div className="text-wrapper-11">2 Units</div>
@@ -134,7 +133,7 @@ function StudentDashboard() {
                     <button className="text-wrapper-13">Enroll</button>
                   </div>
                 </div>
-                <div className="frame-19">
+                <div className="frame-14">
                   <div className="text-wrapper-10">BCH 121</div>
                   <div className="text-wrapper-11">DNA / RNA Sequence</div>
                   <div className="text-wrapper-11">4 Units</div>
@@ -142,7 +141,7 @@ function StudentDashboard() {
                     <button className="text-wrapper-13">Enroll</button>
                   </div>
                 </div>
-                <div className="frame-18">
+                <div className="frame-14">
                   <div className="text-wrapper-10">Chem 212</div>
                   <div className="text-wrapper-11">Organic Chemistry</div>
                   <div className="text-wrapper-11">2 Units</div>
@@ -150,7 +149,7 @@ function StudentDashboard() {
                     <button className="text-wrapper-13">Enroll</button>
                   </div>
                 </div>
-                <div className="frame-19">
+                <div className="frame-14">
                   <div className="text-wrapper-10">BCH 233</div>
                   <div className="text-wrapper-11">Pharmacology</div>
                   <div className="text-wrapper-11">4 Units</div>
@@ -158,7 +157,7 @@ function StudentDashboard() {
                     <button className="text-wrapper-13">Enroll</button>
                   </div>
                 </div>
-                <div className="frame-19">
+                <div className="frame-14">
                   <div className="text-wrapper-10">BCH 205</div>
                   <div className="text-wrapper-11">Cytochromes Reactivity</div>
                   <div className="text-wrapper-11">2 Units</div>
@@ -167,7 +166,6 @@ function StudentDashboard() {
                   </div>
                 </div>
               </div>
-              {/* </div> */}
             </div>
           </div>
         </div>
