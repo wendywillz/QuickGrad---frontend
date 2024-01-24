@@ -14,12 +14,11 @@ import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
-
+import StudentsResults from "../studentsresults/Students-Results";
 function App() {
   return (
     <>
       <Routes>
-
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/students/signin"
@@ -141,10 +140,16 @@ function App() {
 
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
-        <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
-        <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
-
+        <Route
+          path="/students/dashboard/enrolled-courses"
+          element={<StudentEnrolledCourses />}
+        />
+        <Route
+          path="/students/dashboard/take-exams/instructions"
+          element={<StudentTakeExamsInstructions />}
+        />
       </Routes>
+      <Route path="/students/results" element={<StudentsResults />} />;
     </>
   );
 }
