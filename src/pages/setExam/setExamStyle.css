@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@700&family=Inter:wght@300;400;600&family=Libre+Baskerville&family=Orbitron&family=Public+Sans&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.set-exams-page-main-section{
+    position: relative;
+    top:8%;
+    right:0%;
+   /* width:80.21%;*/
+    left: 20%;
+    height: 100%;
+    font-family: 'Inter', 'sans-serif';
+    
+}
+
+
+
+.set-exams-page-main-section-title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: 
+    #F9FAFB;
+}
+
+.set-exams-page-main-section-title{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: 0.25px;
+}
+
+.set-exams-page-all-forms{
+    width:122vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+   /* border: 1px solid green; */
+}
+.set-exams-page-top-form{
+  width:122vh;
+ /* border: 1px solid orange; */
+}
+
+.set-exams-page-bottom-form{
+    width:122vh;
+    box-shadow: 0px 2px 8px 0px #00000014;
+   /* border:1px solid red; */
+  }
+
+.set-exams-page-session-form-container{
+    background-color:#2D00F7;
+    color: white;
+    padding: 
+    16px 24px 16px 24px;
+    width:80%;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.set-exams-page-session-form-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.set-exams-page-form-label-and-inputs{
+    margin:10px;
+}
+
+.set-exams-page-session-form-input{
+    width:20vh;
+    height:4vh;
+}
+
+.set-exams-page-session-form-instruction-row{
+    margin:10px;
+}
+.set-exams-page-session-form-instructions-input{
+    width:87vh;
+    height:4vh;
+}
+
+.set-exams-page-add-section-button{
+    display: flex;
+    flex-direction: row;
+    width:17vh;
+    height:5vh;
+    border-radius: 100px;
+    border: 1px solid black;
+    padding: 1.4vh 0vh 2vh 2vh;
+    position: relative;
+    left:84vh;
+    top: 1.5vh;
+
+}
+
+.set-exams-page-add-section-button-text{
+    margin-top: 1px;
+}
+
+.set-exams-page-questions-section-container{
+    margin-top: 10vh;
+   /* border: 1px solid orange;*/
+}
+
+.set-exams-page-questions-section-header-and-marks{
+   width:40vh; 
+   margin-left: 39vh;
+   margin-bottom: 5vh;
+}
+
+.set-exams-page-questions-section-title{
+    font-size: 24px;
+    font-weight: 700;
+}
+.set-exams-page-questions-section-header-subtitle{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.set-exams-page-questions-section-marks{
+    margin-left: 14vh;
+}
+
+.set-exams-page-questions-form-container{
+    
+    margin-left: 15vh;
+   /* border: 1px solid black;*/
+    width:90vh;
+    height:14vh;
+}
+
+.set-exams-page-questions-form-multiple-choice-questions-container{
+    margin-bottom: 3vh;
+}
+
+
+
+.set-exams-page-questions-form-multiple-choice-add-question-button{
+    position:relative;
+    bottom: 10vh;
+    top:0vh;
+    left:78vh;
+    border:none;
+    border-radius: 100px;
+    box-shadow: 0px 2px 8px 0px #00000040;
+    color:#1849A9;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center
+}
+
+
+.set-exams-page-questions-form-multiple-choice-question-and-number{
+    margin-top: 1vh;
+}
+
+.set-exams-page-questions-form-multiple-choice-question-number{
+    margin-right: 0.4vh;
+}
+.set-exams-page-questions-form-multiple-choice-question{
+    width:82.8vh;
+    height:3vh;
+}
+
+
+.set-exams-page-questions-form-multiple-choice-answers-container{
+    margin-bottom: 6vh;
+}
+.set-exams-page-questions-form-multiple-choice-answer-label{
+    margin-right: 2vh;
+}
+
+.set-exams-page-questions-form-multiple-choice-answer{
+        margin-right: 2.8vh;;
+}
+
+.set-exams-page-answer-text{
+    border: 1px solid black;
+    margin-right: 5vh;
+}
+
+.hiddenfunction{
+visibility: hidden;
+height: 0%;
+}
+
+
+.set-exams-page-next-section-and-save-button-container{
+display: flex;
+flex-direction: row;
+position: relative;
+left:100vh;
+
+top: 70vh;
+}
+
+.set-exams-page-next-section-link{
+    text-decoration: none;
+    margin-top: 1vh;
+    color: #004FFF;
+}
+
+
+.set-exams-page-save-button{
+    height:5vh ;
+    width: 12vh;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    background-color: #1570EF;
+}
+
