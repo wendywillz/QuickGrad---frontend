@@ -1,14 +1,14 @@
-
-import "./setExamStyle.css"
-import addButton from "../../assets/add_button_logo copy.png"
-import nextArrow from "../../assets/next_section_arrow copy.png"
- import FormRowAndSelection from "./formRow"
-
+import "./setExamStyle.css";
+import addButton from "../../assets/add_button_logo copy.png";
+import nextArrow from "../../assets/next_section_arrow copy.png";
+import FormRowAndSelection from "./formRow";
 
 function SetExamPage() {
-  let count = 1
-  const increaseCount = ()=>{ return count++}
-  
+  let count = 1;
+  const increaseCount = () => {
+    return count++;
+  };
+
   return (
     <main className="set-exams-page-main-section">
       <div className="set-exams-page-main-section-title-container">
@@ -192,14 +192,20 @@ function SetExamPage() {
 
         <div className="set-exams-page-bottom-form">
           <div className="set-exams-page-add-section-button-container">
-            <button className="set-exams-page-add-section-button">
-              {" "}
-              <img src={addButton} />
-              <span className="set-exams-page-add-section-button-text">
+            <form
+              className="set-exams-page-add-section-button-form"
+              action="#"
+              method="post"
+            >
+              <button className="set-exams-page-add-section-button">
                 {" "}
-                Add Section
-              </span>
-            </button>
+                <img src={addButton} />
+                <span className="set-exams-page-add-section-button-text">
+                  {" "}
+                  Add Section
+                </span>
+              </button>
+            </form>
           </div>
 
           <div className="set-exams-page-questions-section-container">
@@ -215,19 +221,25 @@ function SetExamPage() {
             </div>
 
             <div className="set-exams-page-questions-form-container">
-            <div><FormRowAndSelection count={count}/></div>
-            <div className="hiddenfunction">{increaseCount()}</div>
-           
-            <div><FormRowAndSelection count={count}/></div>
-            <div className="hiddenfunction">{increaseCount()}</div>
-            
-            <div><FormRowAndSelection count={count}/></div>
-            <div className="hiddenfunction">{increaseCount()}</div>
+              <div>
+                <FormRowAndSelection count={count} />
+              </div>
+              <div className="hiddenfunction">{increaseCount()}</div>
 
-            <div><FormRowAndSelection count={count}/></div>
-            <div className="hiddenfunction">{increaseCount()}</div>
-          
-              
+              <div>
+                <FormRowAndSelection count={count} />
+              </div>
+              <div className="hiddenfunction">{increaseCount()}</div>
+
+              <div>
+                <FormRowAndSelection count={count} />
+              </div>
+              <div className="hiddenfunction">{increaseCount()}</div>
+
+              <div>
+                <FormRowAndSelection count={count} />
+              </div>
+              <div className="hiddenfunction">{increaseCount()}</div>
             </div>
           </div>
         </div>
@@ -236,10 +248,7 @@ function SetExamPage() {
       <div className="set-exams-page-next-section-and-save-button-container">
         <a href="#" className="set-exams-page-next-section-link">
           <span className="set-exams-page-next-section-text">Next Section</span>
-          <img
-            src={nextArrow}
-            className="set-exams-page-next-section-arrow"
-          />
+          <img src={nextArrow} className="set-exams-page-next-section-arrow" />
         </a>
         <form
           className="set-exams-page-save-button-form"
