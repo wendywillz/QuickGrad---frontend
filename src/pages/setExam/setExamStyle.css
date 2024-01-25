@@ -1,15 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@700&family=Inter:wght@300;400;600&family=Libre+Baskerville&family=Orbitron&family=Public+Sans&display=swap");
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-y: visible;
-}
+} */
 
 .set-exams-page-main-section {
-  overflow: scroll;
-
   /* width:80.21%;*/
   margin-left: 20%;
   height: 100%;
@@ -237,7 +234,6 @@
   align-items: center;
   position: relative;
   background-color: blue;
-  overflow-y: visible;
 }
 .btn-wrapper {
   position: absolute;
