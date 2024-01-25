@@ -213,6 +213,7 @@ a {
     position: absolute;
     top: 11.3em;
     left: 20.8em;
+    padding-bottom: 2rem;
 
     @media screen and (max-width: 768px) {
         width: auto;
@@ -410,7 +411,8 @@ a {
     display: inline-flex;
     justify-content: center;
     gap: 8.5em;
-    padding: 1.5em 0em;
+    padding: 0.5rem 0em 2rem;
+    margin-top: -2rem;
 }
 
 .frame-12-lecturer {
@@ -459,8 +461,10 @@ a {
     /* align-items: flex-start; */
     gap: 1em;
     padding: 1em 0em;
-    /* position: relative; */
-    /* flex: 0 0 auto; */
+    margin-top: -2rem;
+}
+.frame-13 tr{
+    margin-bottom: 1rem;
 }
   
 .frame-14 {
@@ -490,14 +494,14 @@ a {
   
 .text-wrapper-10 {
     position: relative;
-    width: 6.5em;
-    font-family: var(--body-text-normal-16-font-family);
-    font-weight: var(--body-text-normal-16-font-weight);
+    width: 12em;
+    font-family: var(--body-text-bold-16-font-family);
+    font-weight: var(--body-text-bold-16-font-weight);
     color: #000000;
-    font-size: var(--body-text-normal-16-font-size);
-    letter-spacing: var(--body-text-normal-16-letter-spacing);
-    line-height: var(--body-text-normal-16-line-height);
-    font-style: var(--body-text-normal-16-font-style);
+    font-size: var(--body-text-bold-16-font-size);
+    letter-spacing: var(--body-text-bold-16-letter-spacing);
+    line-height: var(--body-text-bold-16-line-height);
+    font-style: var(--body-text-bold-16-font-style);
 }
 
 .text-wrapper-10-lecturer {
@@ -564,6 +568,32 @@ a {
     line-height: var(--body-text-normal-16-line-height);
     font-style: var(--body-text-normal-16-font-style);
 }
+
+.frame-14 td{
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+.frame-12{
+    text-align: left;
+    width: 62%;
+}
+
+.text-wrapper-8{
+    margin-left: 10%;
+    width: 30%;
+}
+.text-wrapper-9{
+    margin-left: -1%;
+    
+}
+.text-wrapper-10{
+    text-align: right;
+
+}
+
+
+
 
   
 
