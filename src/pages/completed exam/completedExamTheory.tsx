@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import SideBar from '../../components/sidebar/sideBar';
-import './TakeExamTheory.css';
+import './completedExamTheory.css';
 
 const CompletedExamTheory = () => {
   return (
