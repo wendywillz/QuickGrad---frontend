@@ -7,9 +7,6 @@ import { Link } from "react-router-dom";
 
 function SetExamPage() {
   let count = 1;
-  const increaseCount = () => {
-    return count++;
-  };
 
   return (
     <>

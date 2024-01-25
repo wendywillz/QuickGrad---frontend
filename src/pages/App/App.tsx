@@ -16,6 +16,7 @@ import { ForgotPassword } from "../forgotPassword/forget_password";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
 import SetExamPage from "../setExam/setExamPage";
 import StudentsResults from "../studentsresults/Students-Results";
+import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
 
 function App() {
   return (
@@ -146,9 +147,11 @@ function App() {
 
         <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
+        <Route path="/students/results" element={<StudentsResults />} />;
+        <Route path="/students/dashboard/change-password" element={<StudentsChangePassword />} />;
         
       </Routes>
-      <Route path="/students/results" element={<StudentsResults />} />;
+      
     </>
   );
 }

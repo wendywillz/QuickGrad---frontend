@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main-content {
+    width: 80%;
+    margin-left: 20%;
+}
+
+#header {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+#sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#sidebar a:hover {
+    background-color: #1A00A3;
+}
+
+#container {
+    width: 90%;
+    height: 35vh;
+    margin-top: 20px;
+    margin-left: 2.5em;
+    background-color: #ffffff;
+    
+}
+
+.results {
+    padding-left : 2.5em; 
+}
+
+
+.results .heading {
+   
+    font-weight: bold;
+    padding-left: 2.6em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+}
+
+.heading .details-left {
+    padding: 0 2em;
+    margin-top: 0;
+    margin-left : -1.95em;
+ 
+}
+
+.heading .details-right {
+    padding: 0 2em;
+    margin-top: 0;
+    margin-left: 5em;
+}
+
+#level {
+   padding-left: 5em;
+}
+
+.result-row {
+    box-sizing: border-box;
+    border: 1px solid #98A2B3;
+    margin: 1.3em 1.2em;
+    padding: 1.5em  1.55em;
+    position: relative;
+    top: 1em;
+}
+
+.result-row .details-left {
+    padding: 0 2em;
+    margin-top: 0;
+    margin-left : -1.95em;
+}
+
+.result-row .details-chem {
+    padding-left: 2.6em; 
+}
+
+.result-row .details-dept {
+    padding-left: 4.7em; 
+}
+
+.result-row .details-faculty {
+    padding-left: 4.7em; 
+}
+
+.result-row .details-level {
+    padding-left: 5.3em; 
+}
+
+.result-row .details-open {
+    padding-left:  2.8em; 
+} 
+
+.result-row .details-open  a{
+   
+    text-decoration: none;
+  
+}
