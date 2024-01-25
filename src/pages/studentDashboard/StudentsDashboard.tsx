@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SideBar from "../../components/sidebar/sideBar";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Student {
   matricNo: string;
@@ -20,7 +20,19 @@ function StudentDashboard() {
   const [studentData, setStudentData] = useState<Student | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
   const [selectedSemester, setSelectedSemester] = useState<string>("First");
-
+  const navigate = useNavigate();
+  const fetchDashboardDisplay = () => {
+    axios
+      .get(`http://localhost:3000/students/dashboard`)
+      .then((response) => {
+        const result = response;
+        if (result.status === 200 && result.data.UnauthorizedError) {
+          navigate("/students/signin");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+  fetchDashboardDisplay();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,7 +55,7 @@ function StudentDashboard() {
     };
 
     fetchData();
-  }, [selectedSemester]); // The empty dependency array ensures that this effect runs only once on mount
+  }, [selectedSemester]);
 
   return (
     <div className="dashboard">

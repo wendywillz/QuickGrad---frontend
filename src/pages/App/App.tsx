@@ -143,17 +143,6 @@ function App() {
           path="/lecturers/dashboard/set-exams"
           element={<SetExamPage />}
         />
-
-        <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
-        <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
-        <Route path="/students/results" element={<StudentsResults />} />;
-        <Route path="/students/dashboard/change-password" element={<StudentsChangePassword />} />;
-        <Route path="/students/dashboard/completed-exam-theory" element={<CompletedExamTheory />} />;
-        <Route path="/students/dashboard/completed-exam-obj" element={<CompletedExamOBJ />} />;
-        
-
-        <Route path="lecturers/set-exam" element={<SetExamPage />} />
-        <Route path="/set-exams" element={<QuizForm />} />
         <Route
           path="/students/dashboard/enrolled-courses"
           element={<StudentEnrolledCourses />}
@@ -163,6 +152,23 @@ function App() {
           element={<StudentTakeExamsInstructions />}
         />
         <Route path="/students/results" element={<StudentsResults />} />;
+        <Route
+          path="/students/dashboard/change-password"
+          element={<StudentsChangePassword />}
+        />
+        ;
+        <Route
+          path="/students/dashboard/completed-exam-theory"
+          element={<CompletedExamTheory />}
+        />
+        ;
+        <Route
+          path="/students/dashboard/completed-exam-obj"
+          element={<CompletedExamOBJ />}
+        />
+        ;
+        <Route path="lecturers/set-exam" element={<SetExamPage />} />
+        <Route path="/set-exams" element={<QuizForm />} />
       </Routes>
     </>
   );

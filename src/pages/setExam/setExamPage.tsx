@@ -4,6 +4,7 @@ import nextArrow from "../../assets/next_section_arrow copy.png";
 import SideBar from "../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
 import { useEffect, useState, FormEvent } from "react";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface Question {
@@ -19,7 +20,21 @@ interface Question {
 interface Section {
   questions: Question[];
 }
+
 function SetExamPage() {
+  // const navigate = useNavigate();
+  // const fetchDashboardDisplay = () => {
+  //   axios
+  //     .get(`http://localhost:3000/students/dashboard`)
+  //     .then((response) => {
+  //       const result = response;
+  //       if (result.status === 200 && result.data.UnauthorizedError) {
+  //         navigate("/lecturers/signin");
+  //       }
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+  // fetchDashboardDisplay();
   // const increaseCount = () => {
   //   return count++;
   // };
