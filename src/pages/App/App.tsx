@@ -146,9 +146,10 @@ function App() {
 
         <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
+        <Route path="/students/results" element={<StudentsResults />} />;
         
       </Routes>
-      <Route path="/students/results" element={<StudentsResults />} />;
+      
     </>
   );
 }
