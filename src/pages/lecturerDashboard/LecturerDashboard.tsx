@@ -1,22 +1,30 @@
 import "../studentDashboard/Dashboard.css";
 import "../../assets/menu-board.png";
 import SideBar from "../../components/sidebar/sideBar";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
+
 function LecturerDashboard() {
-  const navigate = useNavigate();
-  const fetchDashboardDisplay = () => {
-    axios
-      .get(`http://localhost:3000/students/dashboard`)
-      .then((response) => {
-        const result = response;
-        if (result.status === 200 && result.data.UnauthorizedError) {
-          navigate("/lecturers/signin");
-        }
-      })
-      .catch((error) => console.log(error));
-  };
-  fetchDashboardDisplay();
+  // const navigate = useNavigate();
+  // const fetchDashboardDisplay = () => {
+  //   axios
+  //     .get(`http://localhost:3000/lecturers/dashboard`, {
+  //       withCredentials: true,
+  //     })
+  //     .then((response) => {
+  //       const result = response;
+  //       if (result.status === 200) {
+  //         if (result.data.lectuerUnauthorizedError) {
+  //           navigate("/lecturers/signin");
+  //         } else if (result.data.lecturerAuthorized) {
+  //           navigate("/lecturers/dashboard");
+  //         }
+  //       } else {
+  //         navigate("/lecturers/signin");
+  //       }
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+  // fetchDashboardDisplay();
   return (
     <div className="dashboard">
       <section className="hero">
@@ -57,7 +65,7 @@ function LecturerDashboard() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/lecturers/set-exam" className="text-wrapper-6">
                   Set Exams
                 </Link>
               </div>
