@@ -19,6 +19,7 @@ import StudentsResults from "../studentsresults/Students-Results";
 import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
 import CompletedExamTheory from "../completed exam/completedExamTheory";
 import CompletedExamOBJ from "../completed exam/completedExamObj";
+import QuizForm from "../setExamPage/setExam";
 
 function App() {
   return (
@@ -145,7 +146,10 @@ function App() {
 
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
-        <Route path="/lecturers/dashboard/set-exams" element={<SetExamPage />} />
+        <Route
+          path="/lecturers/dashboard/set-exams"
+          element={<SetExamPage />}
+        />
 
         <Route path="/students/dashboard/enrolled-courses" element={<StudentEnrolledCourses />} />
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
@@ -154,6 +158,15 @@ function App() {
         <Route path="/students/dashboard/completed-exam-theory" element={<CompletedExamTheory />} />;
         <Route path="/students/dashboard/completed-exam-obj" element={<CompletedExamOBJ />} />;
         
+        <Route path="/set-exams" element={<QuizForm />} />
+        <Route
+          path="/students/dashboard/enrolled-courses"
+          element={<StudentEnrolledCourses />}
+        />
+        <Route
+          path="/students/dashboard/take-exams/instructions"
+          element={<StudentTakeExamsInstructions />}
+        />
       </Routes>
       
     </>
