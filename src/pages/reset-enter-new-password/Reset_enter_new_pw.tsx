@@ -84,7 +84,7 @@ const ResetEnterNewPasswordPage = () => {
                 required
                 className="re-enter-password-input"
               />
-              <MainButton button_text="Reset PAssword" />
+              <MainButton button_text="Reset Password" />
             </div>
           </form>
         </div>

@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import "./sideBar.css";
+import { Link } from "react-router-dom";
+
 interface SideBarChildren {
   children: {
     sidebarElement: ReactNode;
@@ -40,9 +42,11 @@ function SideBar({ children }: SideBarChildren) {
                 className="img-2"
                 src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-setting-2.svg"
               />
-              <a href="#" className="text-wrapper-6">
+
+              <Link to="/students/dashboard/change-password" className="text-wrapper-6">
                 Settings
-              </a>
+              </Link>
+      
             </div>
             <div className="feature-2">
               <img
