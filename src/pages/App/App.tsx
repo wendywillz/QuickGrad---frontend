@@ -21,7 +21,6 @@ import CompletedExamTheory from "../completed exam/completedExamTheory";
 import CompletedExamOBJ from "../completed exam/completedExamObj";
 import QuizForm from "../setExamPage/setExam";
 
-
 function App() {
   return (
     <>
@@ -51,7 +50,6 @@ function App() {
             />
           }
         />
-
         <Route
           path="/students/confirm-email"
           element={<EnterOtp enter_otp_heading="Verify OTP" />}
@@ -60,7 +58,6 @@ function App() {
           path="/lecturers/confirm-email"
           element={<EnterOtp enter_otp_heading="Verify OTP" />}
         />
-
         {/* forgot password page
         where you enter your email
         */}
@@ -73,7 +70,6 @@ function App() {
           element={<ForgotPassword location="/students/signin" />}
         />
         {/* <Route path="/verify-email" element={<VerifyEmail />} /> */}
-
         {/* we ve sent your password reset link
          check your email page
          */}
@@ -99,7 +95,6 @@ function App() {
             />
           }
         />
-
         {/* display password reset page where you
         enter new password confirm new password
         */}
@@ -111,7 +106,6 @@ function App() {
           path="/lecturers/reset-password"
           element={<ResetEnterNewPasswordPage />}
         />
-
         <Route
           path="/students/signup"
           element={<SignUpPage signin_link="/students/signin" />}
@@ -120,7 +114,6 @@ function App() {
           path="/lecturers/signup"
           element={<SignUpPage signin_link="/lecturers/signin" />}
         />
-
         {/* check your email for matric no/employee ID  */}
         <Route
           path="/students/check-your-email"
@@ -144,7 +137,6 @@ function App() {
             />
           }
         />
-
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
         <Route
@@ -170,8 +162,8 @@ function App() {
           path="/students/dashboard/take-exams/instructions"
           element={<StudentTakeExamsInstructions />}
         />
+        <Route path="/students/results" element={<StudentsResults />} />;
       </Routes>
-      
     </>
   );
 }

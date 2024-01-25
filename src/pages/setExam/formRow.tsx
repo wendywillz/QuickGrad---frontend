@@ -1,10 +1,6 @@
 import "./setExamStyle.css";
 
-interface Props {
-  count: number;
-}
-
-function FormRowAndSelection(props: Props) {
+function FormRowAndSelection() {
   // const countIncrease = ()=>{return props.count++}
 
   return (
@@ -31,9 +27,7 @@ function FormRowAndSelection(props: Props) {
             <label
               className="set-exams-page-questions-form-multiple-choice-question-number"
               htmlFor="questionInput"
-            >
-              {props.count}
-            </label>
+            ></label>
             <input
               className="set-exams-page-questions-form-multiple-choice-question"
               type="text"
