@@ -17,6 +17,8 @@ import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studen
 import SetExamPage from "../setExam/setExamPage";
 import StudentsResults from "../studentsresults/Students-Results";
 import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
+import CompletedExamTheory from "../completed exam/completedExamTheory";
+import CompletedExamOBJ from "../completed exam/completedExamObj";
 
 function App() {
   return (
@@ -149,6 +151,8 @@ function App() {
         <Route path="/students/dashboard/take-exams/instructions" element={<StudentTakeExamsInstructions />} />
         <Route path="/students/results" element={<StudentsResults />} />;
         <Route path="/students/dashboard/change-password" element={<StudentsChangePassword />} />;
+        <Route path="/students/dashboard/completed-exam-theory" element={<CompletedExamTheory />} />;
+        <Route path="/students/dashboard/completed-exam-obj" element={<CompletedExamOBJ />} />;
         
       </Routes>
       
