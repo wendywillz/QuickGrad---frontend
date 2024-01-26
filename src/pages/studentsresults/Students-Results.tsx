@@ -82,15 +82,15 @@ function StudentsResults() {
         {/* </div className="grid-form"> */}
         <div className="grid-container">
           <div className="course-card">
-            <h1>BCH 208</h1>
+            <h1 className="card-header">BCH 208</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="number">62</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
               <div className="middle-right">
-                <h5>Section A: 38/40</h5>
-                <h5>Section B: 24/30</h5>
+                <h5 className="grade-sections">Section A: 38/40</h5>
+                <h5 className="grade-sections">Section B: 24/30</h5>
               </div>
             </div>
             <div className="course-info">
@@ -99,16 +99,16 @@ function StudentsResults() {
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 108</h1>
+            <h1 className="card-header">BCH 108</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="number">57</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
               <div className="middle-right">
-                <h5>Section A: 20/30</h5>
-                <h5>Section B: 19/20</h5>
-                <h5>Section c: 18/20</h5>
+                <h5 className="grade-sections">Section A: 20/30</h5>
+                <h5 className="grade-sections">Section B: 19/20</h5>
+                <h5 className="grade-sections">Section c: 18/20</h5>
               </div>
             </div>
             <div className="course-info">
@@ -117,15 +117,15 @@ function StudentsResults() {
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 233</h1>
+            <h1 className="card-header">BCH 233</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="number">68</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
               <div className="middle-right">
-                <h5>Section A: 40/40</h5>
-                <h5>Section B: 28/30</h5>
+                <h5 className="grade-sections">Section A: 40/40</h5>
+                <h5 className="grade-sections">Section B: 28/30</h5>
               </div>
             </div>
             <div className="course-info">
@@ -134,16 +134,16 @@ function StudentsResults() {
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 225</h1>
+            <h1 className="card-header">BCH 225</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="number">68</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
               <div className="middle-right">
-                <h5>Section A: 29/30</h5>
-                <h5>Section B: 20/20</h5>
-                <h5>Section c: 19/20</h5>
+                <h5 className="grade-sections">Section A: 29/30</h5>
+                <h5 className="grade-sections">Section B: 20/20</h5>
+                <h5 className="grade-sections">Section c: 19/20</h5>
               </div>
             </div>
             <div className="course-info">
@@ -152,15 +152,15 @@ function StudentsResults() {
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 223</h1>
+            <h1 className="card-header">BCH 223</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="number">46</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
               <div className="middle-right">
-                <h5>Section A: 26/40</h5>
-                <h5>Section B: 19/20</h5>
+                <h5 className="grade-sections">Section A: 26/40</h5>
+                <h5 className="grade-sections">Section B: 19/20</h5>
               </div>
             </div>
             <div className="course-info">
@@ -169,45 +169,45 @@ function StudentsResults() {
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 203</h1>
+            <h1 className="card-header">BCH 203</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="noresults">
                   No <br></br>Results
                 </p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
-              <h6>Result Not Ready</h6>
+              <h6 className="not-ready">Result Not Ready</h6>
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 214</h1>
+            <h1 className="card-header">BCH 214</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="noresults">No Results</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
-              <h6>Result Not Ready</h6>
+              <h6 className="not-ready">Result Not Ready</h6>
             </div>
           </div>
           <div className="course-card">
-            <h1>BCH 222</h1>
+            <h1 className="card-header">BCH 222</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="noresults">No Results</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
-              <h6>Result Not Ready</h6>
+              <h6 className="not-ready">Result Not Ready</h6>
             </div>
-          </div>{" "}
+          </div>
           <div className="course-card">
-            <h1>BCH 217</h1>
+            <h1 className="card-header">BCH 217</h1>
             <div className="middle-card">
               <div className="middle-left">
                 <p className="noresults">No Results</p>
-                <h4>Total Score</h4>
+                <h4 className="totalscore">Total Score</h4>
               </div>
-              <h6>Result Not Ready</h6>
+              <h6 className="not-ready">Result Not Ready</h6>
             </div>
           </div>
         </div>
