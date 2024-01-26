@@ -38,6 +38,8 @@ function StudentDashboard() {
   //     .catch((error) => console.log(error));
   // };
   // fetchDashboardDisplay();
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,6 +62,7 @@ function StudentDashboard() {
     };
 
     fetchData();
+    
   }, [selectedSemester]);
 
   return (

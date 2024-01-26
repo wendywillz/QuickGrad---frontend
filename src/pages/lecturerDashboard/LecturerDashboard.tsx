@@ -65,7 +65,7 @@ function LecturerDashboard() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/lecturers/set-exam" className="text-wrapper-6">
+                <Link to="/lecturers/dashboard/set-exams" className="text-wrapper-6">
                   Set Exams
                 </Link>
               </div>

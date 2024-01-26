@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@700&family=Inter:wght@300;400;600&family=Libre+Baskerville&family=Orbitron&family=Public+Sans&display=swap");
 
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} */
+  overflow-y: visible;
+}
 
 .set-exams-page-main-section {
+  overflow: scroll;
+
   /* width:80.21%;*/
   margin-left: 20%;
   height: 100%;
@@ -148,7 +151,7 @@
   margin-left: 13vh;
   /* border: 1px solid palevioletred; */
   width: 95vh;
-  background-color: red;
+
 }
 
 .set-exams-page-questions-form-multiple-choice-questions-container {
@@ -233,23 +236,25 @@
   flex-direction: row;
   align-items: center;
   position: relative;
-  background-color: blue;
+
+  overflow-y: visible;
 }
 .btn-wrapper {
   position: absolute;
   top: -60%;
   right: 0;
   z-index: 1000 !important;
-  background-color: yellow;
+
 }
 
 .add-new-question-btn {
   padding: 0.2rem 0.6rem;
   border-radius: 50px;
   border-style: none;
+  color: #ffff;
   margin-left: 1rem;
   cursor: pointer;
-  background-color: red;
+  background-color: blue;
 }
 .objective-input-field {
   width: 100%;
@@ -263,9 +268,13 @@
   flex-direction: row;
   align-items: center;
   margin-top: 0.5rem;
+  padding-left: 1.5rem;
   margin-bottom: 2.5rem;
 }
 
+.correct-answer-select{
+  width: 7.5rem;
+}
 .theory-question-input-options {
   display: none !important;
 }

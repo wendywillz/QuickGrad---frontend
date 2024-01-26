@@ -107,7 +107,7 @@ export function LoginPage(props: Props) {
                 <i className="fa-solid fa-lock login-form-password-icon"></i>
                 <input
                   className="password_input"
-                  type="text"
+                  type="password"
                   value={password}
                   onChange={handlePassword}
                   placeholder="Enter password"
