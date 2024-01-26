@@ -121,7 +121,7 @@ function SetExamPage() {
         session,
         courseTitle,
         faculty,
-        lecturerId: "0ff0ba86-eb5d-40b7-bfbe-f4e549284e1b",
+        lecturerId: "90b2f6cb-23c9-40b3-b18e-bdd184c90ae3",
         department,
         examDate,
         totalScore: Number(totalScore),
@@ -218,7 +218,7 @@ function SetExamPage() {
                       onChange={(e) => setSession(e.target.value)}
                     >
                       <option value="Please select">Please Select</option>
-                      <option defaultValue="2022/2023">2022/2023</option>
+                      <option defaultValue="2023/2024">2023/2024</option>
                     </select>
                   </div>
 
@@ -572,6 +572,7 @@ function SetExamPage() {
                           />
                           <select
                             value={question.correctAnswer}
+                            className="correct-answer-select"
                             onChange={(e) =>
                               handleQuestionChange(
                                 0,
