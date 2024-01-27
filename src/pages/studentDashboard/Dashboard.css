@@ -205,7 +205,6 @@ a {
 
   
 .frame-5 {
-    /* z-index: -1; */
     display: inline-flex;
     flex-direction: column;
     height: auto;
@@ -214,6 +213,7 @@ a {
     position: absolute;
     top: 11.3em;
     left: 20.8em;
+    padding-bottom: 2rem;
 
     @media screen and (max-width: 768px) {
         width: auto;
@@ -404,32 +404,24 @@ a {
 }
   
 .frame-10 {
-    display: flex;
-    flex-direction: column;
-    /* width: 59.5em; */
-    align-items: flex-start;
-    position: relative;
-    flex: 0 0 auto;
+    width: 100%;
 }
   
 .frame-12 {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
-    gap: 4em;
-    padding: 1em 3.5em;
-    position: relative;
-    flex: 0 0 auto;
+    gap: 8.5em;
+    padding: 0.5rem 0em 2rem;
+    margin-top: -2rem;
 }
 
 .frame-12-lecturer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 4.7em;
-    padding: 1em 3.5em;
-    position: relative;
-    flex: 0 0 auto;
+    /* width: 100%; */
+    gap: 6.5em;
+    padding: 1.5em 0em;
 }
 
 .frame-12-lecturer:first-child {
@@ -465,21 +457,24 @@ a {
 .frame-13 {
     display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
+    width: 90%;
+    /* align-items: flex-start; */
     gap: 1em;
-    padding: 1em 1.5em;
-    position: relative;
-    flex: 0 0 auto;
+    padding: 1em 0em;
+    margin-top: -2rem;
+}
+.frame-13 tr{
+    margin-bottom: 1rem;
 }
   
 .frame-14 {
     display: flex;
-    width: 52.7em;
+    width: 100%;
     align-items: center;
-    gap: 3.6em;
+    gap: 7em;
     padding: 1em 2em;
-    position: relative;
-    flex: 0 0 auto;
+    /* position: relative;
+    flex: 0 0 auto; */
     border: 1px solid;
     border-color: var(--grey-400);
 }
@@ -487,26 +482,26 @@ a {
 .frame-14-lecturer {
     display: flex;
     width: 100%;
-    align-items: center;
-    gap: 3.5em;
+    /* align-items: center; */
+    gap: 5em;
     padding: 0.5rem;
-    margin-left: 1.2em;
-    position: relative;
-    flex: 0 0 auto;
+    /* margin-left: 1.2em; */
+    /* position: relative; */
+    /* flex: 0 0 auto; */
     border: 1px solid;
     border-color: var(--grey-400);
 }
   
 .text-wrapper-10 {
     position: relative;
-    width: 6.5em;
-    font-family: var(--body-text-normal-16-font-family);
-    font-weight: var(--body-text-normal-16-font-weight);
+    width: 12em;
+    font-family: var(--body-text-bold-16-font-family);
+    font-weight: var(--body-text-bold-16-font-weight);
     color: #000000;
-    font-size: var(--body-text-normal-16-font-size);
-    letter-spacing: var(--body-text-normal-16-letter-spacing);
-    line-height: var(--body-text-normal-16-line-height);
-    font-style: var(--body-text-normal-16-font-style);
+    font-size: var(--body-text-bold-16-font-size);
+    letter-spacing: var(--body-text-bold-16-letter-spacing);
+    line-height: var(--body-text-bold-16-line-height);
+    font-style: var(--body-text-bold-16-font-style);
 }
 
 .text-wrapper-10-lecturer {
@@ -535,12 +530,13 @@ a {
 }
   
 .text-wrapper-12 {
-    width: 5.06em;
+    width: auto;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     display: flex;
     border-radius: 30px;
-    padding: 0.5rem 0rem;
+    padding: 0.3rem 0.2rem;
+    margin-left: 1.5rem;
     cursor: pointer;
     position: relative;
     border: 1px solid #2d00f7;
@@ -551,18 +547,6 @@ a {
     letter-spacing: var(--body-text-normal-16-letter-spacing);
     line-height: var(--body-text-normal-16-line-height);
     font-style: var(--body-text-normal-16-font-style);
-}
-  
-.frame-16 {
-    display: flex;
-    width: 52.7em;
-    align-items: flex-start;
-    gap: 3.6em;
-    padding: 1.1em 2em;
-    position: relative;
-    flex: 0 0 auto;
-    border: 1px solid;
-    border-color: var(--grey-400);
 }
   
 .text-wrapper-13 {
@@ -584,29 +568,35 @@ a {
     line-height: var(--body-text-normal-16-line-height);
     font-style: var(--body-text-normal-16-font-style);
 }
-.frame-18 {
-    display: flex;
-    width: 52.7em;
-    align-items: flex-start;
-    gap: 3.6em;
-    padding: 1em 2em;
-    position: relative;
-    flex: 0 0 auto;
-    border: 1px solid;
-    border-color: var(--grey-400);
+
+.frame-14 td{
+    text-align: center;
+    width: 100%;
+    padding: 5px;
 }
+.frame-12{
+    text-align: left;
+    width: 62%;
+}
+
+.text-wrapper-8{
+    margin-left: 10%;
+    width: 30%;
+}
+.text-wrapper-9{
+    margin-left: -1%;
+    
+}
+.text-wrapper-10{
+    text-align: right;
+
+}
+
+
+
+
   
-.frame-19 {
-    display: flex;
-    width: 52.7em;
-    align-items: flex-start;
-    gap: 3.6em;
-    padding: 1em 2em;
-    position: relative;
-    flex: 0 0 auto;
-    border: 1px solid;
-    border-color: var(--grey-400);
-}
+
 
 
   

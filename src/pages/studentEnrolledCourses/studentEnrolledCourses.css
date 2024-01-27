@@ -1,0 +1,178 @@
+.enrolled-courses-page-container{
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+    justify-content: space-between;
+}
+
+
+.enrolled-courses-dashboard-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 20%;
+}
+
+.enrolled-courses-dashboard-header{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: end;
+    height: 88px;
+    align-items: center;
+    padding-right: 5.7%;
+    gap: 2rem;
+    border-bottom: 1px solid var(--Grey-200, #EAECF0);
+    background: var(--White, #FFF);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10);
+    
+}
+
+
+.enrolled-courses-title{
+    width: 90%;
+    text-align: left;
+    margin: 2% auto 0%;
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0.25px;
+
+}
+
+.enrolled-courses-bio-card{
+    border-radius: 16px;
+    background-color: rgba(45, 0, 247, 0.90);
+    display: flex;
+    height: 120px;
+    padding: 1rem 2.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 2% auto 1.5%;
+    gap: 12rem;
+    
+}
+
+.enrolled-courses-bio-card div:first-child{
+    color: var(--White, #FFF);
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+    letter-spacing: 0.25px;
+}
+
+.enrolled-courses-bio-card div:nth-child(2){
+    color: var(--White, #FFF);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; 
+    letter-spacing: 0.15px;
+}
+.enrolled-courses-container{
+    width: 90%;
+    margin: 2% auto;
+}
+
+.enrolled-courses-year{
+    width: 70%;
+    display: flex;
+    gap: 2rem;
+    color: #667085;
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 1.5%;
+    padding: 12px 0px;
+}
+
+.enrolled-courses-year select{
+    height: 44px;
+    padding: 2px 16px;
+    gap: 8px;
+    color: #667085;
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    text-align: center;
+    border: none;
+    background-color: #F9FAFB;
+
+}
+
+.enrolled-courses-timetable{
+    color: #2D00F7;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; 
+    letter-spacing: 0.15px;
+}
+
+.enrolled-courses-table-container{
+    margin-top: 1%;
+}
+
+.enrolled-courses-table {
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    width: 100%;
+    text-align: center;
+
+  }
+
+  .enrolled-courses-table thead{
+     margin-bottom: 1rem;
+  }
+  
+  .enrolled-courses-table-header {
+    padding: 1rem 2rem; 
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; 
+    letter-spacing: 0.15px; 
+    
+
+  }
+
+  .enrolled-courses-table tbody td {
+    padding: 1rem 2rem;
+    border-top: 1px solid #98A2B3;
+    border-bottom: 1px solid #98A2B3;
+    margin-bottom: 2rem;
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; 
+    letter-spacing: 0.15px;
+  }
+
+  .enrolled-courses-table tbody td:first-child {
+    border-left: 1px solid #98A2B3;
+  }
+
+  .enrolled-courses-table tbody td:last-child {
+    border-right: 1px solid #98A2B3;
+  }
+  

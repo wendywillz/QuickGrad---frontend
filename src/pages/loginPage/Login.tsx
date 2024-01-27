@@ -32,13 +32,24 @@ export function LoginPage(props: Props) {
       const currentRoute = location.pathname;
       console.log("currentRoute: ", currentRoute);
       if (currentRoute === "/students/signin") {
-        const res = await axios.post(`http://localhost:3000/students/login`, {
-          matricNo: userId,
-          password: password,
-        });
+        const res = await axios.post(
+          `http://localhost:3000/students/login`,
+          {
+            matricNo: userId,
+            password: password,
+          },
+          { withCredentials: true }
+        );
         // checking the response
         if (res.status === 200 && res.data.successfulLogin) {
-          navigate("/students/dashboard");
+          const res = await axios.get(
+            `http://localhost:3000/students/dashboard`,
+            { withCredentials: true }
+          );
+
+          if (res.status === 200 && res.data) {
+            navigate("/students/dashboard");
+          }
         } else if (
           (res.status === 200 && res.data.inValidPassword) ||
           res.data.studentNotFoundError ||
@@ -96,7 +107,7 @@ export function LoginPage(props: Props) {
                 <i className="fa-solid fa-lock login-form-password-icon"></i>
                 <input
                   className="password_input"
-                  type="text"
+                  type="password"
                   value={password}
                   onChange={handlePassword}
                   placeholder="Enter password"

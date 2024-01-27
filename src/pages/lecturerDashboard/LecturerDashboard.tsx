@@ -4,6 +4,27 @@ import SideBar from "../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
 
 function LecturerDashboard() {
+  // const navigate = useNavigate();
+  // const fetchDashboardDisplay = () => {
+  //   axios
+  //     .get(`http://localhost:3000/lecturers/dashboard`, {
+  //       withCredentials: true,
+  //     })
+  //     .then((response) => {
+  //       const result = response;
+  //       if (result.status === 200) {
+  //         if (result.data.lectuerUnauthorizedError) {
+  //           navigate("/lecturers/signin");
+  //         } else if (result.data.lecturerAuthorized) {
+  //           navigate("/lecturers/dashboard");
+  //         }
+  //       } else {
+  //         navigate("/lecturers/signin");
+  //       }
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+  // fetchDashboardDisplay();
   return (
     <div className="dashboard">
       <section className="hero">
@@ -44,7 +65,7 @@ function LecturerDashboard() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/lecturers/dashboard/set-exams" className="text-wrapper-6">
                   Set Exams
                 </Link>
               </div>
@@ -90,65 +111,63 @@ function LecturerDashboard() {
               </div>
             </div>
             <div className="frame-10">
-              <div className="frame-11">
-                <div className="frame-12-lecturer">
-                  <div className="text-wrapper-8">Course Code</div>
-                  <div className="text-wrapper-8">Department</div>
-                  <div className="text-wrapper-8">Date/Time</div>
-                  <div className="text-wrapper-8">Venue</div>
-                  <div className="text-wrapper-8">Registered</div>
-                  <div className="text-wrapper-8">Action</div>
+              <div className="frame-12-lecturer">
+                <div className="text-wrapper-8">Course Code</div>
+                <div className="text-wrapper-8">Department</div>
+                <div className="text-wrapper-8">Date/Time</div>
+                <div className="text-wrapper-8">Venue</div>
+                <div className="text-wrapper-8">Registered</div>
+                <div className="text-wrapper-8">Action</div>
+              </div>
+              <div className="frame-13">
+                <div className="frame-14-lecturer">
+                  <div className="text-wrapper-10-lecturer">CE 522</div>
+                  <div className="text-wrapper-10-lecturer">
+                    Chemical Engineering
+                  </div>
+                  <div className="text-wrapper-10-lecturer">
+                    10 Aug, 2013 / <br /> 2:10pm
+                  </div>
+                  <div className="text-wrapper-10-lecturer">
+                    Campus E-center
+                  </div>
+                  <div className="text-wrapper-10-lecturer">211</div>
+                  <div>
+                    <button type="submit" className="text-wrapper-12">
+                      Set Action
+                    </button>
+                  </div>
                 </div>
-                <div className="frame-13">
-                  <div className="frame-14-lecturer">
-                    <div className="text-wrapper-10-lecturer">CE 522</div>
-                    <div className="text-wrapper-10-lecturer">
-                      Chemical Engineering
-                    </div>
-                    <div className="text-wrapper-10-lecturer">
-                      10 Aug, 2013 / <br /> 2:10pm
-                    </div>
-                    <div className="text-wrapper-10-lecturer">
-                      Campus E-center
-                    </div>
-                    <div className="text-wrapper-10-lecturer">211</div>
-                    <div>
-                      <button type="submit" className="text-wrapper-12">
-                        Set Action
-                      </button>
-                    </div>
+                <div className="frame-14-lecturer">
+                  <div className="text-wrapper-10-lecturer">CE 522</div>
+                  <div className="text-wrapper-10-lecturer">
+                    Chemical Engineering
                   </div>
-                  <div className="frame-14-lecturer">
-                    <div className="text-wrapper-10-lecturer">CE 522</div>
-                    <div className="text-wrapper-10-lecturer">
-                      Chemical Engineering
-                    </div>
-                    <div className="text-wrapper-10-lecturer">
-                      10 Aug, 2013 / <br /> 2:10pm
-                    </div>
-                    <div className="text-wrapper-10-lecturer">
-                      Campus E-center
-                    </div>
-                    <div className="text-wrapper-10-lecturer">211</div>
-                    <div>
-                      <button className="text-wrapper-12">Set Action</button>
-                    </div>
+                  <div className="text-wrapper-10-lecturer">
+                    10 Aug, 2013 / <br /> 2:10pm
                   </div>
-                  <div className="frame-14-lecturer">
-                    <div className="text-wrapper-10-lecturer">CE 522</div>
-                    <div className="text-wrapper-10-lecturer">
-                      Chemical Engineering
-                    </div>
-                    <div className="text-wrapper-10-lecturer">
-                      10 Aug, 2013 / <br /> 2:10pm
-                    </div>
-                    <div className="text-wrapper-10-lecturer">
-                      Campus E-center
-                    </div>
-                    <div className="text-wrapper-10-lecturer">211</div>
-                    <div>
-                      <button className="text-wrapper-12">Set Action</button>
-                    </div>
+                  <div className="text-wrapper-10-lecturer">
+                    Campus E-center
+                  </div>
+                  <div className="text-wrapper-10-lecturer">211</div>
+                  <div>
+                    <button className="text-wrapper-12">Set Action</button>
+                  </div>
+                </div>
+                <div className="frame-14-lecturer">
+                  <div className="text-wrapper-10-lecturer">CE 522</div>
+                  <div className="text-wrapper-10-lecturer">
+                    Chemical Engineering
+                  </div>
+                  <div className="text-wrapper-10-lecturer">
+                    10 Aug, 2013 / <br /> 2:10pm
+                  </div>
+                  <div className="text-wrapper-10-lecturer">
+                    Campus E-center
+                  </div>
+                  <div className="text-wrapper-10-lecturer">211</div>
+                  <div>
+                    <button className="text-wrapper-12">Set Action</button>
                   </div>
                 </div>
               </div>

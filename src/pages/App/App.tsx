@@ -9,10 +9,10 @@ import EnterOtp from "../enter-otp/enter_otp";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
 import StudentDashboard from "../studentDashboard/StudentsDashboard";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
+import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
 import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
-import LecturerResults from "../LecturerResultsPage/LecturerResults";
 
 function App() {
   return (
@@ -43,7 +43,6 @@ function App() {
             />
           }
         />
-
         <Route
           path="/students/confirm-email"
           element={<EnterOtp enter_otp_heading="Verify OTP" />}
@@ -52,7 +51,6 @@ function App() {
           path="/lecturers/confirm-email"
           element={<EnterOtp enter_otp_heading="Verify OTP" />}
         />
-
         {/* forgot password page
         where you enter your email
         */}
@@ -65,7 +63,6 @@ function App() {
           element={<ForgotPassword location="/students/signin" />}
         />
         {/* <Route path="/verify-email" element={<VerifyEmail />} /> */}
-
         {/* we ve sent your password reset link
          check your email page
          */}
@@ -91,7 +88,6 @@ function App() {
             />
           }
         />
-
         {/* display password reset page where you
         enter new password confirm new password
         */}
@@ -103,7 +99,6 @@ function App() {
           path="/lecturers/reset-password"
           element={<ResetEnterNewPasswordPage />}
         />
-
         <Route
           path="/students/signup"
           element={<SignUpPage signin_link="/students/signin" />}
@@ -112,7 +107,6 @@ function App() {
           path="/lecturers/signup"
           element={<SignUpPage signin_link="/lecturers/signin" />}
         />
-
         {/* check your email for matric no/employee ID  */}
         <Route
           path="/students/check-your-email"
@@ -121,7 +115,7 @@ function App() {
               information="We sent your Registration Number and password to your verified email,
               kindly use the detail to login."
               location="/students/signin"
-              location_text="proceed to login"
+              location_text="Proceed to login"
             />
           }
         />
@@ -132,14 +126,12 @@ function App() {
               information="We sent your EmployeeID and password to your verified email,
             kindly use the detail to login."
               location="/lecturers/signin"
-              location_text="proceed to login"
+              location_text="Proceed to login"
             />
           }
         />
-
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
-        <Route path="/lecturers/results" element={<LecturerResults />} />
       </Routes>
     </>
   );
