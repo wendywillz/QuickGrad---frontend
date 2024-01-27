@@ -12,6 +12,7 @@ import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
 import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
+import LecturerResults from "../LecturerResultsPage/LecturerResults";
 
 function App() {
   return (
@@ -138,6 +139,7 @@ function App() {
 
         <Route path="/students/dashboard" element={<StudentDashboard />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
+        <Route path="/lecturers/results" element={<LecturerResults />} />
       </Routes>
     </>
   );

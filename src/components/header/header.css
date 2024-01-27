@@ -1,0 +1,26 @@
+
+.header-bar {
+    display: flex;
+    justify-content: right;
+    width: auto;
+    height: 90px;
+    gap: 3%;
+    border-bottom: 1px solid var(--Grey-200, #EAECF0);
+    /* box-shadow: 0px 10px 30px 10px rgba(0, 0, 0, 0.3); */
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+ .header-bar img {
+  width: 25px;
+  padding-top: 50px;
+  cursor: pointer;
+}
+
+.header-bar p{
+    padding: 60px 100px 0px 0px;
+
+}
+
+
+
+
