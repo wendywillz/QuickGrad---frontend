@@ -4,7 +4,7 @@ import nextArrow from "../../assets/next_section_arrow copy.png";
 import SideBar from "../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
 import { useEffect, useState, FormEvent } from "react";
-
+import FormRowAndSelection from "./formRow";
 import axios from "axios";
 
 interface Question {
@@ -138,9 +138,8 @@ function SetExamPage() {
     }
   };
   return (
-    <>
+    <div className="set-exams-page-whole-container">
       {/* Sidebar */}
-      <div className="text-wrapper-2">Dashboard</div>
       <SideBar>
         {{
           sidebarElement: (
@@ -438,35 +437,27 @@ function SetExamPage() {
                   />
                 </div>
 
-                <div className="set-exam-page-session-form-button-container">
-                  <button
-                    className="set-exam-page-session-form-button"
-                    type="submit"
-                  >
-                    {" "}
-                    +{" "}
-                  </button>
-                </div>
+                <button
+                  className="set-exam-page-session-form-button"
+                  type="submit"
+                >
+                  {" "}
+                  +{" "}
+                </button>
               </form>
             </div>
           </div>
 
           <div className="set-exams-page-bottom-form">
             <div className="set-exams-page-add-section-button-container">
-              <form
-                className="set-exams-page-add-section-button-form"
-                action="#"
-                method="post"
-              >
-                <button className="set-exams-page-add-section-button">
+              <button className="set-exams-page-add-section-button">
+                {" "}
+                <img src={addButton} />
+                <span className="set-exams-page-add-section-button-text">
                   {" "}
-                  <img src={addButton} />
-                  <span className="set-exams-page-add-section-button-text">
-                    {" "}
-                    Add Section
-                  </span>
-                </button>
-              </form>
+                  Add Section
+                </span>
+              </button>
             </div>
 
             <div className="set-exams-page-questions-section-container">
@@ -483,7 +474,140 @@ function SetExamPage() {
                 </p>
               </div>
 
-              <div className="set-exams-page-questions-form-container">
+              <div className="set-exams-page-multiple-choice-questions-container">
+              <div className="set-exam-page-add-question-botton-container">
+                      <button
+                        className="set-exams-page-questions-form-multiple-choice-add-question-button"
+                        type="submit"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                <form className="set-exams-page-multiple-choice-questions-form">
+                  <div className="set-exams-page-question-with-options">
+                    
+                    <div className="set-exams-page-questions-form-multiple-choice-questions-container">
+                      <div className="set-exams-page-questions-form-multiple-choice-question-and-number">
+                        <label
+                          className="set-exams-page-questions-form-multiple-choice-question-number"
+                          htmlFor="questionInput"
+                        >
+                          1.
+                        </label>
+                        <input
+                          className="set-exams-page-questions-form-multiple-choice-question"
+                          type="text"
+                          placeholder="Type question"
+                        />{" "}
+                        <br />
+                      </div>
+                    </div>
+
+                    <div className="set-exams-page-questions-form-multiple-choice-answers-container">
+                      <label
+                        className="set-exams-page-questions-form-multiple-choice-answer-label-end"
+                        htmlFor="aInput"
+                      >
+                        <span className="set-exams-page-answer-value">A.</span>
+                        <span className="set-exams-page-answer-text">
+                          Option 1
+                        </span>
+                      </label>
+                      <input
+                        className="set-exams-page-questions-form-multiple-choice-answer"
+                        type="radio"
+                        id="aInput"
+                        value="a"
+                        name="answer"
+                      />
+
+                      <label
+                        className="set-exams-page-questions-form-multiple-choice-answer-label"
+                        htmlFor="bInput"
+                      >
+                        <span className="set-exams-page-answer-value">B.</span>
+                        <span className="set-exams-page-answer-text">
+                          Option 2
+                        </span>
+                      </label>
+                      <input
+                        className="set-exams-page-questions-form-multiple-choice-answer"
+                        type="radio"
+                        id="bInput"
+                        value="b"
+                        name="answer"
+                      />
+
+                      <label
+                        className="set-exams-page-questions-form-multiple-choice-answer-label"
+                        htmlFor="cInput"
+                      >
+                        <span className="set-exams-page-answer-value">C.</span>
+                        <span className="set-exams-page-answer-text">
+                          Option 3
+                        </span>
+                      </label>
+                      <input
+                        className="set-exams-page-questions-form-multiple-choice-answer"
+                        type="radio"
+                        id="cInput"
+                        value="c"
+                        name="answer"
+                      />
+
+                      <label
+                        className="set-exams-page-questions-form-multiple-choice-answer-label"
+                        htmlFor="dInput"
+                      >
+                        <span className="set-exams-page-answer-value">D.</span>
+                        <span className="set-exams-page-answer-text">
+                          Option 4
+                        </span>
+                      </label>
+                      <input
+                        className="set-exams-page-questions-form-multiple-choice-answer"
+                        type="radio"
+                        id="dInput"
+                        value="d"
+                        name="answer"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="set-exams-page-bottom-form-base-button-section">
+            <div className="set-exams-page-next-section-and-save-button-container">
+              <a href="#" className="set-exams-page-next-section-link">
+                <span className="set-exams-page-next-section-text">
+                  Next Section
+                </span>
+                <img
+                  src={nextArrow}
+                  className="set-exams-page-next-section-arrow"
+                />
+              </a>
+              <button className="set-exams-page-save-button">Save</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default SetExamPage;
+
+//  <div className="hiddenfunction">{increaseCount()}</div>
+// <div className="hiddenfunction">{increaseCount()}</div>
+
+// <div className="text-wrapper-2">Dashboard</div>
+
+/*
+
+<div className="set-exams-page-questions-form-container">
                 <form className="questions-form" onSubmit={submitQuestions}>
                   <div>
                     <h2>Regular Questions</h2>
@@ -715,33 +839,11 @@ function SetExamPage() {
                     </button>
                   </div>
 
-                  {/* Button to submit questions to the backend */}
+                  {/* Button to submit questions to the backend */ //}
+/*
                   <button type="submit">Submit Questions</button>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div className="set-exams-page-next-section-and-save-button-container">
-          <a href="#" className="set-exams-page-next-section-link">
-            <span className="set-exams-page-next-section-text">
-              Next Section
-            </span>
-            <img
-              src={nextArrow}
-              className="set-exams-page-next-section-arrow"
-            />
-          </a>
 
-          <button className="set-exams-page-save-button">Save</button>
-        </div>
-      </main>
-    </>
-  );
-}
-
-export default SetExamPage;
-
-//  <div className="hiddenfunction">{increaseCount()}</div>
-// <div className="hiddenfunction">{increaseCount()}</div>
+*/
