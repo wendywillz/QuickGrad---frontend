@@ -1,0 +1,112 @@
+
+.student-dashboard-container{
+    display: flex;
+    width: 100%;
+    
+
+}
+
+
+.student-dashboard-body{
+    width: 80%;
+    margin-left: 20%;
+    
+}
+
+.heading-dashboard{
+    color: #000;
+    font-family: "Inter";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+    letter-spacing: 0.01563rem;
+    margin: 1.5rem 0 1rem 4.5rem
+}
+
+  
+.enroll-button{
+    border-radius: 1.875rem;
+    background: #2D00F7;
+    border: none;
+
+    padding: 0rem 0.9375rem 0rem 1.5rem;
+
+    color: var(--White, #FFF);
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.00938rem;
+  }
+
+  .student-result-table{
+    border-collapse: collapse;
+    margin: 1.5rem 0 0 4rem;
+    width: 87%;
+  }
+
+  .student-result-table-header{
+    display: flex;
+    gap: 7rem;
+    margin-left: 2rem;
+    width: 87%;
+    color: #000;
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; 
+    letter-spacing: 0.00938rem;
+
+  }
+  .student-result-table-body p{
+    white-space: nowrap;
+  }
+
+  
+  .student-result-table-body{
+    display: flex;
+    border: 1px solid var(--Grey-400, #98A2B3);
+    margin: 1.5rem 0 0 0;
+    gap: 9rem;
+    padding: 1rem 2rem;
+    align-items: center;
+  }
+
+
+  .semester-div-container{
+    display: flex;
+    gap: 1rem;
+    margin: 0 0 1rem 4.5rem;
+    width: 87%;
+    color: #667085;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+  }
+
+  .session-div-container{
+    display: flex;
+    gap: 1rem;
+    margin: -3rem 0 1rem 24rem;
+    width: 87%;
+    color: #667085;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+  }
+  .dropdown .button-default{
+    color: #667085;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+    border: none;
+  }

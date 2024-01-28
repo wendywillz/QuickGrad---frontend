@@ -9,10 +9,12 @@ import EnterOtp from "../enter-otp/enter_otp";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
 import StudentDashboard from "../studentDashboard/StudentsDashboard";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
-import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
+// import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
 import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
+import LecturerResults from "../LecturerResultsPage/LecturerResults";
+import StudentDash from "../studentDashboard/StudentDash/StudentDash";
 
 function App() {
   return (
@@ -130,8 +132,9 @@ function App() {
             />
           }
         />
-        <Route path="/students/dashboard" element={<StudentDashboard />} />
+        <Route path="/students/dashboard" element={<StudentDash />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
+        <Route path="/lecturers/results" element={<LecturerResults />} />
       </Routes>
     </>
   );

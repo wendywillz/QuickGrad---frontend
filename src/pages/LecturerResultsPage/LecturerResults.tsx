@@ -60,7 +60,7 @@ const LecturerResults = () => {
           ),
         }}
       </SideBar>
-      <Header />
+      <Header newUser="Dr. Sam"/>
       <ResultsContents />
       <ResultsTable />
     </div>

@@ -21,7 +21,8 @@
     line-height: 140%; 
     letter-spacing: 0.25px; 
     /* margin-right: 10px;  */
-    margin-left: 60px; 
+    /* margin-left: 60px; */
+    margin-left: 7rem;
 }
 .results-header .lists{
     display: flex;
@@ -40,9 +41,25 @@
     margin-right: 10px;
 
 }
+.span-with-icon p{
+    color: var(--Main-Text, #101828);
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.00938rem;
+}
 
 .first-p{
     margin-right: 12px;
+    color: var(--Main-Text, #101828);
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; 
+    letter-spacing: 0.00938rem;
 }
 
 .results-body{
@@ -55,7 +72,8 @@
     /* margin-bottom: 20px; */
 }
 .paper{
-   margin-left: -730px;
+   margin-left: -43.2rem;
+   /* margin-left: -730px; */
    color: var(--Grey-500, #667085);
    font-family: Inter;
    font-size: 24px;
