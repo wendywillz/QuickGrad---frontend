@@ -104,31 +104,31 @@ const StudentDash = () => {
           />
 
           {courses && (
-            <div className="div-wrapper">
-              <div className="frame-7">
-                <div className="frame-8">
+            <div >
+              <div >
+                <div >
                   <div className="semester-div-container">
-                    <div className="semester-text">Semester:</div>
-                    <div className="dropdown">
+                    <div >Semester:</div>
+                    <div className="session-dropdown">
                       <select
-                        className="button-default"
+                        className="session-button-default"
                         value={selectedSemester}
                         onChange={(e) => setSelectedSemester(e.target.value)}
                       >
-                        <option className="text-2" value="First">
+                        <option value="First">
                           First
                         </option>
-                        <option className="text-2" value="Second">
+                        <option value="Second">
                           Second
                         </option>
                       </select>
                     </div>
                   </div>
                   <div className="session-div-container">
-                    <div className="text">Session:</div>
-                    <div className="dropdown">
-                      <select className="button-default">
-                        <option className="text-2">2023/2024</option>
+                    <div >Session:</div>
+                    <div className="session-dropdown">
+                      <select className="session-button-default">
+                        <option >2023/2024</option>
                       </select>
                     </div>
                   </div>
