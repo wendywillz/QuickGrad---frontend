@@ -252,4 +252,9 @@
   line-height: var(--body-text-normal-16-line-height);
   white-space: nowrap;
   font-style: var(--body-text-normal-16-font-style);
+  
+}
+
+.text-wrapper-6{
+  text-decoration: none;
 }

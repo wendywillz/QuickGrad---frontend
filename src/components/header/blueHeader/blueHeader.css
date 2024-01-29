@@ -1,0 +1,33 @@
+.blue-card-header{
+    width: 87%;
+    /* width: 63rem; */
+    height: 7.5rem;
+    margin: 1rem auto 2rem;
+    border-radius: 1rem;
+    background: rgba(45, 0, 247, 0.90);
+
+    display: flex;
+    padding: 1rem 2.5625rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.blue-card-header .session{
+    color: var(--White, #FFF);
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+    letter-spacing: 0.01563rem;
+}
+.blue-card-header .user-details p{
+    color: var(--White, #FFF);
+    font-family: "Inter";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; 
+    letter-spacing: 0.00938rem;
+}
+    

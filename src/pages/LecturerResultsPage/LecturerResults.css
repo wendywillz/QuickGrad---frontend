@@ -1,0 +1,11 @@
+
+
+.img-2-last {
+    background: var(--grey-200);
+    border: transparent;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    position: relative;
+} 
+

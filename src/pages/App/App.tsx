@@ -5,24 +5,22 @@ import lecturer_login_page_bg from "../../assets/lecturer_signin_bg.png";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "../landingPage/LandingPage";
 import EnterOtp from "../enter-otp/enter_otp";
-// import VerifyEmail from "../verify-email/VerifyEmailPage";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
-import StudentDashboard from "../studentDashboard/StudentsDashboard";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
-import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
+
 import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
+import LecturerResults from "../LecturerResultsPage/LecturerResults";
+import StudentDash from "../studentDashboard/StudentDash/StudentDash";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
 
 import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
-// import CompletedExamTheory from "../completed exam/completedExamTheory";
 
 import SetExamPage from "../setExam/setExamPage";
 
-// import CompletedExamOBJ from "../completed exam/completedExamObj";
 import StudentsResults from "../studentsresults/Students-Results";
-// import QuizForm from "../setExamPage/setExam";
+import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
 
 function App() {
   return (
@@ -140,8 +138,9 @@ function App() {
             />
           }
         />
-        <Route path="/students/dashboard" element={<StudentDashboard />} />
+        <Route path="/students/dashboard" element={<StudentDash />} />
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
+        <Route path="/lecturers/results" element={<LecturerResults />} />
         <Route
           path="/students/dashboard/enrolled-courses"
           element={<StudentEnrolledCourses />}
