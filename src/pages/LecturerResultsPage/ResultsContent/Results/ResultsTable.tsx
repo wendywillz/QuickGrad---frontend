@@ -4,7 +4,7 @@ const ResultsTable = () => {
     return ( 
         <section className="table-section">
         <div className="table">
-           <table>
+           <table >
         <thead >
             <tr >
                 <th >S/N</th>
@@ -30,7 +30,7 @@ const ResultsTable = () => {
     </table>
         </div>
         <div>
-           <table>
+           <table className="results-table">
         <thead>
             <tr>
                 <th>S/N</th>
