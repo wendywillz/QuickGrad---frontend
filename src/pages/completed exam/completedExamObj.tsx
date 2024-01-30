@@ -16,10 +16,12 @@ const CompletedExamOBJ = () => {
         </div>
       </section>
 
+     {/* <div className='sidebar-div'> */}
       <SideBar>
         {{
           sidebarElement: (
             <>
+           
               <div className="feature-2">
                 <img
                   className="img-feat"
@@ -54,49 +56,49 @@ const CompletedExamOBJ = () => {
 
       {/* <div className="main-container"> */}
         <div className="header">
-         <p>Results/ <span>BCH 208</span> </p>
+         <p>Results/ <span className='header_span'>BCH 208</span> </p>
         </div>
         
         <div className="main-container">
         <div className="div-for-first-form">
         <form action="/" className="first-form">
             <div>
-                <label htmlFor="session">Session</label><br />
+                <label className='first-form-label' htmlFor="session">Session</label><br />
                 <input type="text" value="2022/2023" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Semester">Semester</label><br />
+                <label className='first-form-label' htmlFor="Semester">Semester</label><br />
                 <input type="text" value="Second" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Faculty">Faculty</label><br />
+                <label className='first-form-label' htmlFor="Faculty">Faculty</label><br />
                 <input type="text" value="Science" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Department">Department</label><br />
+                <label className='first-form-label' htmlFor="Department">Department</label><br />
                 <input type="text" value="Biochemistry" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Course Code">Course Code</label><br />
+                <label className='first-form-label' htmlFor="Course Code">Course Code</label><br />
                 <input type="text" value="BCH 208" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Course Title">Course Title</label><br />
+                <label className='first-form-label' htmlFor="Course Title">Course Title</label><br />
                 <input type="text" value="Enzymology" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Total Score">Total Score</label><br />
+                <label className='first-form-label' htmlFor="Total Score">Total Score</label><br />
                 <input type="text" value="70" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Time allowed">Time Allowed</label><br />
+                <label className='first-form-label' htmlFor="Time allowed">Time Allowed</label><br />
                 <input type="text" value="120 Minutes" className="input-form-1" />
             </div>
         </form>
@@ -112,9 +114,9 @@ const CompletedExamOBJ = () => {
           </div>
         </div>
         <div className="div-student-id-section">
-          <p>ID: <span>20/21/03/051</span></p>
+          <p className='div-student-id-section-p'>ID: <span>20/21/03/051</span></p>
           <div className="sub-div">
-            <p>Total score</p>
+            <p className='sub-div-p'>Total score</p>
             <div className="green-circle">62</div>
           </div>
         
@@ -122,13 +124,13 @@ const CompletedExamOBJ = () => {
 
         <div className="div-for-section-A">
           <p id="section-p">
-            Section A <span> (Multiple choice questions)</span>
-            <hr />
+            Section A <span className='section-span'> (Multiple choice questions)</span>
+            <hr className='hr' />
           </p>
          
           <p id="section-p2">40 Marks</p>
           <div className="section-score">
-            <p>
+            <p className='section-score-p'>
               Section score 
             </p>
             <div className="brown-circle">38</div>
@@ -136,25 +138,25 @@ const CompletedExamOBJ = () => {
         </div>
 
         <form action="/" className="second-form">
-            <p>1. What does CE stand for?</p>
+            <p className='second-form-p'>1. What does CE stand for?</p>
             
-            <label htmlFor="option1">
-                A. <span>Option 1</span>
+            <label className='second-form-label' htmlFor="option1">
+                A. <span className='second-form-span'>Option 1</span>
                 <input type="radio" name="options" id="option1" className="option"/>
             </label>
             
-            <label htmlFor="option2">
-                B. <span>Option 2</span>
+            <label className='second-form-label' htmlFor="option2">
+                B. <span className='second-form-span'>Option 2</span>
                 <input type="radio" name="options" id="option2" className="option"/>
             </label>
             
-            <label htmlFor="option3">
-                C. <span>Option 3</span>
+            <label className='second-form-label' htmlFor="option3">
+                C. <span className='second-form-span'>Option 3</span>
                 <input type="radio" name="options" id="option3" className="option"/>
             </label>
             
-            <label htmlFor="option4">
-                D. <span>Option 4</span>
+            <label className='second-form-label' htmlFor="option4">
+                D. <span className='second-form-span'>Option 4</span>
                 <input type="radio" name="options" id="option4" className="option" checked/>
             </label>
         </form>
@@ -163,17 +165,18 @@ const CompletedExamOBJ = () => {
           <a href="/" id="first-anchor">
             &larr; Previous Section
           </a>
-          <button id="button1">1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
+          <button className='button' id="button1">1</button>
+          <button className='button'>2</button>
+          <button className='button'>3</button>
+          <button className='button'>4</button>
+          <button className='button'>5</button>
+          <button className='button'>6</button>
           <a href="/" id="second-anchor">
             Next Section &rarr;
           </a>
         </div>
         </div>
+      
       </div>
   );
 };

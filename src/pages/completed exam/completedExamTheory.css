@@ -16,14 +16,14 @@
 
 }
 
-.header a {
+.header-anchor {
     font-size: 1rem;
     margin: 2rem 0rem 0rem 40rem;
     text-decoration: none;
     color: #000;
 }
 
-.header span {
+.header-span {
     color: #2D00F7;
     font-size: 24px;
     font-style: normal;
@@ -79,7 +79,7 @@
       } */
 }
 
-.first-form div label {
+.first-form-label {
     font-family: Heebo;
     font-size: 14px;
     font-weight: 500;
@@ -145,7 +145,7 @@
     margin-left: 3%;
 }
 
-.div-student-id-section p {
+.div-student-id-section-p {
     color: #000000;
     /* Headline Medium -24 */
     font-family: Inter;
@@ -163,7 +163,7 @@
     gap: 8px;
 }
 
-.sub-div p {
+.sub-div-p {
     color: #000;
     font-family: Inter;
     font-size: 16px;
@@ -207,7 +207,7 @@
 }
 
 
-#section-p span {
+.section-span {
     color: #101828;
     font-family: Inter;
     font-size: 16px;
@@ -216,7 +216,7 @@
     line-height: 140%;
 }
 
-hr {
+.hr {
     width: 95%;
     height: 1px;
 }
@@ -240,7 +240,7 @@ hr {
     gap: 0.5rem;
 }
 
-.section-score p {
+.section-score-p {
     font-family: Inter;
     font-size: 16px;
     font-weight: 600;
@@ -266,7 +266,7 @@ hr {
     margin-left: 9%;
 }
 
-.second-formB p {
+.second-formB-p {
     border: 1px solid #98A2B3;
     display: flex;
     width: 810px;
@@ -281,7 +281,7 @@ hr {
     width: 76%;
 }
 
-textarea {
+.textarea {
     display: flex;
     padding: 8px 16px;
     align-items: center;
@@ -295,7 +295,7 @@ textarea {
     /* Disable textarea resizing */
 }
 
-textarea:focus {
+.textarea:focus {
     border-color: rgb(2, 2, 81);
     /* Change border color on focus if needed */
 }
@@ -309,12 +309,10 @@ textarea:focus {
 
 }
 
-a {
-    text-decoration: none;
-    padding: 0rem 2rem;
-}
 
 #first-anchorB {
+    text-decoration: none;
+    padding: 0rem 2rem;
     color: #004FFF;
     font-family: Heebo;
     font-size: 14px;
@@ -332,7 +330,7 @@ a {
     line-height: 20px;
 }
 
-button {
+.button {
     margin: 0rem 1rem;
     border-radius: 8px;
     background: #F2F4F7;

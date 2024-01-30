@@ -54,9 +54,9 @@ const CompletedExamTheory = () => {
 
       <div className="header">
         <p>
-          Results/ <span>CE 522</span>{' '}
+          Results/ <span className='header-span'>CE 522</span>
         </p>
-        <a href="/">&larr;Go Back</a>
+        <a className='header-anchor' href="/">&larr;Go Back</a>
       </div>
 
       <div className="main-container">
@@ -64,42 +64,42 @@ const CompletedExamTheory = () => {
           <form action="/" className="first-form">
              
              <div>
-                <label htmlFor="session">Session</label><br />
+                <label className='first-form-label' htmlFor="session">Session</label><br />
                 <input type="text" value="2022/2023" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Semester">Semester</label><br />
+                <label className='first-form-label' htmlFor="Semester">Semester</label><br />
                 <input type="text" value="Second" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Faculty">Faculty</label><br />
+                <label className='first-form-label' htmlFor="Faculty">Faculty</label><br />
                 <input type="text" value="Science" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Department">Department</label><br />
+                <label className='first-form-label' htmlFor="Department">Department</label><br />
                 <input type="text" value="Biochemistry" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Course Code">Course Code</label><br />
+                <label className='first-form-label' htmlFor="Course Code">Course Code</label><br />
                 <input type="text" value="BCH 208" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Course Title">Course Title</label><br />
+                <label className='first-form-label' htmlFor="Course Title">Course Title</label><br />
                 <input type="text" value="Enzymology" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Total Score">Total Score</label><br />
+                <label className='first-form-label' htmlFor="Total Score">Total Score</label><br />
                 <input type="text" value="70" className="input-form-1" />
             </div>
 
             <div>
-                <label htmlFor="Time allowed">Time Allowed</label><br />
+                <label className='first-form-label' htmlFor="Time allowed">Time Allowed</label><br />
                 <input type="text" value="120 Minutes" className="input-form-1" />
             </div>
 
@@ -117,31 +117,31 @@ const CompletedExamTheory = () => {
         </div>
 
         <div className="div-student-id-section">
-          <p>
+          <p className='div-student-id-section-p'>
             ID: <span>20/21/03/051</span>
           </p>
           <div className="sub-div">
-            <p>Total score</p>
+            <p className='sub-div-p'>Total score</p>
             <div className="green-circle">62</div>
           </div>
         </div>
 
         <div className="div-for-section-B">
           <p id="section-p">
-            Section B <span>(Fill-in-the-blank and theory questions)</span>
-            <hr />
+            Section B <span className='section-span'>(Fill-in-the-blank and theory questions)</span>
+            <hr className='hr' />
           </p>
 
           <p id="section-p2">30 Marks</p>
           <div className="section-score">
-            <p>Section score</p>
+            <p className='section-score-p'>Section score</p>
             <div className="brown-circle">24</div>
           </div>
         </div>
 
         <form action="/" className="second-formB">
-           <label htmlFor="one"><p>1. Define Chemical Engineering.</p></label>
-            <textarea name="one">
+           <label htmlFor="one"><p className='second-formB-p'>1. Define Chemical Engineering.</p></label>
+            <textarea className='textarea' name="one">
             Students often face difficulties in accessing their results on time and also knowing how they did and what they got right or wrong. Universities also face challenges in managing large volumes of data because of the number of students and delivering results in a timely and efficient manner.
             </textarea>
         </form>
@@ -150,12 +150,12 @@ const CompletedExamTheory = () => {
           <a href="/" id="first-anchor">
             &larr; Previous Section
           </a>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button id="button1">6</button>
+          <button className='button'>1</button>
+          <button className='button'>2</button>
+          <button className='button'>3</button>
+          <button className='button'>4</button>
+          <button className='button'>5</button>
+          <button className='button' id="button1">6</button>
           <a href="/" id="second-anchorB">
             Next Section &rarr;
           </a>
