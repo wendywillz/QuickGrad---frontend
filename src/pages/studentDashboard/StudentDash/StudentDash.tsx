@@ -6,13 +6,14 @@ import SideBar from "../../../components/sidebar/sideBar";
 import Header from "../../../components/header/header";
 import BlueHeader from "../../../components/header/blueHeader/blueHeader";
 
-interface Student {
-  matricNo: string;
-  department: string;
-  faculty: string;
-}
+// interface Student {
+//   matricNo: string;
+//   department: string;
+//   faculty: string;
+// }
 
 interface Course {
+  courseId: string;
   courseCode: string;
   courseTitle: string;
   creditUnit: number;
@@ -27,7 +28,7 @@ const StudentDash = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
+        const studentRes = await axios.get(
           `http://localhost:3000/students/dashboard`,
           {
             withCredentials: true,
@@ -35,10 +36,11 @@ const StudentDash = () => {
           }
         );
 
-        if (res.status === 200 && res.data.student.studentId) {
-          setStudentData(res.data.student);
-          setCourses(res.data.courses);
-          console.log(res.data);
+        console.log(studentRes.data.courses)
+
+        if (studentRes.status === 200 ) {
+          setStudentData(studentRes.data.student);
+          setCourses(studentRes.data.courses); 
         }
       } catch (error) {
         console.log("Error fetching dashboard data:", error);
@@ -47,7 +49,14 @@ const StudentDash = () => {
 
     fetchData();
   }, [selectedSemester]);
-  const newUser = studentData?.matricNo || "newUser";
+  interface Student {
+    studentId: string; 
+    matricNo: string;
+    department: string;
+    faculty: string;
+  }
+
+  const newUser = studentData?.studentId || "newUser";
   return (
     <div className="student-dashboard-container">
       <SideBar>
@@ -133,7 +142,7 @@ const StudentDash = () => {
                     </div>
                   </div>
                 </div>
-                <div className="student-result-table">
+                {/* <div className="student-result-table">
                   <div className="student-result-table-header">
                     <div className="student-result-table-header-item">
                       Course Code
@@ -146,10 +155,48 @@ const StudentDash = () => {
                     </div>
                   </div>
                   
-                  < StudentResultDiv courseCode="BCH 401" courseTitle="Anatomy" creditUnit="3 Units" />
-                  < StudentResultDiv courseCode="MAT 201" courseTitle="Geometry" creditUnit="4 Units" />
+                  {/* < StudentResultDiv courseCode="BCH 401" courseTitle="Anatomy" creditUnit="3 Units" />
+                  < StudentResultDiv courseCode="MAT 201" courseTitle="Geometry" creditUnit="4 Units" /> */}
+
+                {/* {courses.map((course) => (
+                      <StudentResultDiv
+                    key={course.courseId}
+                    courseCode={course.courseCode}
+                    courseTitle={course.courseTitle}
+                    creditUnit={course.creditUnit} courseId={""}  />
+                ))} */}
                   
-                </div>
+                {/* </div> */} 
+                <table className="student-result-table">
+                  <thead >
+                    <tr>
+                      <th className="student-result-table-header-item">Course Code</th>
+                      <th className="student-result-table-header-item">Course Title</th>
+                      <th className="student-result-table-header-item">Credit Unit</th>
+                      {/* <th className="text-wrapper-12">Action</th> */}
+                    </tr>
+                  </thead>
+                    <tbody >
+                      {courses.map((course) => (
+                        <tr className="table-row"  key={course.courseCode} >
+                          <td className="table-row-data">
+                            {course.courseCode}
+                          </td>
+                          <td >
+                            {course.courseTitle}
+                          </td>
+                          <td >
+                            {course.creditUnit}
+                          </td>
+                          <td>
+                            <button type="submit" className="enroll-button">
+                              Enroll
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
               </div>
             </div>
           )}
@@ -162,9 +209,10 @@ const StudentDash = () => {
 export default StudentDash;
 
 interface StudentResultDivProps {
+  courseId: string;
   courseCode: string;
   courseTitle: string;
-  creditUnit: string;
+  creditUnit: number;
 }
 
 export function StudentResultDiv(props: StudentResultDivProps){

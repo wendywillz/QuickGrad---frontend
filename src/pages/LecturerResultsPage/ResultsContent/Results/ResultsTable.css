@@ -8,22 +8,13 @@
 
 
 table {
-    /* border-collapse: collapse; */
-    /* width: 100%; */
+
     margin-top: 10px;
     margin-right: 20px;
-    /* position: relative; */
 }
 
-table::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 10px); 
-    width: 714px;
-    height: 1px;
-    background-color: #000; 
-    transform: translate(-50%, -50%) rotate(-90deg);
+.results-table {
+    border-left: 1px solid var(--Grey-300, #D0D5DD); 
 }
 th{
     white-space: nowrap;
@@ -37,9 +28,8 @@ th{
 }
 
 th, td {
-    /* border: 1px solid #dddddd; */
     text-align: left;
-    padding: 20px; /* Adjust padding as needed */
+    padding: 20px; 
 }
 
 td:nth-child(3) {
