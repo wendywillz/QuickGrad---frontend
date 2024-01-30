@@ -7,7 +7,7 @@ import LandingPage from "../landingPage/LandingPage";
 import EnterOtp from "../enter-otp/enter_otp";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
-
+import VerifyEmail from "../verify-email/VerifyEmailPage";
 import SignUpPage from "../signup/signUpPage";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
@@ -19,7 +19,10 @@ import StudentsChangePassword from "../Students-Change-Password/StudentsChangePa
 
 import SetExamPage from "../setExam/setExamPage";
 
+// import CompletedExamOBJ from "../completed exam/completedExamObj";
+
 import StudentsResults from "../studentsresults/Students-Results";
+
 import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
 
 function App() {
@@ -27,6 +30,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+
         <Route
           path="/students/signin"
           element={
@@ -39,6 +43,7 @@ function App() {
             />
           }
         />
+        
         <Route
           path="/lecturers/signin"
           element={
@@ -70,10 +75,9 @@ function App() {
           path="/students/forgot-password"
           element={<ForgotPassword location="/students/signin" />}
         />
-        {/* <Route path="/verify-email" element={<VerifyEmail />} /> */}
-        {/* we ve sent your password reset link
-         check your email page
-         */}
+        
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        
         <Route
           path="/students/reset-password/check-your-email"
           element={
@@ -153,20 +157,24 @@ function App() {
           path="/students/dashboard/change-password"
           element={<StudentsChangePassword />}
         />
-        {/* <Route
-          path="/students/dashboard/completed-exam-theory"
-          element={<CompletedExamTheory />}
-        /> */}
+        
         <Route
           path="/lecturers/dashboard/set-exams"
           element={<SetExamPage />}
         />
+
         {/* <Route
           path="/students/dashboard/completed-exam-obj"
           element={<CompletedExamOBJ />}
         /> */}
-        {/* <Route path="/set-exams" element={<QuizForm />} /> */}
-        <Route path="/students/results" element={<StudentsResults />} />
+
+        <Route path="/students/dashboard/results" element={<StudentsResults />} />
+
+        {/* <Route
+          path="/students/dashboard/completed-exam-theory"
+          element={<CompletedExamTheory />}
+        /> */}
+
       </Routes>
     </>
   );

@@ -11,7 +11,7 @@
   text-align: center;
   width: 441px;
   min-height: 254px;
-  margin: 4rem auto;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,28 +46,30 @@
   height: 27px;
 }
 .verify-email-heading{
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
 }
 .verify-email-input {
   height: 2.1875rem;
   border: 1px solid #d0d5dd;
-  padding: 8px;
+  padding: 0.7rem;
   margin-bottom: 1.5rem;
   border-radius: 100px;
   color: linear-gradient(0deg, #d0d5dd, #d0d5dd),
     linear-gradient(0deg, #ffffff, #ffffff);
+    width: 100%;
 }
 .reset-otp-input::placeholder {
   color: #98a2b3;
 }
 .verify-email-label {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-family: "Inter", "sans-serif";
   font-size: 1rem;
   color: #101828;
   text-align: left;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 600;
 }
 .verify-email-input-btn {
