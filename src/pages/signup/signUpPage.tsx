@@ -5,6 +5,7 @@ import pagepic from "../../assets/sign_up_page_bg_pic copy.png";
 import axios from "axios";
 import Footer from "../../components/footer/footer";
 import MainButton from "../../components/buttons/mainButton";
+
 interface SignUpPageProps {
   signin_link: string;
 }
@@ -15,10 +16,25 @@ function SignUpPage(props: SignUpPageProps) {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [faculty, setFaculty] = useState("");
   const [department, setDepartment] = useState("");
+
+
+
+  const handleUSerFirstName = (event: ChangeEvent<HTMLInputElement>) => {
+    setFirstName((event.currentTarget as HTMLInputElement).value);
+  };
+
+
+  const handleUSerLastName = (event: ChangeEvent<HTMLInputElement>) => {
+    setLastName((event.currentTarget as HTMLInputElement).value);
+  };
+
+
   const handleUSerEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail((event.currentTarget as HTMLInputElement).value);
   };
@@ -34,12 +50,16 @@ function SignUpPage(props: SignUpPageProps) {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+
     console.log("userRole: ", email);
+
     try {
       const currentRoute = location.pathname;
       console.log("currentRoute: ", currentRoute);
       if (currentRoute === "/students/signup") {
         const res = await axios.post(`http://localhost:3000/students/signup`, {
+          firstName: firstName,
+          lastName: lastName,
           email: email,
           password: password,
           department: department,
@@ -105,6 +125,32 @@ function SignUpPage(props: SignUpPageProps) {
 
               <form className="sign-up-form" onSubmit={handleSubmit}>
 
+              <label className="signup-form-labels" htmlFor="firstNameInput">
+                  First Name
+                </label>
+                <br></br>
+                <input
+                  className="signup-form-inputs"
+                  placeholder="Enter first name"
+                  id="firstNameInput"
+                  name="email"
+                  value={firstName}
+                  onChange={handleUSerFirstName}
+                />
+
+                <label className="signup-form-labels" htmlFor="lastNameInput">
+                  Last Name
+                </label>
+                <br></br>
+                <input
+                  className="signup-form-inputs"
+                  placeholder="Enter last name"
+                  id="lastNameInput"
+                  name="lastName"
+                  value={lastName}
+                  onChange={handleUSerLastName}
+                />
+
                 <label className="signup-form-labels" htmlFor="emailInput">
                   Email
                 </label>
@@ -147,6 +193,7 @@ function SignUpPage(props: SignUpPageProps) {
                 </label>
                 <input
                   className="signup-form-pw-input"
+                  type="password"
                   placeholder="Enter password"
                   id="passwordInput"
                   name="passwordInput"

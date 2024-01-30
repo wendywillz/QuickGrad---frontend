@@ -1,10 +1,11 @@
 import "./Students-Results.css";
 import SideBar from "../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
+import arrowdown from "../../assets/arrowdown.png";
 
 function StudentsResults() {
   return (
-    <div className="main-body-wrapper">
+    <div className="students-Results-main-body-wrapper">
       <SideBar>
         {{
           sidebarElement: (
@@ -40,18 +41,19 @@ function StudentsResults() {
           ),
         }}
       </SideBar>
-      <div className="right-body-wrapper">
+      <div className="students-Results-right-body-wrapper">
         <div className="header-wrapper">
           {/* <div className="hero-content"></div> */}
           <div className="text-wrapper">
             <img
-              className="img"
+              className="students-Results-header-img"
               src="https://c.animaapp.com/IX1zE9E9/img/notification.svg"
             />
             <p>Welcome, 22/23/07/019</p>
           </div>
         </div>
-        {/* <div className="inner-body-wrapper"> */}
+        
+
         <div className="first">
           <div className="results-info">
             <h3 className="results">Results</h3>
@@ -95,7 +97,7 @@ function StudentsResults() {
             </div>
             <div className="course-info">
               <p className="info">View Script</p>
-              <img className="arrowdown" src="../src/assets/arrowdown.png" />
+              <img className="arrowdown" src={arrowdown} />
             </div>
           </div>
           <div className="course-card">
@@ -113,7 +115,7 @@ function StudentsResults() {
             </div>
             <div className="course-info">
               <p className="info">View Script</p>
-              <img className="arrowdown" src="../src/assets/arrowdown.png" />
+              <img className="arrowdown" src={arrowdown} />
             </div>
           </div>
           <div className="course-card">
@@ -130,7 +132,7 @@ function StudentsResults() {
             </div>
             <div className="course-info">
               <p className="info">View Script</p>
-              <img className="arrowdown" src="../src/assets/arrowdown.png" />
+              <img className="arrowdown" src={arrowdown} />
             </div>
           </div>
           <div className="course-card">
@@ -148,7 +150,7 @@ function StudentsResults() {
             </div>
             <div className="course-info">
               <p className="info">View Script</p>
-              <img className="arrowdown" src="../src/assets/arrowdown.png" />
+              <img className="arrowdown" src={arrowdown} />
             </div>
           </div>
           <div className="course-card">
@@ -165,7 +167,7 @@ function StudentsResults() {
             </div>
             <div className="course-info">
               <p className="info">View Script</p>
-              <img className="arrowdown" src="../src/assets/arrowdown.png" />
+              <img className="arrowdown" src={arrowdown} />
             </div>
           </div>
           <div className="course-card">
