@@ -54,7 +54,7 @@ export function ForgotPassword(props: ForgotPasswordProps) {
         </p>
         <label className="reset-otp-label">Email</label>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="reset-otp-form">
           <input
             type="text"
             id="otp"

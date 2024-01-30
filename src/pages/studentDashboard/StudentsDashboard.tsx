@@ -3,8 +3,6 @@ import axios from "axios";
 import SideBar from "../../components/sidebar/sideBar";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import Header from "../../components/header/header";
-import BlueHeader from "../../components/header/blueHeader/blueHeader";
 
 interface Student {
   matricNo: string;
@@ -66,10 +64,10 @@ function StudentDashboard() {
     fetchData();
     
   }, [selectedSemester]);
-  const newUser = studentData?.matricNo || "newUser";
+
   return (
     <div className="dashboard">
-      {/* {studentData && (
+      {studentData && (
         <section className="hero">
           <div className="hero-content">
             <img
@@ -80,10 +78,9 @@ function StudentDashboard() {
             <div className="text-wrapper">Welcome, {studentData.matricNo}</div>
           </div>
         </section>
-      )} */}
+      )}
 
       {/* Sidebar */}
-      
       <div className="text-wrapper-2">Dashboard</div>
       <SideBar>
         {{
@@ -123,11 +120,24 @@ function StudentDashboard() {
           ),
         }}
       </SideBar>
-      <Header newUser={newUser}/>
-      
-    
+
+      {/* Main content */}
       <main className="frame-5">
-      <BlueHeader session="2023/2024/019" userDetails={{ department: "Department of Biochemistry.", faculty: "Faculty of Science." , university: "Camouflage University.", location: "Atlanta, Nigeria."}} />
+        {studentData && (
+          <div className="frame-wrapper">
+            <div className="frame-6">
+              <div className="text-wrapper-7">{studentData.matricNo}</div>
+              <p className="department-of">
+                {studentData.department}
+                <br />
+                {studentData.faculty}
+                <br />
+                Camouflage University. <br />
+                Atlanta, Nigeria.
+              </p>
+            </div>
+          </div>
+        )}
 
         {courses && (
           <div className="div-wrapper">

@@ -1,6 +1,6 @@
  /* Global Styles or Reset Styles (if any) */
 
-.main-body-wrapper {
+.students-Results-main-body-wrapper {
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,7 +9,7 @@
     /* overflow-y: visible!important; */
   }
   
-  .right-body-wrapper {
+  .students-Results-right-body-wrapper {
     width: 80%;
     min-height: 100%;
     margin-left: 20%;
@@ -27,12 +27,7 @@
     background-color: rgba(234, 236, 240, 1);
   }
   
-  /* Inner Body Wrapper Styles */
-  .inner-body-wrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: grey;
-  }
+ 
   
   .first {
     width: 96%;
@@ -89,7 +84,7 @@
     margin: 1.7rem 3rem 0.3rem 1rem;
   }
   
-  .img {
+  .students-Results-header-img {
     margin-right: 0.7rem;
   }
   
@@ -262,9 +257,6 @@
       padding-left: 16px;
     }
   
-    .inner-body-wrapper {
-      padding: 16px;
-    }
   
     .grid-container {
       grid-template-columns: repeat(2, 1fr);
