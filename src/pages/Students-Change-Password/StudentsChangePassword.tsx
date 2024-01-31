@@ -34,7 +34,7 @@ function StudentsChangePassword() {
       const res = await axios.put(
         "http://localhost:3000/students/dashboard/change-password",
         {
-          newPassword
+          newPassword: newPassword
         },
         {
           withCredentials: true,

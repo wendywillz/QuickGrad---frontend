@@ -1,8 +1,84 @@
 import "./studentEnrolledCourses.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { format, isBefore, isAfter } from 'date-fns';
 import SideBar from "../../components/sidebar/sideBar";
-import { Link } from "react-router-dom";
+import Header from "../../components/header/header";
+import BlueHeader from "../../components/header/blueHeader/blueHeader";
+
+
+interface Exam {
+  examId: string;
+  courseCode: string;
+  courseTitle: string;
+  examDate: Date;
+}
+
+interface Student {
+  matricNo: string;
+  department: string;
+  faculty: string;
+  firstName: string;
+}
+
 
 function StudentEnrolledCourses() {
+
+  const [studentData, setStudentData] = useState<Student | null>(null);
+  const [exams, setExams] = useState<Exam[]>([]);
+  const [selectedSemester, setSelectedSemester] = useState<string>("first semester");
+  
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const studentRes = await axios.get(
+          `http://localhost:3000/students/dashboard/enrolled-courses`,
+          {
+            withCredentials: true,
+            params: { semester: selectedSemester },
+          }
+        );
+
+        console.log(studentRes.data);
+
+        if (studentRes.status === 200 && studentRes.data) {
+          setStudentData(studentRes.data.student);
+          setExams(studentRes.data.exams);
+        }
+      } catch (error) {
+        console.log("Error fetching dashboard data:", error);
+        
+        navigate("/students/signin", { state: { errorMessage: "Unauthorized, kindly login" } });
+      }
+    };
+
+    fetchData();
+  }, [selectedSemester]);
+
+  const calculateStatus = (examDate: Date): { status: string; style: React.CSSProperties } => {
+
+    console.log(typeof examDate)
+    const currentDate = new Date();
+
+    // const threeHoursAfterExam = new Date(examDate.setHours(examDate.getHours() + 3));
+  
+    if (isBefore(currentDate, examDate)) {
+      
+      return { status: 'Unavailable', style: { color: 'grey' } };
+    } else if (isAfter(currentDate, examDate)) {
+      
+      return { status: 'Expired', style: {color: 'red'}};
+    } else {
+      
+      return { status: 'Take exam', style: {color: 'green'}};
+    }
+  };
+
+  const newUser = studentData?.firstName || "newUser";
+
   return (
     <>
       <div className="enrolled-courses-page-container">
@@ -33,7 +109,7 @@ function StudentEnrolledCourses() {
                     className="img-2"
                     src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                   />
-                  <Link to="/" className="text-wrapper-6">
+                  <Link to="/students/dashboard/results" className="text-wrapper-6">
                     Results
                   </Link>
                 </div>
@@ -43,39 +119,36 @@ function StudentEnrolledCourses() {
         </SideBar>
 
         <section className="enrolled-courses-dashboard-container">
-          <div className="enrolled-courses-dashboard-header">
-            <img
-              className="img"
-              src="https://c.animaapp.com/IX1zE9E9/img/notification.svg"
-            />
-            <div className="enrolled-courses-dashboard-header-text-wrapper">
-              Welcome, Nkachukwu
-            </div>
-          </div>
+
+        <Header newUser={newUser} />
 
           <main className="enrolled-courses-body">
             <div className="enrolled-courses-title">
-              <h3>Enrolled Courses</h3>
+              Enrolled Courses
             </div>
 
-            <div className="enrolled-courses-bio-card">
-              <div>
-                <h3>Nkachukwu Nwobi</h3>
-              </div>
-              <div>
-                <p>Department of Chemical Engineering</p>
-                <p>Faculty of Engineering</p>
-                <p>Camouflage University</p>
-                <p>Atlanta, Nigeria</p>
-              </div>
-            </div>
+            <BlueHeader
+              userDetails={{
+                matricNo: studentData?.matricNo || "",
+                department: studentData?.department || "",
+                faculty: studentData?.faculty || "",
+                university: "Camouflage University.",
+                location: "Atlanta, Nigeria.",
+              }}
+            />
+
             <div className="enrolled-courses-container">
               <div className="enrolled-courses-year">
                 <div className="enrolled-courses-semester">
                   <label htmlFor="courses-semester">Semester: </label>
-                  <select name="courses-semester" id="">
-                    <option value="">First</option>
-                    <option value="">Second</option>
+                  <select name="courses-semester" 
+                  value={selectedSemester}
+                  onChange={(e) => setSelectedSemester(e.target.value)}
+
+                
+                  >
+                    <option value="first semester">First</option>
+                    <option value="second semester">Second</option>
                   </select>
                 </div>
                 <div className="enrolled-courses-session">
@@ -86,9 +159,11 @@ function StudentEnrolledCourses() {
                   </select>
                 </div>
               </div>
+
               <div className="enrolled-courses-timetable">
                 <h5>Examinations Timetable</h5>
               </div>
+
               <div className="enrolled-courses-table-container">
                 <table className="enrolled-courses-table">
                   <thead className="enrolled-courses-table-header">
@@ -101,20 +176,22 @@ function StudentEnrolledCourses() {
                     </tr>
                   </thead>
                   <tbody className="enrolled-courses-table-body">
+                  { exams.length === 0 && (
                     <tr>
-                      <td>CHG 201</td>
-                      <td>Thermodynamics</td>
-                      <td>24 Aug, 2023 / 2:10PM</td>
-                      <td>Campus E-center</td>
-                      <td>Expired</td>
+                      <td colSpan={5}>No exams found</td>
                     </tr>
-                    <tr>
-                      <td>CHG 201</td>
-                      <td>Thermodynamics</td>
-                      <td>24 Aug, 2023 / 2:10PM</td>
+                  )}
+                  {exams.map((exam) => (
+                    
+                    <tr key={exam.examId}>
+                      <td>{exam.courseCode}</td>
+                      <td>{exam.courseTitle}</td>
+                      <td>{format(exam.examDate, 'd MMM, yyyy / h:mmaaaa')}</td>
                       <td>Campus E-center</td>
-                      <td>Expired</td>
+                      <td style={calculateStatus(exam.examDate).style}>{calculateStatus(exam.examDate).status}</td>
                     </tr>
+                    ))}
+
                   </tbody>
                 </table>
               </div>

@@ -58,7 +58,7 @@
   height: 80%;
   width: 70%;
   background-color: rgba(249, 250, 251, 1);
-  padding: 15% 10%;
+  padding: 5rem 3rem;
   text-align: left;
 }
 .login-form-title {
@@ -66,7 +66,7 @@
   font-weight: 400;
   line-height: normal;
   font-family: var(--main-font);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 .field {
   margin-bottom: 1rem;
