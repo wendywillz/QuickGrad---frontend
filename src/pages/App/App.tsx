@@ -8,7 +8,9 @@ import EnterOtp from "../enter-otp/enter_otp";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
 import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
 import VerifyEmail from "../verify-email/VerifyEmailPage";
-import SignUpPage from "../signup/signUpPage";
+import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
+import LecturerSignup from "../../pages/lecturerSignUp/lecturerSignup";
+import StudentSignup from "../../pages/studentSignup/studentSignup";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 import LecturerResults from "../LecturerResultsPage/LecturerResults";
@@ -23,7 +25,6 @@ import SetExamPage from "../setExam/setExamPage";
 
 import StudentsResults from "../studentsresults/Students-Results";
 
-import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
 
 import LecturerGrades from "../grade_exam/lec_grade";
 
@@ -113,14 +114,9 @@ function App() {
           path="/lecturers/reset-password"
           element={<ResetEnterNewPasswordPage />}
         />
-        <Route
-          path="/students/signup"
-          element={<SignUpPage signin_link="/students/signin" />}
-        />
-        <Route
-          path="/lecturers/signup"
-          element={<SignUpPage signin_link="/lecturers/signin" />}
-        />
+
+        <Route path="/lecturers/signup" element={<LecturerSignup />} />
+        <Route path="/students/signup" element={<StudentSignup />} />
         {/* check your email for matric no/employee ID  */}
         <Route
           path="/students/check-your-email"

@@ -1,14 +1,13 @@
 import "./setExamStyle.css";
 import addButton from "../../assets/add_button_logo copy.png";
-import nextArrow from "../../assets/next_section_arrow copy.png";
+
 import SideBar from "../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
 import { useEffect, useState, FormEvent } from "react";
-import FormRowAndSelection from "./formRow";
 import axios from "axios";
 
 interface Question {
-  type: "regular" | "theory";
+  type: "objectives" | "theory" | "fill-in-the-blank";
   questionText: string;
   optionA: string;
   optionB: string;
@@ -22,6 +21,92 @@ interface Section {
 }
 
 function SetExamPage() {
+  // section handling state
+  const [sectionValue, setSectionValue] = useState<Record<string, string>[]>(
+    []
+  );
+
+  // const [sectionDetail, setSectionDetail] = useState({
+  //   MultipleChoice: { checked: false, value: "Multiple-choice" },
+  //   Theory: { checked: false, value: "Theory" },
+  //   FillInTheBlank: { checked: false, value: "Fill-in-the-blank" },
+  // });
+  const [popup, setPopup] = useState(false);
+  const toggleAddSectionModal = () => {
+    setPopup(!popup);
+  };
+
+  const [sectionDetail, setSectionDetail] = useState({
+    sectionAlphabet: "",
+    ScoreObtainable: "",
+    questionType: "",
+  });
+
+  const [section, setSection] = useState("blank-section");
+
+  // const [currentSection, setCurrentSection] = useState(0);
+
+  const nextSectionToggle = () => {
+    sectionValue.forEach((EachSection, index) => {
+      if (EachSection.questionType === section) {
+        setSection(sectionValue[index + 1].questionType);
+      }
+    });
+    // setCurrentSection((prevIndex) => (prevIndex + 1) % sectionValue.length);
+  };
+  const prevSectionToggle = () => {
+    sectionValue.forEach((EachSection, index) => {
+      if (EachSection.questionType === section) {
+        setSection(sectionValue[index - 1].questionType);
+      }
+    });
+    // setCurrentSection((prevIndex) => (prevIndex - 1) % sectionValue.length);
+  };
+  const [sectionDetailCopy, setSectionDetailCopy] = useState({
+    sectionAlphabet: "",
+    ScoreObtainable: "",
+    questionType: "",
+  });
+  console.log("1", sectionValue);
+  const handleAddSectionModalSubmitForm = (e: FormEvent) => {
+    e.preventDefault();
+    const updatedSectionDetail = JSON.parse(JSON.stringify(sectionDetail));
+    setSectionDetailCopy((prev) => ({
+      ...prev,
+      sectionAlphabet: updatedSectionDetail.sectionAlphabet,
+      ScoreObtainable: updatedSectionDetail.ScoreObtainable,
+      questionType: updatedSectionDetail.questionType,
+    }));
+    toggleAddSectionModal();
+  };
+  useEffect(() => {
+    if (sectionDetailCopy.questionType) {
+      setSection(sectionDetailCopy.questionType);
+      setSectionDetail({
+        sectionAlphabet: "",
+        ScoreObtainable: "",
+        questionType: "",
+      });
+      // Check if there is a questionType before updating
+      setSectionValue((prevSectionValue) => [
+        ...prevSectionValue,
+        sectionDetailCopy,
+      ]);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sectionDetailCopy]);
+  // handle scroll height
+  // const sectionRef = useRef<HTMLDivElement>(null);
+  // const [isFixed, setIsFixed] = useState(false);
+
+  // const handleScroll = () => {
+  //   const elementHeight = sectionRef.current?.offsetHeight || 0;
+  //   const position = window.scrollY;
+  //   position > elementHeight ? setIsFixed(true) : setIsFixed(false);
+  // };
+
+  // fetchting each course detail frm the backedn
   const [courseDetails, setCourseDetails] = useState([]);
   useEffect(() => {
     fetchCourseDetails();
@@ -32,7 +117,9 @@ function SetExamPage() {
     setCourseDetails(res.data.coureDetailFromServer);
   };
 
+  //
   const [sections, setSections] = useState<Section[]>([
+    { questions: [] },
     { questions: [] },
     { questions: [] },
   ]);
@@ -54,7 +141,7 @@ function SetExamPage() {
   const addQuestion = (sectionIndex: number) => {
     const updatedSections = [...sections];
     updatedSections[sectionIndex].questions.push({
-      type: "regular",
+      type: "objectives",
       questionText: "",
       optionA: "",
       optionB: "",
@@ -69,6 +156,19 @@ function SetExamPage() {
     const updatedSections = [...sections];
     updatedSections[sectionIndex].questions.push({
       type: "theory",
+      questionText: "",
+      optionA: "",
+      optionB: "",
+      optionC: "",
+      optionD: "",
+      correctAnswer: "",
+    });
+    setSections(updatedSections);
+  };
+  const addFillInTheBlankQuestions = (sectionIndex: number) => {
+    const updatedSections = [...sections];
+    updatedSections[sectionIndex].questions.push({
+      type: "fill-in-the-blank",
       questionText: "",
       optionA: "",
       optionB: "",
@@ -94,25 +194,14 @@ function SetExamPage() {
   const [faculty, setFaculty] = useState("");
   const [examDate, setExamDate] = useState("");
   const [courseTitle, setCourseTitle] = useState("");
-  console.log("0", session);
-  console.log("1", examDuration);
-  console.log("2", courseCode);
-  console.log("3", semester);
-  console.log("4", courseTitle);
-  console.log("5", faculty);
-  console.log("6", department);
-  console.log("7", examDate);
-  console.log("8", totalScore);
+
   const submitQuestions = async (e: FormEvent) => {
     e.preventDefault();
-    const assembledQuestions = sections.reduce(
+    const assembledQuestions: Question[] = sections.reduce(
       (allQuestions, section) => allQuestions.concat(section.questions),
       [] as Question[]
     );
-
-    console.log("Submitted Questions:", assembledQuestions);
-
-    // Your axios post request here
+    console.log("assemble questions", assembledQuestions);
     try {
       const res = await axios.post("http://localhost:3000/lecturers/set-exam", {
         examDuration,
@@ -121,15 +210,16 @@ function SetExamPage() {
         session,
         courseTitle,
         faculty,
-        lecturerId: "90b2f6cb-23c9-40b3-b18e-bdd184c90ae3",
+        lecturerId: "4eb133a9-6eea-44d4-9d25-a0a119884c0a",
         department,
         examDate,
         totalScore: Number(totalScore),
         questions: assembledQuestions,
       });
 
-      if (res.status === 200) {
+      if (res.status === 200 && res.data.examQuestionCreated) {
         console.log("Exam created successfully");
+        window.location.reload();
       } else {
         console.log("res", res);
       }
@@ -192,14 +282,137 @@ function SetExamPage() {
       </SideBar>
       {/* Main content */}
       <main className="set-exams-page-main-section">
+        {/* set exams heading wrapper */}
         <div className="set-exams-page-main-section-title-container">
           <h1 className="set-exams-page-main-section-title">Set Exams</h1>
         </div>
-
+        {/* set exam form wrapper */}
         <div className="set-exams-page-all-forms">
           <div className="set-exams-page-top-form">
             <div className="set-exams-page-session-form-container">
-              <form className="set-exams-page-session-form">
+              {/* add modal pop up fixed position */}
+              {popup && (
+                <div className="add-section-pop-up">
+                  <div className="inner-pop-up">
+                    <h1>Add Section</h1>
+                    <form onSubmit={handleAddSectionModalSubmitForm}>
+                      <fieldset>
+                        <label htmlFor=""> Section</label>
+                        <input
+                          type="text"
+                          className="section-detail"
+                          value={sectionDetail.sectionAlphabet}
+                          onChange={(e) =>
+                            setSectionDetail({
+                              ...sectionDetail,
+                              sectionAlphabet: e.target.value,
+                            })
+                          }
+                          placeholder="Type section number or alphabet"
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <label htmlFor=""> Score obtainable</label>
+                        <input
+                          type="text"
+                          placeholder="Enter total marks in section"
+                          value={sectionDetail.ScoreObtainable}
+                          onChange={(e) =>
+                            setSectionDetail({
+                              ...sectionDetail,
+                              ScoreObtainable: e.target.value,
+                            })
+                          }
+                        />
+                      </fieldset>
+                      <fieldset className="add-section-fieldset">
+                        <div className="add-section-instruction">
+                          <p>
+                            {" "}
+                            Question Type <br />{" "}
+                            <span>Select one section at a time</span>
+                          </p>
+                        </div>
+                        <div className="add-section-type-wrapper">
+                          <fieldset>
+                            <input
+                              name="setSectionType"
+                              type="radio"
+                              id="Multiple-choice"
+                              value="MultipleChoice"
+                              onChange={(e) =>
+                                setSectionDetail({
+                                  ...sectionDetail,
+                                  questionType: e.target.value,
+                                })
+                              }
+                            />
+                            <label htmlFor="Multiple-choice">
+                              {" "}
+                              Multiple Choice{" "}
+                            </label>
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              name="setSectionType"
+                              type="radio"
+                              id="Fill-in-the-blank"
+                              value="FillInTheBlank"
+                              onChange={(e) =>
+                                setSectionDetail({
+                                  ...sectionDetail,
+                                  questionType: e.target.value,
+                                })
+                              }
+                            />
+                            <label htmlFor="Fill-in-the-blank">
+                              {" "}
+                              Fill in the blanks{" "}
+                            </label>
+                          </fieldset>
+                          <fieldset>
+                            <input
+                              name="setSectionType"
+                              type="radio"
+                              id="Theory"
+                              value="Theory"
+                              onChange={(e) =>
+                                setSectionDetail({
+                                  ...sectionDetail,
+                                  questionType: e.target.value,
+                                })
+                              }
+                              // checked={sectionDetail.Theory.checked}
+
+                              // onChange={(e) =>
+                              //   setSectionDetail({
+                              //     ...sectionDetail,
+                              //     Theory: {
+                              //       ...sectionDetail.Theory,
+                              //       checked: e.target.checked,
+                              //     },
+                              //   })
+                              // }
+                            />
+                            <label htmlFor="Theory"> Theory</label>
+                          </fieldset>
+                        </div>
+                      </fieldset>
+                      <button type="submit">Add Section</button>
+                      <button type="button" onClick={toggleAddSectionModal}>
+                        Cancel
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              )}
+
+              {/* all set main set exam form */}
+              <form
+                className="set-exams-page-session-form"
+                onSubmit={submitQuestions}
+              >
+                {/* course details to be fectched from backend */}
                 <div className="set-exams-page-session-form-row">
                   <div className="set-exams-page-form-label-and-inputs">
                     <label
@@ -439,157 +652,586 @@ function SetExamPage() {
 
                 <button
                   className="set-exam-page-session-form-button"
-                  type="submit"
+                  type="button"
                 >
                   {" "}
                   +{" "}
                 </button>
-              </form>
-            </div>
-          </div>
 
-          <div className="set-exams-page-bottom-form">
-            <div className="set-exams-page-add-section-button-container">
-              <button className="set-exams-page-add-section-button">
-                {" "}
-                <img src={addButton} />
-                <span className="set-exams-page-add-section-button-text">
-                  {" "}
-                  Add Section
-                </span>
-              </button>
-            </div>
+                {/* add section button wrapper */}
+                <div className="set-exams-page-add-section-button-container">
+                  <button
+                    onClick={toggleAddSectionModal}
+                    className="set-exams-page-add-section-button"
+                    type="button"
+                  >
+                    {" "}
+                    <img src={addButton} />
+                    <span className="set-exams-page-add-section-button-text">
+                      {" "}
+                      Add Section
+                    </span>
+                  </button>
+                </div>
 
-            <div className="set-exams-page-questions-section-container">
-              <div className="set-exams-page-questions-section-header-and-marks">
-                <h1 className="set-exams-page-questions-section-title">
-                  Section A{" "}
-                  <span className="set-exams-page-questions-section-header-subtitle">
-                    (Multiple Choice Question)
-                  </span>
-                </h1>
-                <hr />
-                <p className="set-exams-page-questions-section-marks">
-                  40 Marks
-                </p>
-              </div>
+                <div className="set-exams-page-bottom-form">
+                  <div className="set-exams-page-questions-section-container">
+                    <div className="set-exams-page-multiple-choice-questions-container">
+                      <div className="set-exams-page-multiple-choice-questions-form">
+                        {section === "blank-section" && (
+                          <>
+                            <h1 className="set-exams-page-questions-section-title">
+                              Click on Add section Above to add the section
+                              based on your question type{" "}
+                            </h1>
+                          </>
+                        )}
+                        {section === "MultipleChoice" && (
+                          <div className="multiple-choice-question-wrapper">
+                            <div className="set-exams-page-questions-section-header-and-marks">
+                              <h1 className="set-exams-page-questions-section-title">
+                                {sectionDetailCopy.questionType ===
+                                  "MultipleChoice" && (
+                                  <>
+                                    Section{" "}
+                                    {sectionDetailCopy.sectionAlphabet.toUpperCase()}
+                                  </>
+                                )}
+                                <span className="set-exams-page-questions-section-header-subtitle">
+                                  (Multiple Choice Question)
+                                </span>
+                              </h1>
+                              <hr />
+                              <p className="set-exams-page-questions-section-marks">
+                                {sectionDetailCopy.questionType ===
+                                  "MultipleChoice" && (
+                                  <>
+                                    {sectionDetailCopy.sectionAlphabet.toUpperCase()}{" "}
+                                    marks
+                                  </>
+                                )}
+                              </p>
+                              <button
+                                type="button"
+                                className="set-exams-page-questions-form-multiple-choice-add-question-button"
+                                onClick={() => addQuestion(0)}
+                              >
+                                +
+                              </button>
+                            </div>
 
-              <div className="set-exams-page-multiple-choice-questions-container">
-              <div className="set-exam-page-add-question-botton-container">
-                      <button
-                        className="set-exams-page-questions-form-multiple-choice-add-question-button"
-                        type="submit"
-                      >
-                        +
-                      </button>
-                    </div>
+                            <div className="set-exams-page-question-with-options">
+                              <div className="set-exams-page-mcq-inner-wrapper">
+                                {sections[0].questions.map(
+                                  (question, questionIndex) => (
+                                    <div key={`objectives-${questionIndex}`}>
+                                      <div className="number-question-input-wrapper">
+                                        <div className="btn-wrapper">
+                                          <button
+                                            className="remove-new-question-btn"
+                                            type="button"
+                                            onClick={() =>
+                                              removeQuestion(0, questionIndex)
+                                            }
+                                          >
+                                            X
+                                          </button>
+                                        </div>
+                                        <span className="number-question-input-wrapper-number">
+                                          {questionIndex + 1}
+                                        </span>
+                                        <input
+                                          type="text"
+                                          placeholder="Type question"
+                                          className="objective-input-field"
+                                          value={question.questionText}
+                                          onChange={(e) =>
+                                            handleQuestionChange(
+                                              0,
+                                              questionIndex,
+                                              "questionText",
+                                              e.target.value
+                                            )
+                                          }
+                                        />
+                                      </div>
+                                      <div className="options-wrapper">
+                                        <label
+                                          className="options-label"
+                                          htmlFor=""
+                                        >
+                                          A.
+                                          <input
+                                            type="text"
+                                            className="options-text"
+                                            placeholder="Option A"
+                                            value={question.optionA}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "optionA",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                          <input
+                                            type="radio"
+                                            name={`question${questionIndex}`}
+                                            value={question.optionA}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "correctAnswer",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                        <label
+                                          className="options-label"
+                                          htmlFor=""
+                                        >
+                                          B.
+                                          <input
+                                            type="text"
+                                            placeholder="Option B"
+                                            className="options-text"
+                                            value={question.optionB}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "optionB",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                          <input
+                                            type="radio"
+                                            name={`question${questionIndex}`}
+                                            value={question.optionB}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "correctAnswer",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                        <label
+                                          className="options-label"
+                                          htmlFor=""
+                                        >
+                                          C.
+                                          <input
+                                            type="text"
+                                            placeholder="Option C"
+                                            className="options-text"
+                                            value={question.optionC}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "optionC",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                          <input
+                                            type="radio"
+                                            name={`question${questionIndex}`}
+                                            value={question.optionC}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "correctAnswer",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                        <label
+                                          className="options-label"
+                                          htmlFor=""
+                                        >
+                                          D.
+                                          <input
+                                            type="text"
+                                            placeholder="Option D"
+                                            className="options-text"
+                                            value={question.optionD}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "optionD",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                          <input
+                                            type="radio"
+                                            name={`question${questionIndex}`}
+                                            value={question.optionD}
+                                            onChange={(e) =>
+                                              handleQuestionChange(
+                                                0,
+                                                questionIndex,
+                                                "correctAnswer",
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                      </div>
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            </div>
+                            <div className="set-exams-page-bottom-form-base-button-section">
+                              <div className="set-exams-page-next-section-and-save-button-container">
+                                {/* <a
+                            href="#"
+                            className="set-exams-page-next-section-link"
+                            onClick={toggleSection}
+                          >
+                            <button className="set-exams-page-next-section-text">
+                              Next Section
+                            </button>
+                            <img
+                              src={nextArrow}
+                              className="set-exams-page-next-section-arrow"
+                            />
+                          </a> */}
+                              </div>
+                            </div>
+                          </div>
+                        )}
 
-                <form className="set-exams-page-multiple-choice-questions-form">
-                  <div className="set-exams-page-question-with-options">
-                    
-                    <div className="set-exams-page-questions-form-multiple-choice-questions-container">
-                      <div className="set-exams-page-questions-form-multiple-choice-question-and-number">
-                        <label
-                          className="set-exams-page-questions-form-multiple-choice-question-number"
-                          htmlFor="questionInput"
-                        >
-                          1.
-                        </label>
-                        <input
-                          className="set-exams-page-questions-form-multiple-choice-question"
-                          type="text"
-                          placeholder="Type question"
-                        />{" "}
-                        <br />
+                        {section === "Theory" && (
+                          <div className="theory-question-wrapper">
+                            <div className="set-exams-page-questions-section-header-and-marks">
+                              <h1 className="set-exams-page-questions-section-title">
+                                {sectionDetailCopy.questionType ===
+                                  "Theory" && (
+                                  <>
+                                    Section{" "}
+                                    {sectionDetailCopy.sectionAlphabet.toUpperCase()}
+                                  </>
+                                )}
+                                <span className="set-exams-page-questions-section-header-subtitle">
+                                  (Theory)
+                                </span>
+                              </h1>
+                              <hr />
+                              <p className="set-exams-page-questions-section-marks">
+                                {sectionDetailCopy.questionType ===
+                                  "Theory" && (
+                                  <>{sectionDetailCopy.ScoreObtainable} marks</>
+                                )}
+                              </p>
+                              <button
+                                type="button"
+                                className="set-exams-page-questions-form-multiple-choice-add-question-button"
+                                onClick={() => addQuestion(1)}
+                              >
+                                +
+                              </button>
+                            </div>
+                            <div className="theory-question-wrapper">
+                              <h2>Theory Questions</h2>
+                              {sections[1].questions.map(
+                                (question, questionIndex) => (
+                                  <div key={`theory-${questionIndex}`}>
+                                    <div className="number-question-input-wrapper">
+                                      <span className="number-question-input-wrapper-number">
+                                        {questionIndex + 1}
+                                      </span>
+                                      <input
+                                        type="text"
+                                        className="theory-question-input"
+                                        placeholder="Question Text"
+                                        value={question.questionText}
+                                        onChange={(e) =>
+                                          handleQuestionChange(
+                                            1,
+                                            questionIndex,
+                                            "questionText",
+                                            e.target.value
+                                          )
+                                        }
+                                      />
+                                    </div>
+                                    <input
+                                      type="text"
+                                      placeholder="Option A"
+                                      className="theory-question-input-options"
+                                      value={question.optionA}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          1,
+                                          questionIndex,
+                                          "optionA",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Option B"
+                                      className="theory-question-input-options"
+                                      value={question.optionB}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          1,
+                                          questionIndex,
+                                          "optionB",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Option C"
+                                      className="theory-question-input-options"
+                                      value={question.optionC}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          1,
+                                          questionIndex,
+                                          "optionC",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Option D"
+                                      className="theory-question-input-options"
+                                      value={question.optionD}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          1,
+                                          questionIndex,
+                                          "optionD",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Correct Answer"
+                                      className="theory-question-input-options"
+                                      value={question.correctAnswer}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          1,
+                                          questionIndex,
+                                          "correctAnswer",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        removeQuestion(1, questionIndex)
+                                      }
+                                    >
+                                      Remove Question
+                                    </button>
+                                  </div>
+                                )
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => addTheoryQuestion(1)}
+                              >
+                                Add Theory Question
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                        {section === "FillInTheBlank" && (
+                          <div className="fill-in-the-blank-wrapper">
+                            <div className="set-exams-page-questions-section-header-and-marks">
+                              <h1 className="set-exams-page-questions-section-title">
+                                {sectionDetailCopy.questionType ===
+                                  "FillInTheBlank" && (
+                                  <>
+                                    Section{" "}
+                                    {sectionDetailCopy.sectionAlphabet.toUpperCase()}
+                                  </>
+                                )}
+                                <span className="set-exams-page-questions-section-header-subtitle">
+                                  (Theory)
+                                </span>
+                              </h1>
+                              <hr />
+                              <p className="set-exams-page-questions-section-marks">
+                                {sectionDetailCopy.questionType ===
+                                  "FillInTheBlank" && (
+                                  <>{sectionDetailCopy.ScoreObtainable} marks</>
+                                )}
+                              </p>
+                              <button
+                                type="button"
+                                className="set-exams-page-questions-form-multiple-choice-add-question-button"
+                                onClick={() => addQuestion(2)}
+                              >
+                                +
+                              </button>
+                            </div>
+                            <div className="Fill-in-the-blank">
+                              <h2>Fill in the blanks</h2>
+                              {sections[2].questions.map(
+                                (question, questionIndex) => (
+                                  <div
+                                    key={`fill-in-the-blank-${questionIndex}`}
+                                  >
+                                    <div className="number-question-input-wrapper">
+                                      <span className="number-question-input-wrapper-number">
+                                        {questionIndex + 1}
+                                      </span>
+                                      <input
+                                        type="text"
+                                        className="theory-question-input"
+                                        placeholder="Question Text"
+                                        value={question.questionText}
+                                        onChange={(e) =>
+                                          handleQuestionChange(
+                                            2,
+                                            questionIndex,
+                                            "questionText",
+                                            e.target.value
+                                          )
+                                        }
+                                      />
+                                    </div>
+                                    <input
+                                      type="text"
+                                      placeholder="Option A"
+                                      className="theory-question-input-options"
+                                      value={question.optionA}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          2,
+                                          questionIndex,
+                                          "optionA",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Option B"
+                                      className="theory-question-input-options"
+                                      value={question.optionB}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          2,
+                                          questionIndex,
+                                          "optionB",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Option C"
+                                      className="theory-question-input-options"
+                                      value={question.optionC}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          2,
+                                          questionIndex,
+                                          "optionC",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Option D"
+                                      className="theory-question-input-options"
+                                      value={question.optionD}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          2,
+                                          questionIndex,
+                                          "optionD",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <input
+                                      type="text"
+                                      placeholder="Correct Answer"
+                                      className="theory-question-input-options"
+                                      value={question.correctAnswer}
+                                      onChange={(e) =>
+                                        handleQuestionChange(
+                                          2,
+                                          questionIndex,
+                                          "correctAnswer",
+                                          e.target.value
+                                        )
+                                      }
+                                    />
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        removeQuestion(2, questionIndex)
+                                      }
+                                    >
+                                      Remove Question
+                                    </button>
+                                  </div>
+                                )
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => addFillInTheBlankQuestions(2)}
+                              >
+                                Add question
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    </div>
 
-                    <div className="set-exams-page-questions-form-multiple-choice-answers-container">
-                      <label
-                        className="set-exams-page-questions-form-multiple-choice-answer-label-end"
-                        htmlFor="aInput"
-                      >
-                        <span className="set-exams-page-answer-value">A.</span>
-                        <span className="set-exams-page-answer-text">
-                          Option 1
-                        </span>
-                      </label>
-                      <input
-                        className="set-exams-page-questions-form-multiple-choice-answer"
-                        type="radio"
-                        id="aInput"
-                        value="a"
-                        name="answer"
-                      />
-
-                      <label
-                        className="set-exams-page-questions-form-multiple-choice-answer-label"
-                        htmlFor="bInput"
-                      >
-                        <span className="set-exams-page-answer-value">B.</span>
-                        <span className="set-exams-page-answer-text">
-                          Option 2
-                        </span>
-                      </label>
-                      <input
-                        className="set-exams-page-questions-form-multiple-choice-answer"
-                        type="radio"
-                        id="bInput"
-                        value="b"
-                        name="answer"
-                      />
-
-                      <label
-                        className="set-exams-page-questions-form-multiple-choice-answer-label"
-                        htmlFor="cInput"
-                      >
-                        <span className="set-exams-page-answer-value">C.</span>
-                        <span className="set-exams-page-answer-text">
-                          Option 3
-                        </span>
-                      </label>
-                      <input
-                        className="set-exams-page-questions-form-multiple-choice-answer"
-                        type="radio"
-                        id="cInput"
-                        value="c"
-                        name="answer"
-                      />
-
-                      <label
-                        className="set-exams-page-questions-form-multiple-choice-answer-label"
-                        htmlFor="dInput"
-                      >
-                        <span className="set-exams-page-answer-value">D.</span>
-                        <span className="set-exams-page-answer-text">
-                          Option 4
-                        </span>
-                      </label>
-                      <input
-                        className="set-exams-page-questions-form-multiple-choice-answer"
-                        type="radio"
-                        id="dInput"
-                        value="d"
-                        name="answer"
-                      />
+                      {/* next and previous button */}
+                      {sectionValue.length >= 2 ? (
+                        <>
+                          <button
+                            className="set-exams-page-previous-section-text"
+                            type="button"
+                            onClick={nextSectionToggle}
+                          >
+                            Next Section
+                          </button>
+                          <button type="submit">Submit</button>
+                          <button
+                            className="set-exams-page-previous-section-text"
+                            type="button"
+                            onClick={prevSectionToggle}
+                          >
+                            Previous Section
+                          </button>
+                        </>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div className="set-exams-page-bottom-form-base-button-section">
-            <div className="set-exams-page-next-section-and-save-button-container">
-              <a href="#" className="set-exams-page-next-section-link">
-                <span className="set-exams-page-next-section-text">
-                  Next Section
-                </span>
-                <img
-                  src={nextArrow}
-                  className="set-exams-page-next-section-arrow"
-                />
-              </a>
-              <button className="set-exams-page-save-button">Save</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -600,250 +1242,3 @@ function SetExamPage() {
 
 export default SetExamPage;
 
-//  <div className="hiddenfunction">{increaseCount()}</div>
-// <div className="hiddenfunction">{increaseCount()}</div>
-
-// <div className="text-wrapper-2">Dashboard</div>
-
-/*
-
-<div className="set-exams-page-questions-form-container">
-                <form className="questions-form" onSubmit={submitQuestions}>
-                  <div>
-                    <h2>Regular Questions</h2>
-                    {sections[0].questions.map((question, questionIndex) => (
-                      <div key={`regular-${questionIndex}`}>
-                        <div className="number-question-input-wrapper">
-                          <div className="btn-wrapper">
-                            <button
-                              className="add-new-question-btn"
-                              type="button"
-                              onClick={() => removeQuestion(0, questionIndex)}
-                            >
-                              X
-                            </button>
-                          </div>
-                          <span className="number-question-input-wrapper-number">
-                            {questionIndex + 1}
-                          </span>
-                          <input
-                            type="text"
-                            placeholder="Question Text"
-                            className="objective-input-field"
-                            value={question.questionText}
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                0,
-                                questionIndex,
-                                "questionText",
-                                e.target.value
-                              )
-                            }
-                          />
-                        </div>
-                        <div className="options-wrapper">
-                          <input
-                            type="text"
-                            placeholder="Option A"
-                            value={question.optionA}
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                0,
-                                questionIndex,
-                                "optionA",
-                                e.target.value
-                              )
-                            }
-                          />
-                          <input
-                            type="text"
-                            placeholder="Option B"
-                            value={question.optionB}
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                0,
-                                questionIndex,
-                                "optionB",
-                                e.target.value
-                              )
-                            }
-                          />
-                          <input
-                            type="text"
-                            placeholder="Option C"
-                            value={question.optionC}
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                0,
-                                questionIndex,
-                                "optionC",
-                                e.target.value
-                              )
-                            }
-                          />
-                          <input
-                            type="text"
-                            placeholder="Option D"
-                            value={question.optionD}
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                0,
-                                questionIndex,
-                                "optionD",
-                                e.target.value
-                              )
-                            }
-                          />
-                          <select
-                            value={question.correctAnswer}
-                            className="correct-answer-select"
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                0,
-                                questionIndex,
-                                "correctAnswer",
-                                e.target.value
-                              )
-                            }
-                          >
-                            <option
-                              value="select correct answer"
-                              defaultValue={"select correct answer"}
-                            >
-                              Select Correct answer
-                            </option>
-                            <option value={question.optionA}>
-                              {question.optionA}
-                            </option>
-                            <option value={question.optionB}>
-                              {question.optionB}
-                            </option>
-                            <option value={question.optionC}>
-                              {question.optionC}
-                            </option>
-                            <option value={question.optionD}>
-                              {question.optionD}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                    ))}
-                    <button type="button" onClick={() => addQuestion(0)}>
-                      Add Question
-                    </button>
-                  </div>
-
-                  <div className="theory-question-wrapper">
-                    <h2>Theory Questions</h2>
-                    {sections[1].questions.map((question, questionIndex) => (
-                      <div key={`theory-${questionIndex}`}>
-                        <div className="number-question-input-wrapper">
-                          <span className="number-question-input-wrapper-number">
-                            {questionIndex + 1}
-                          </span>
-                          <input
-                            type="text"
-                            className="theory-question-input"
-                            placeholder="Question Text"
-                            value={question.questionText}
-                            onChange={(e) =>
-                              handleQuestionChange(
-                                1,
-                                questionIndex,
-                                "questionText",
-                                e.target.value
-                              )
-                            }
-                          />
-                        </div>
-                        <input
-                          type="text"
-                          placeholder="Option A"
-                          className="theory-question-input-options"
-                          value={question.optionA}
-                          onChange={(e) =>
-                            handleQuestionChange(
-                              1,
-                              questionIndex,
-                              "optionA",
-                              e.target.value
-                            )
-                          }
-                        />
-                        <input
-                          type="text"
-                          placeholder="Option B"
-                          className="theory-question-input-options"
-                          value={question.optionB}
-                          onChange={(e) =>
-                            handleQuestionChange(
-                              1,
-                              questionIndex,
-                              "optionB",
-                              e.target.value
-                            )
-                          }
-                        />
-                        <input
-                          type="text"
-                          placeholder="Option C"
-                          className="theory-question-input-options"
-                          value={question.optionC}
-                          onChange={(e) =>
-                            handleQuestionChange(
-                              1,
-                              questionIndex,
-                              "optionC",
-                              e.target.value
-                            )
-                          }
-                        />
-                        <input
-                          type="text"
-                          placeholder="Option D"
-                          className="theory-question-input-options"
-                          value={question.optionD}
-                          onChange={(e) =>
-                            handleQuestionChange(
-                              1,
-                              questionIndex,
-                              "optionD",
-                              e.target.value
-                            )
-                          }
-                        />
-                        <input
-                          type="text"
-                          placeholder="Correct Answer"
-                          className="theory-question-input-options"
-                          value={question.correctAnswer}
-                          onChange={(e) =>
-                            handleQuestionChange(
-                              1,
-                              questionIndex,
-                              "correctAnswer",
-                              e.target.value
-                            )
-                          }
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeQuestion(1, questionIndex)}
-                        >
-                          Remove Question
-                        </button>
-                      </div>
-                    ))}
-                    <button type="button" onClick={() => addTheoryQuestion(1)}>
-                      Add Theory Question
-                    </button>
-                  </div>
-
-                  {/* Button to submit questions to the backend */ //}
-/*
-                  <button type="submit">Submit Questions</button>
-                </form>
-              </div>
-
-
-*/
