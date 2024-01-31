@@ -25,6 +25,8 @@ import StudentsResults from "../studentsresults/Students-Results";
 
 import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
 
+import LecturerGrades from "../grade_exam/lec_grade";
+
 function App() {
   return (
     <>
@@ -43,7 +45,7 @@ function App() {
             />
           }
         />
-        
+
         <Route
           path="/lecturers/signin"
           element={
@@ -75,9 +77,9 @@ function App() {
           path="/students/forgot-password"
           element={<ForgotPassword location="/students/signin" />}
         />
-        
+
         <Route path="/verify-email" element={<VerifyEmail />} />
-        
+
         <Route
           path="/students/reset-password/check-your-email"
           element={
@@ -157,7 +159,7 @@ function App() {
           path="/students/dashboard/change-password"
           element={<StudentsChangePassword />}
         />
-        
+
         <Route
           path="/lecturers/dashboard/set-exams"
           element={<SetExamPage />}
@@ -168,13 +170,20 @@ function App() {
           element={<CompletedExamOBJ />}
         /> */}
 
-        <Route path="/students/dashboard/results" element={<StudentsResults />} />
+        <Route
+          path="/students/dashboard/results"
+          element={<StudentsResults />}
+        />
 
         {/* <Route
           path="/students/dashboard/completed-exam-theory"
           element={<CompletedExamTheory />}
         /> */}
 
+        <Route
+          path="/lecturers/dashboard/results"
+          element={<LecturerGrades />}
+        />
       </Routes>
     </>
   );
