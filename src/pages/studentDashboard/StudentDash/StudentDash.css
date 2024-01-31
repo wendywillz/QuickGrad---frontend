@@ -18,7 +18,8 @@
     font-weight: 700;
     line-height: 140%; 
     letter-spacing: 0.01563rem;
-    margin: 1.5rem 0 1rem 4.5rem
+    margin: 2rem auto 2rem;
+    width: 90%;
 }
 
   
@@ -26,9 +27,8 @@
     border-radius: 1.875rem;
     background: #2D00F7;
     border: none;
-
-    padding: 0rem 0.9375rem 0rem 1.5rem;
-
+    width: 50%;
+    text-align: center;
     color: var(--White, #FFF);
     font-family: "Inter";
     font-size: 1rem;
@@ -36,6 +36,7 @@
     font-weight: 400;
     line-height: 140%;
     letter-spacing: 0.00938rem;
+    padding: 0.2rem 1rem;
   }
 
   .student-result-table{
@@ -44,20 +45,15 @@
     width: 87%;
   }
 
-  .student-result-table-header{
-    display: flex;
-    gap: 7rem;
-    margin-left: 2rem;
-    width: 87%;
-    color: #000;
-    font-family: "Inter";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 140%; 
-    letter-spacing: 0.00938rem;
 
+
+  .student-result-table-header-item{
+    text-align: left;
   }
+
+
+
+
   .student-result-table-body p{
     white-space: nowrap;
   }
@@ -72,32 +68,53 @@
     align-items: center;
   }
 
+  .semester-session-container{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1.5rem;
+
+
+  }
 
   .semester-div-container{
-    display: flex;
-    gap: 1rem;
-    margin: 0 0 1rem 4.5rem;
-    width: 87%;
     color: #667085;
-    font-family: Inter;
+    font-family: "Inter";
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 140%; 
+    width: 30%;
+    display: flex;
+    align-items: center;
   }
 
   .session-div-container{
-    display: flex;
-    gap: 1rem;
-    margin: -3rem 0 1rem 24rem;
-    width: 87%;
     color: #667085;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 140%; 
+    width: 80%;
+    display: flex;
+    align-items: center;
   }
+
+
+  .session-dropdown .semester-button-default{
+    color: #667085;
+    font-family: "Inter";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; 
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+
   .session-dropdown .session-button-default{
     color: #667085;
     font-family: "Inter";
@@ -106,6 +123,7 @@
     font-weight: 700;
     line-height: 140%; 
     border: none;
+    padding: 0.5rem 1rem;
   }
 
   .table-row{
@@ -117,5 +135,8 @@
   
 .student-result-table{
     border-spacing: 0 1rem;
+    width: 90%;
+    margin: 1rem auto;
+    padding: 1rem 2rem;
 }
 

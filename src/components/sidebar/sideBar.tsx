@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import "./sideBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface SideBarChildren {
   children: {
@@ -9,6 +10,22 @@ interface SideBarChildren {
 }
 function SideBar({ children }: SideBarChildren) {
   const { sidebarElement } = children;
+
+  const navigate = useNavigate();
+
+
+
+  const handleLogout = async () => {
+    try {
+      // Make a GET request to your logout route
+      await axios.get("http://localhost:3000/students/dashboard/logout", { withCredentials: true });
+
+      navigate("/students/signin");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
 
   return (
     <section className="side-bar-default">
@@ -43,19 +60,22 @@ function SideBar({ children }: SideBarChildren) {
                 src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-setting-2.svg"
               />
 
-              <Link to="/students/dashboard/change-password" className="text-wrapper-6">
+              <Link
+                to="/students/dashboard/change-password"
+                className="text-wrapper-6"
+              >
                 Settings
               </Link>
-      
             </div>
             <div className="feature-2">
               <img
                 className="img-2"
                 src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-logout.svg"
               />
-              <a href="#" className="text-wrapper-6">
-                Logout
-              </a>
+              <div onClick={handleLogout} className="text-wrapper-6">
+              Logout
+              </div>
+
             </div>
           </div>
         </div>

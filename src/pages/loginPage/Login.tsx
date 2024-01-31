@@ -90,7 +90,14 @@ export function LoginPage(props: Props) {
 
         <div className="login-form-wrapper">
           <form className="login-form" onSubmit={handleSubmit}>
+
+
             <h1 className="login-form-title">{props.form_title}</h1>
+
+            {location.state && location.state.errorMessage && (
+            <div className="error-message">{location.state.errorMessage}</div>
+          )}
+
             <div className="field">
               <label className="login-form-label">{props.id_or_email}</label>
               <input

@@ -1,18 +1,16 @@
 .blue-card-header{
-    width: 87%;
-    /* width: 63rem; */
+    width: 90%;
     height: 7.5rem;
     margin: 1rem auto 2rem;
     border-radius: 1rem;
     background: rgba(45, 0, 247, 0.90);
-
     display: flex;
     padding: 1rem 2.5625rem;
     justify-content: space-around;
     align-items: center;
 }
 
-.blue-card-header .session{
+.blue-card-header .user-matricNo{
     color: var(--White, #FFF);
     font-family: "Inter";
     font-size: 1.5rem;

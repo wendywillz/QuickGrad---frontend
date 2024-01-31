@@ -1,19 +1,19 @@
 import "./blueHeader.css";
 
 interface BlueHeaderProps {
-    session: string;
     userDetails: {
         department: string;
         faculty: string;
         university: string;
         location: string;
+        matricNo: string
     }
 }
 const BlueHeader = (props: BlueHeaderProps) => {
     return ( 
         <div className="blue-card-header">
-            <div className="session">
-                <p>{props.session}</p>
+            <div className="user-matricNo">
+                <p>{props.userDetails.matricNo}</p>
             </div>
             <div className="user-details">
                 <p>{props.userDetails.department}</p>
