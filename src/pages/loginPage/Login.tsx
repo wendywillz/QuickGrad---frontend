@@ -81,8 +81,8 @@ export function LoginPage(props: Props) {
   };
   console.log("Rendering LoginPage for lecturer_signin");
   return (
-    <div className="main-body-wrapper">
-      <div className="inner-body-wrapper">
+    <div className="login-page-main-body-wrapper">
+      <div className="login-form-inner-body-wrapper">
         <LeftImageWrapper backgroundImage={props.backgroundImage}>
           <h1 className="university-title">Camouflage University</h1>
           <p className="moto-wrapper">Inspiring greatness through education</p>
