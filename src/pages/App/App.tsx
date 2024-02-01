@@ -14,7 +14,7 @@ import StudentSignup from "../../pages/studentSignup/studentSignup";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 import LecturerResults from "../LecturerResultsPage/LecturerResults";
-import StudentDash from "../studentDashboard/StudentDash/StudentDash";
+import StudentDash from "../studentDashboard/StudentDash";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
 
 import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
@@ -24,7 +24,6 @@ import SetExamPage from "../setExam/setExamPage";
 // import CompletedExamOBJ from "../completed exam/completedExamObj";
 
 import StudentsResults from "../studentsresults/Students-Results";
-
 
 import LecturerGrades from "../grade_exam/lec_grade";
 
