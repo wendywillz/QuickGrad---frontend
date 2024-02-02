@@ -46,9 +46,9 @@ function LandingPage() {
   return (
     <>
       <div className="landing-container">
-        <div className="container">
-          <div className="sectionA">
-            <div className="title1">
+        <div className="landing-page-container">
+          <div className="landing-page-sectionA">
+            <div className="landing-page-title1">
               <img src={quickgradelogo} alt="logo png" />
             </div>
             <div>
@@ -58,7 +58,7 @@ function LandingPage() {
             </div>
           </div>
 
-          <div className="sectionB">
+          <div className="landing-page-sectionB">
             {/* Form */}
             <form className="landing-page-form" onSubmit={handleSubmit}>
               <div className="form-label">

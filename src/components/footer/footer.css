@@ -3,7 +3,7 @@
   border-top: 1px solid rgba(52, 64, 84, 1);
   height: 5rem;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #fff;
 }
 .optional-footer-background {
@@ -22,7 +22,10 @@
 .left-footer-text-wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+.center-footer-text-wrapper{
+  text-align: center;
 }
 .right-footer-text-wrapper {
   display: flex;
