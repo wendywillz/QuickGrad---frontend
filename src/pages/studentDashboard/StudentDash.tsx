@@ -1,7 +1,7 @@
 import "./StudentDash.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SideBar from "../../components/sidebar/sideBar";
 import Header from "../../components/header/header";
 import BlueHeader from "../../components/header/blueHeader/blueHeader";
@@ -19,10 +19,19 @@ interface Course {
   creditUnit: number;
 }
 
-const StudentDash = () => {
+export const StudentDash = () => {
+  const navigate = useNavigate();
   const [studentData, setStudentData] = useState<Student | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
   const [selectedSemester, setSelectedSemester] = useState<string>("First");
+
+  const handleEnrollClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const courseCode = e.currentTarget.dataset.coursecode ?? "";
+    console.log("courseCode: ", courseCode);
+navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
+  };
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,9 +45,22 @@ const StudentDash = () => {
         );
 
         console.log(studentRes.data.courses);
+        console.log(studentRes.data.courses);
 
-        if (studentRes.status === 200) {
+        if (
+          studentRes.status === 200 &&
+          (studentRes.data.noTokenError ||
+            studentRes.data.tokenExpiredError ||
+            studentRes.data.unknownStudent ||
+            studentRes.data.internalServeError)
+        ) {
+          navigate("/students/signin");
+        } else if (
+          studentRes.status === 200 &&
+          (studentRes.data.courses || studentRes.data.student)
+        ) {
           setStudentData(studentRes.data.student);
+          setCourses(studentRes.data.courses);
           setCourses(studentRes.data.courses);
         }
       } catch (error) {
@@ -47,15 +69,17 @@ const StudentDash = () => {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSemester]);
   interface Student {
     studentId: string;
+    firstName: string;
     matricNo: string;
     department: string;
     faculty: string;
   }
 
-  const newUser = studentData?.studentId || "newUser";
+  const newUser = studentData?.firstName || "newUser";
   return (
     <div className="student-dashboard-container">
       <SideBar>
@@ -107,10 +131,37 @@ const StudentDash = () => {
             faculty: "Faculty of Science.",
             university: "Camouflage University.",
             location: "Atlanta, Nigeria.",
-            matricNo: studentData?.matricNo || "",
+            matricNo: studentData?.matricNo || "123456789",
           }}
         />
 
+        {courses && (
+          <div>
+            <div>
+              <div>
+                <div className="semester-div-container">
+                  <div>Semester:</div>
+                  <div className="session-dropdown">
+                    <select
+                      className="session-button-default"
+                      value={selectedSemester}
+                      onChange={(e) => setSelectedSemester(e.target.value)}
+                    >
+                      <option value="First">First</option>
+                      <option value="Second">Second</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="session-div-container">
+                  <div>Session:</div>
+                  <div className="session-dropdown">
+                    <select className="session-button-default">
+                      <option>2023/2024</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              {/* <div className="student-result-table">
         {courses && (
           <div>
             <div>
@@ -154,6 +205,7 @@ const StudentDash = () => {
                   < StudentResultDiv courseCode="MAT 201" courseTitle="Geometry" creditUnit="4 Units" /> */}
 
               {/* {courses.map((course) => (
+              {/* {courses.map((course) => (
                       <StudentResultDiv
                     key={course.courseId}
                     courseCode={course.courseCode}
@@ -184,7 +236,12 @@ const StudentDash = () => {
                       <td>{course.courseTitle}</td>
                       <td>{course.creditUnit}</td>
                       <td>
-                        <button type="submit" className="enroll-button">
+                        <button
+                          type="submit"
+                          className="enroll-button"
+                          data-coursecode={course.courseCode}
+                          onClick={handleEnrollClick}
+                        >
                           Enroll
                         </button>
                       </td>
@@ -199,8 +256,6 @@ const StudentDash = () => {
     </div>
   );
 };
-
-export default StudentDash;
 
 interface StudentResultDivProps {
   courseId: string;
@@ -219,3 +274,4 @@ export function StudentResultDiv(props: StudentResultDivProps) {
     </div>
   );
 }
+

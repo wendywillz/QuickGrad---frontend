@@ -1070,7 +1070,7 @@ function SetExamPage() {
                                   </>
                                 )}
                                 <span className="set-exams-page-questions-section-header-subtitle">
-                                  (Theory)
+                                  (Fill in the blank)
                                 </span>
                               </h1>
                               <hr />
@@ -1158,7 +1158,7 @@ function SetExamPage() {
                                     />
                                     <input
                                       type="text"
-                                      placeholder="Option D"
+                                      placeholder="Option D hidden-fill-in-the-blank"
                                       className="theory-question-input-options"
                                       value={question.optionD}
                                       onChange={(e) =>
@@ -1173,7 +1173,7 @@ function SetExamPage() {
                                     <input
                                       type="text"
                                       placeholder="Correct Answer"
-                                      className="theory-question-input-options"
+                                      className="theory-question-input-options fill-in-the-blanks-options"
                                       value={question.correctAnswer}
                                       onChange={(e) =>
                                         handleQuestionChange(
@@ -1186,6 +1186,7 @@ function SetExamPage() {
                                     />
                                     <button
                                       type="button"
+                                      className="fill-in-the-blanks-remove-question"
                                       onClick={() =>
                                         removeQuestion(2, questionIndex)
                                       }
@@ -1241,4 +1242,3 @@ function SetExamPage() {
 }
 
 export default SetExamPage;
-

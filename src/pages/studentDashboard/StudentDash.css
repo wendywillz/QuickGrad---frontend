@@ -25,6 +25,7 @@
   
 .enroll-button{
     border-radius: 1.875rem;
+    cursor: pointer;
     background: #2D00F7;
     border: none;
     width: 50%;

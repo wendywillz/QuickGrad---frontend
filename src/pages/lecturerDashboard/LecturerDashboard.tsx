@@ -17,40 +17,40 @@ interface Lecturer {
   firstName: string;
 }
 
-interface Exam {
-  courseCode: string;
-  department: string;
-  examDate: Date;
-  examDuration: string;
-  venue: string;
-  registered: string;
-}
+// interface Exam {
+//   courseCode: string;
+//   department: string;
+//   examDate: Date;
+//   examDuration: string;
+//   venue: string;
+//   registered: string;
+// }
 
 function LecturerDashboard() {
-  const [lecturerData, setLecturerData] = useState<Lecturer | null>(null);
-  const [examData, setExamData] = useState<Exam[]>([]);
-  const [selectedSemester, setSelectedSemester] = useState<string>("First");
+  // const [lecturerData, setLecturerData] = useState<Lecturer | null>(null);
+  // const [examData, setExamData] = useState<Exam[]>([]);
+  // const [selectedSemester, setSelectedSemester] = useState<string>("First");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:3000/lecturers/dashboard`,
-          {
-            withCredentials: true,
-            params: { semester: selectedSemester },
-          }
-        );
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `http://localhost:3000/lecturers/dashboard`,
+  //         {
+  //           withCredentials: true,
+  //           params: { semester: selectedSemester },
+  //         }
+  //       );
 
-        if (res.status === 200 && res.data.lecturer.lecturerId) {
-          setLecturerData(res.data.lecturer);
-          setExamData(res.data.exam);
-          console.log(res.data);
-        }
-      } catch (error) {
-        console.log("Error fetching dashboard data:", error);
-      }
-    };
+  //       if (res.status === 200 && res.data.lecturer.lecturerId) {
+  //         setLecturerData(res.data.lecturer);
+  //         setExamData(res.data.exam);
+  //         console.log(res.data);
+  //       }
+  //     } catch (error) {
+  //       console.log("Error fetching dashboard data:", error);
+  //     }
+  //   };
 
     fetchData();
   }, [selectedSemester]);
@@ -60,7 +60,7 @@ function LecturerDashboard() {
   return (
     <div className="student-dashboard-container">
     <div className="dashboard">
-      {lecturerData && (
+      {/* {lecturerData && (
         <section className="hero">
           <div className="hero-content">
             <img
@@ -72,7 +72,7 @@ function LecturerDashboard() {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Sidebar */}
       <div className="text-wrapper-2">Dashboard</div>
@@ -173,7 +173,7 @@ function LecturerDashboard() {
           </div>
         )}
 
-        {examData && (
+        {examData && examData.length > 0 && (
           <div className="div-wrapper">
             <div className="frame-7">
               <div className="semester-session-container">
@@ -237,7 +237,7 @@ function LecturerDashboard() {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </main>
         </div>
         </div>
