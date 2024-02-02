@@ -27,6 +27,7 @@ export const StudentDash = () => {
   };
 
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
         const studentRes = await axios.get(
