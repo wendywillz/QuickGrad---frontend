@@ -3,7 +3,7 @@
 .entire-signup-page-container {
   /* position: relative; */
   font-family: "Inter", sans-serif;
-  max-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,14 @@
   left: 0;
   overflow: hidden;
   z-index: 1;
+}
+.image-card-container{
+  height: 100%;
+}
+
+.signup-page-photo {
+  width: 100%;
+  height: 100%;
 }
 
 .signup-uni-title {
@@ -56,9 +64,7 @@
   z-index: 2;
 }
 
-.signup-page-photo {
-  width: 100%;
-}
+
 
 .sign-in-redirect {
   text-decoration-line: none;

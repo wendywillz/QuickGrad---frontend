@@ -53,7 +53,7 @@ function App() {
             <LoginPage
               form_title="Sign into QuickGrade"
               id_or_email="Employee ID"
-              placeholder="Enter email"
+              placeholder="Enter emplooyee id"
               backgroundImage={lecturer_login_page_bg}
               userType="/lecturers/forgot-password"
             />

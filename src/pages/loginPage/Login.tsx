@@ -44,6 +44,7 @@ export function LoginPage(props: Props) {
         if (res.status === 200 && res.data.successfulLogin) {
           const res = await axios.get(
             `http://localhost:3000/students/dashboard`,
+
             { withCredentials: true }
           );
 
@@ -61,10 +62,21 @@ export function LoginPage(props: Props) {
         const res = await axios.post(`http://localhost:3000/lecturers/login`, {
           employeeID: userId,
           password: password,
-        });
+        },
+        { withCredentials: true }
+        );
         // checking the response
         if (res.status === 200 && res.data.successfulLogin) {
-          navigate("/lecturers/dashboard");
+          const res = await axios.get(
+            `http://localhost:3000/students/dashboard`,
+            
+            { withCredentials: true }
+          );
+
+          if (res.status === 200 && res.data) {
+            navigate("/lecturers/dashboard");
+          }
+
         } else if (
           (res.status === 200 && res.data.inValidPassword) ||
           res.data.lecturerNotFoundError ||
