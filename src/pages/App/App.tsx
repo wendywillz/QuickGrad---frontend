@@ -153,10 +153,12 @@ function App() {
         />
         {/* take exams  */}
         <Route path="/students/dashboard" element={<StudentDash />} />
+
         <Route
           path="/students/dashboard/take-exams/:courseCode"
           element={<TakeExamOBJ />}
         />
+
         <Route
           path="/students/dashboard/change-password"
           element={<StudentsChangePassword />}
