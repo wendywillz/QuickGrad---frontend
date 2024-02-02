@@ -8,6 +8,7 @@ import Footer from "../../components/footer/footer";
 import MainButton from "../../components/buttons/mainButton";
 
 function LandingPage() {
+  
   const [userRole, setUserRole] = useState(""); // State to manage user type selection
   const navigate = useNavigate();
   console.log("Navigate function:", navigate);

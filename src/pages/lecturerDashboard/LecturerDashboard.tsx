@@ -1,4 +1,4 @@
-import "../studentDashboard/StudentDash/StudentDash.css";
+import '../studentDashboard/StudentDash.css'
 import "../../assets/menu-board.png";
 import SideBar from "../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
