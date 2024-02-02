@@ -1,7 +1,7 @@
 .footer-component {
   display: flex;
   border-top: 1px solid rgba(52, 64, 84, 1);
-  height: 5rem;
+  min-height: 5rem;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;

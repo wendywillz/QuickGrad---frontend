@@ -1,9 +1,17 @@
 import SideBar from "../../components/sidebar/sideBar";
 import MainButton from "../../components/buttons/mainButton";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate} from "react-router-dom";
 import "./studentTakeExamsInstructions.css";
 
 function StudentTakeExamsInstructions() {
+  const { courseCode } = useParams();
+  const path = location.pathname;
+  console.log("path", path);
+  console.log("course-code", courseCode);
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate(`/students/dashboard/take-exams/${courseCode}`);
+  };
   return (
     <>
       <div className="take-exams-instructions-wrapper">
@@ -71,11 +79,12 @@ function StudentTakeExamsInstructions() {
               </div>
             </section>
             <section className="exam-instructions-body-section2">
-              <div className="exam-instructions-body-wrapper">
-
+              <form
+                onSubmit={handleSubmit}
+                className="exam-instructions-body-wrapper"
+              >
                 <div>Read Carefully</div>
                 <div>
-                    
                   <ul>
                     <li>
                       - Camera is turned on from examination start to finish.
@@ -97,18 +106,17 @@ function StudentTakeExamsInstructions() {
                   </ul>
                 </div>
                 <div className="exam-instructions-body-wrapper-btn">
-                <div>
-                    <p>By clicking start, you consent to video recording of you during the duration of the exams.</p>
+                  <div>
+                    <p>
+                      By clicking start, you consent to video recording of you
+                      during the duration of the exams.
+                    </p>
+                  </div>
+                  <div>
+                    <MainButton button_text={"Start exam"} />
+                  </div>
                 </div>
-                <div>
-                    <MainButton button_text={"Start exam"}/>
-                    
-                </div>
-
-                </div>
-            
-
-              </div>
+              </form>
             </section>
           </div>
         </div>

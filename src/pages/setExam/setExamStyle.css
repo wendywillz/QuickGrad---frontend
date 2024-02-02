@@ -11,7 +11,6 @@
 .set-exams-page-main-section {
   /* overflow: scroll;*/
   margin-top: 5.5rem;
-  background-color: red;
   height: 100%;
   width: 100%;
   font-family: "Inter", "sans-serif";
@@ -300,7 +299,6 @@
   border-style: none;
   margin-left: 1rem;
   cursor: pointer;
-  background-color: red;
   overflow: visible;
 }
 
@@ -401,4 +399,18 @@
 .fill-in-the-blank-wrapper,
 .theory-question-wrapper {
   color: #000000;
+}
+
+.fill-in-the-blanks-options {
+  width: 97% !important;
+  display: block !important;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.hidden-fill-in-the-blank {
+  display: none;
+}
+.fill-in-the-blanks-remove-question {
+  margin-bottom: 1rem;
 }

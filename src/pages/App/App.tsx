@@ -14,9 +14,9 @@ import StudentSignup from "../../pages/studentSignup/studentSignup";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
 import LecturerResults from "../LecturerResultsPage/LecturerResults";
-import StudentDash from "../studentDashboard/StudentDash/StudentDash";
+import { StudentDash } from "../studentDashboard/StudentDash";
 import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
-
+import TakeExamOBJ from "../takeExam/TakeExamOBJ";
 import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
 
 import SetExamPage from "../setExam/setExamPage";
@@ -24,7 +24,6 @@ import SetExamPage from "../setExam/setExamPage";
 // import CompletedExamOBJ from "../completed exam/completedExamObj";
 
 import StudentsResults from "../studentsresults/Students-Results";
-
 
 import LecturerGrades from "../grade_exam/lec_grade";
 
@@ -140,16 +139,23 @@ function App() {
             />
           }
         />
-        <Route path="/students/dashboard" element={<StudentDash />} />
+
         <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
         <Route path="/lecturers/results" element={<LecturerResults />} />
         <Route
           path="/students/dashboard/enrolled-courses"
           element={<StudentEnrolledCourses />}
         />
+        {/* take exams instructions  */}
         <Route
-          path="/students/dashboard/take-exams/instructions"
+          path="/students/dashboard/take-exams/instructions/:courseCode"
           element={<StudentTakeExamsInstructions />}
+        />
+        {/* take exams  */}
+        <Route path="/students/dashboard" element={<StudentDash />} />
+        <Route
+          path="/students/dashboard/take-exams/:courseCode"
+          element={<TakeExamOBJ />}
         />
         <Route
           path="/students/dashboard/change-password"

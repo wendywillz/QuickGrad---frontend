@@ -59,6 +59,23 @@ function LecturerDashboard() {
 
   return (
     <div className="student-dashboard-container">
+    <div className="dashboard">
+      {lecturerData && (
+        <section className="hero">
+          <div className="hero-content">
+            <img
+              className="img"
+              src="https://c.animaapp.com/IX1zE9E9/img/notification.svg"
+            />
+            <div className="text-wrapper">
+              Welcome, {lecturerData.lecturerId}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Sidebar */}
+      <div className="text-wrapper-2">Dashboard</div>
       <SideBar>
         {{
           sidebarElement: (
@@ -86,6 +103,10 @@ function LecturerDashboard() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
+                <Link
+                  to="/lecturers/dashboard/set-exams"
+                  className="text-wrapper-6"
+                ></Link>
                 <Link
                   to="/lecturers/dashboard/set-exams"
                   className="text-wrapper-6"
@@ -138,8 +159,21 @@ function LecturerDashboard() {
     
       {/* Main content */}
       <main className="frame-5">
+        {lecturerData && (
+          <div className="frame-wrapper">
+            <p className="lecturer">
+              Lecturer Dr. {lecturerData.lastName}, Department of{" "}
+              {lecturerData.department}.
+              <br />
+              {lecturerData.faculty}.
+              <br />
+              Camouflage University. <br />
+              Atlanta, Nigeria.
+            </p>
+          </div>
+        )}
 
-        {examData && (
+        {examData && examData.length > 0 && (
           <div className="div-wrapper">
             <div className="frame-7">
               <div className="semester-session-container">
@@ -205,7 +239,8 @@ function LecturerDashboard() {
           </div>
         )}
       </main>
-      </div>
+        </div>
+        </div>
     </div>
   );
 }
