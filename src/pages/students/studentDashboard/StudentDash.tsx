@@ -2,15 +2,11 @@ import "./StudentDash.css";
 import { useState, useEffect, MouseEvent } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import SideBar from "../../components/sidebar/sideBar";
-import Header from "../../components/header/header";
-import BlueHeader from "../../components/header/blueHeader/blueHeader";
+import SideBar from "../../../components/sidebar/sideBar";
+import Header from "../../../components/header/header";
+import BlueHeader from "../../../components/header/blueHeader/blueHeader";
 
-// interface Student {
-//   matricNo: string;
-//   department: string;
-//   faculty: string;
-// }
+import { useAuth } from "../../../components/protectedRoutes/protectedRoute";
 
 interface Course {
   courseId: string;
@@ -21,17 +17,14 @@ interface Course {
 
 export const StudentDash = () => {
   const navigate = useNavigate();
-  const [studentData, setStudentData] = useState<Student | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
   const [selectedSemester, setSelectedSemester] = useState<string>("First");
+  const { studentData } = useAuth();
 
   const handleEnrollClick = (e: MouseEvent<HTMLButtonElement>) => {
     const courseCode = e.currentTarget.dataset.coursecode ?? "";
-    console.log("courseCode: ", courseCode);
-navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
+    navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
   };
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,23 +37,13 @@ navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
           }
         );
 
-        console.log(studentRes.data.courses);
-        console.log(studentRes.data.courses);
-
         if (
           studentRes.status === 200 &&
-          (studentRes.data.noTokenError ||
-            studentRes.data.tokenExpiredError ||
-            studentRes.data.unknownStudent ||
+          (studentRes.data.noSemesterSelected ||
             studentRes.data.internalServeError)
         ) {
           navigate("/students/signin");
-        } else if (
-          studentRes.status === 200 &&
-          (studentRes.data.courses || studentRes.data.student)
-        ) {
-          setStudentData(studentRes.data.student);
-          setCourses(studentRes.data.courses);
+        } else if (studentRes.status === 200 && studentRes.data.courses) {
           setCourses(studentRes.data.courses);
         }
       } catch (error) {
@@ -69,17 +52,9 @@ navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSemester]);
-  interface Student {
-    studentId: string;
-    firstName: string;
-    matricNo: string;
-    department: string;
-    faculty: string;
-  }
 
-  const newUser = studentData?.firstName || "newUser";
   return (
     <div className="student-dashboard-container">
       <SideBar>
@@ -112,7 +87,10 @@ navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/students/dashboard/results"
+                  className="text-wrapper-6"
+                >
                   Results
                 </Link>
               </div>
@@ -122,13 +100,13 @@ navigate(`/students/dashboard/take-exams/instructions/${courseCode}`);
       </SideBar>
 
       <div className="student-dashboard-body">
-        <Header newUser={newUser} />
+        <Header newUser={studentData?.firstName || ""} />
         <div className="heading-dashboard">Dashboard</div>
 
         <BlueHeader
           userDetails={{
-            department: "Department of Biochemistry.",
-            faculty: "Faculty of Science.",
+            department: studentData?.department || "",
+            faculty: `Faculty of ${studentData?.faculty}` || "",
             university: "Camouflage University.",
             location: "Atlanta, Nigeria.",
             matricNo: studentData?.matricNo || "123456789",
@@ -274,4 +252,3 @@ export function StudentResultDiv(props: StudentResultDivProps) {
     </div>
   );
 }
-

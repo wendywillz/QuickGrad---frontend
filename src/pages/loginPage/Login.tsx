@@ -42,41 +42,34 @@ export function LoginPage(props: Props) {
         );
         // checking the response
         if (res.status === 200 && res.data.successfulLogin) {
-          const res = await axios.get(
-            `http://localhost:3000/students/dashboard`,
-
-            { withCredentials: true }
-          );
-
-          if (res.status === 200 && res.data) {
-            navigate("/students/dashboard");
-          }
+          navigate("/students/dashboard");
         } else if (
           (res.status === 200 && res.data.inValidPassword) ||
           res.data.studentNotFoundError ||
           res.data.internalServerError
         ) {
-          navigate("/students/signin");
+          window.location.reload();
         }
       } else if (currentRoute === "/lecturers/signin") {
-        const res = await axios.post(`http://localhost:3000/lecturers/login`, {
-          employeeID: userId,
-          password: password,
-        },
-        { withCredentials: true }
+        const res = await axios.post(
+          `http://localhost:3000/lecturers/login`,
+          {
+            employeeID: userId,
+            password: password,
+          },
+          { withCredentials: true }
         );
         // checking the response
         if (res.status === 200 && res.data.successfulLogin) {
           const res = await axios.get(
             `http://localhost:3000/students/dashboard`,
-            
+
             { withCredentials: true }
           );
 
           if (res.status === 200 && res.data) {
             navigate("/lecturers/dashboard");
           }
-
         } else if (
           (res.status === 200 && res.data.inValidPassword) ||
           res.data.lecturerNotFoundError ||
@@ -102,13 +95,11 @@ export function LoginPage(props: Props) {
 
         <div className="login-form-wrapper">
           <form className="login-form" onSubmit={handleSubmit}>
-
-
             <h1 className="login-form-title">{props.form_title}</h1>
 
             {location.state && location.state.errorMessage && (
-            <div className="error-message">{location.state.errorMessage}</div>
-          )}
+              <div className="error-message">{location.state.errorMessage}</div>
+            )}
 
             <div className="field">
               <label className="login-form-label">{props.id_or_email}</label>

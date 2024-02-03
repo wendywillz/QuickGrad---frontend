@@ -1,18 +1,18 @@
 import "./StudentsChangePassword.css";
-import SideBar from "../../components/sidebar/sideBar";
+import SideBar from "../../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
 import { FormEvent } from "react";
 import axios from "axios";
 import { useState } from "react";
-import MainButton from "../../components/buttons/mainButton";
+import MainButton from "../../../components/buttons/mainButton";
 
 function StudentsChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
-  const [error, setError]: any = useState(null);
-  const [successMessage, setSuccessMessage]: any = useState(null);
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -34,20 +34,19 @@ function StudentsChangePassword() {
       const res = await axios.put(
         "http://localhost:3000/students/dashboard/change-password",
         {
-          newPassword: newPassword
+          newPassword: newPassword,
         },
         {
           withCredentials: true,
         }
       );
-      console.log(res.data)
+      console.log(res.data);
 
       if (res.status === 200) {
         setSuccessMessage("Password updated successfully");
         setOldPassword("");
         setNewPassword("");
         setConfirmNewPassword("");
-
       } else {
         setError("Failed to update password");
       }
@@ -90,7 +89,10 @@ function StudentsChangePassword() {
                     className="img-2"
                     src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                   />
-                  <Link to="#" className="text-wrapper-6">
+                  <Link
+                    to="/students/dashboard/results"
+                    className="text-wrapper-6"
+                  >
                     Results
                   </Link>
                 </div>
@@ -102,7 +104,6 @@ function StudentsChangePassword() {
           <div className="change-password-form">
             <h3>Change Password</h3>
             <form onSubmit={handleFormSubmit}>
-
               {error && <div className="error-message">{error}</div>}
               {successMessage && (
                 <div className="success-message">{successMessage}</div>

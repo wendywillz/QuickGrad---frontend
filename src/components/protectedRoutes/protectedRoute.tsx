@@ -1,0 +1,122 @@
+/* eslint-disable react-refresh/only-export-components */
+import {
+  ReactNode,
+  useEffect,
+  useState,
+  useContext,
+  createContext,
+} from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
+interface Student {
+  studentId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  matricNo: string;
+  password: string;
+  faculty: string;
+  department: string;
+}
+interface Lecturer {
+  title: string;
+  lecturerId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  employeeID: string;
+  password: string;
+  faculty: string;
+  department: string;
+}
+
+interface AuthContextProps {
+  studentData?: Student;
+  lecturerData?: Lecturer;
+}
+const AuthContext = createContext<AuthContextProps>({});
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+export function StudentProtectedRoute({ children }: ProtectedRouteProps) {
+  const navigate = useNavigate();
+  const [studentData, setStudentData] = useState<Student>();
+
+  useEffect(() => {
+    async function checkToken() {
+      const auth = await axios.get(
+        "http://localhost:3000/protected-routes/students",
+        {
+          withCredentials: true,
+        }
+      );
+      if (
+        auth.status === 200 &&
+        (auth.data.noTokenError ||
+          auth.data.tokenExpiredError ||
+          auth.data.verificationError)
+      ) {
+        navigate("/students/signin");
+      } else if (auth.status === 200 && auth.data.student) {
+        console.log("auth.data.student: ", auth.data.student);
+        setStudentData(auth.data.student);
+      }
+    }
+    checkToken();
+    return;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // check if the token is present and verify it frorm the backend
+  const contextValue: AuthContextProps = {
+    studentData,
+  };
+
+  return (
+    <AuthContext.Provider value={contextValue}>
+      <>{children}</>
+    </AuthContext.Provider>
+  );
+}
+export function LecturerProtectedRoute({ children }: ProtectedRouteProps) {
+  const navigate = useNavigate();
+  const [lecturerData, setLecturerData] = useState<Lecturer>();
+
+  useEffect(() => {
+    async function checkToken() {
+      const auth = await axios.get(
+        "http://localhost:3000/protected-routes/lecturers",
+        {
+          withCredentials: true,
+        }
+      );
+      if (
+        auth.status === 200 &&
+        (auth.data.noTokenError ||
+          auth.data.tokenExpiredError ||
+          auth.data.verificationError)
+      ) {
+        navigate("/lecturers/signin");
+      } else if (auth.status === 200 && auth.data.lecturer) {
+        console.log("auth.data.student: ", auth.data.lecturer);
+        setLecturerData(auth.data.lecturer);
+      }
+    }
+    checkToken();
+    return;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // check if the token is present and verify it frorm the backend
+  const contextValue: AuthContextProps = {
+    lecturerData,
+  };
+
+  return (
+    <AuthContext.Provider value={contextValue}>
+      <>{children}</>
+    </AuthContext.Provider>
+  );
+}
