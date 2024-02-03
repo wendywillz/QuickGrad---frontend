@@ -1,8 +1,9 @@
-import { Link, useParams } from "react-router-dom";
-import SideBar from "../../components/sidebar/sideBar";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import SideBar from "../../../components/sidebar/sideBar";
 import "./TakeExamOBJ.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useAuth } from "../../../components/protectedRoutes/protectedRoute";
 interface Question {
   questionText: string;
   questionType: string;
@@ -14,29 +15,34 @@ interface Question {
 const TakeExamOBJ = () => {
   const { courseCode } = useParams();
   const [questions, setQuestions] = useState<Question[]>([]);
+  const { studentData } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
+    async function fetchData() {
+      console.log("courseCode: ", courseCode);
+      const res = await axios.get(
+        `http://localhost:3000/students/dashboard/take-exams/${courseCode}`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      // checking the response
+      if (
+        res.status === 200 &&
+        (res.data.questionNotAvailable || res.data.internalServerError)
+      ) {
+        navigate("/students/signin");
+        // window.location.reload();
+      } else if (res.status === 200 && res.data.questions) {
+        setQuestions(res.data.questions);
+      }
+    }
     fetchData();
+    return;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function fetchData() {
-    console.log("courseCode: ", courseCode);
-    const res = await axios.get(
-      `http://localhost:3000/students/dashboard/take-exams/${courseCode}`,
-      {
-        withCredentials: true,
-      }
-    );
-
-    // checking the response
-    if (
-      res.status === 200 &&
-      (res.data.questionNotAvailable || res.data.internalServerError)
-    ) {
-      window.location.reload();
-    } else if (res.status === 200 && res.data.questions) {
-      setQuestions(res.data.questions);
-    }
-  }
   return (
     <div className="examContainer">
       <section className="hero">
@@ -46,7 +52,7 @@ const TakeExamOBJ = () => {
             src="https://c.animaapp.com/IX1zE9E9/img/notification.svg"
             alt="Notification"
           />
-          <div className="text-wrapper">Welcome, 22/23/07/019</div>
+          <div className="text-wrapper">Welcome, {studentData?.firstName}</div>
         </div>
       </section>
 
@@ -212,22 +218,22 @@ const TakeExamOBJ = () => {
                 <div className="brown-circle"></div>
               </div>
             </div>
+            {/* objectives questions */}
             {questions
               .filter((question) => {
-                console.log("question", question);
                 return question.questionType === "Objective";
               })
               .map((question, index) => (
                 <>
                   <div className="second-form" key={index}>
-                    <span>{index}</span>
+                    <span>{index + 1}</span>
                     <p>{question.questionText}</p>
 
                     <label htmlFor="option1">
                       A. <span>{question.optionA}</span>
                       <input
                         type="radio"
-                        name="options"
+                        name={question.questionText}
                         id="option1"
                         value={question.optionA}
                         className="option"
@@ -235,10 +241,10 @@ const TakeExamOBJ = () => {
                     </label>
 
                     <label htmlFor="option1">
-                      A. <span>{question.optionB}</span>
+                      B. <span>{question.optionB}</span>
                       <input
                         type="radio"
-                        name="options"
+                        name={question.questionText}
                         id="option1"
                         value={question.optionB}
                         className="option"
@@ -246,10 +252,10 @@ const TakeExamOBJ = () => {
                     </label>
 
                     <label htmlFor="option1">
-                      A. <span>{question.optionC}</span>
+                      C. <span>{question.optionC}</span>
                       <input
                         type="radio"
-                        name="options"
+                        name={question.questionText}
                         id="option1"
                         value={question.optionC}
                         className="option"
@@ -257,12 +263,76 @@ const TakeExamOBJ = () => {
                     </label>
 
                     <label htmlFor="option1">
-                      A. <span>{question.optionD}</span>
+                      D. <span>{question.optionD}</span>
                       <input
                         type="radio"
-                        name="options"
+                        name={question.questionText}
                         id="option1"
                         value={question.optionD}
+                        className="option"
+                      />
+                    </label>
+                  </div>
+                </>
+              ))}
+            {/* fill in the blanks questions */}
+            {questions
+              .filter((question) => {
+                return question.questionType === "fill-in-the-blank";
+              })
+              .map((question, index) => (
+                <>
+                  <div className="second-form" key={index}>
+                    <span>
+                      {questions.filter((question) => {
+                        return question.questionType === "Objective";
+                      }).length +
+                        index +
+                        1}
+                    </span>
+                    <p>{question.questionText}</p>
+
+                    <label htmlFor="your Answer">
+                      <input
+                        type="text"
+                        name="options"
+                        id="option1"
+                        placeholder="Your Answer"
+                        // value={question.optionA}
+                        className="option"
+                      />
+                    </label>
+                  </div>
+                </>
+              ))}
+            {/* theory */}
+            {questions
+              .filter((question) => {
+                console.log("question", question);
+                return question.questionType === "Theory";
+              })
+              .map((question, index) => (
+                <>
+                  <div className="second-form" key={index}>
+                    <span>
+                      {questions.filter((question) => {
+                        return question.questionType === "Objective";
+                      }).length +
+                        questions.filter((question) => {
+                          return question.questionType === "fill-in-the-blank";
+                        }).length +
+                        index +
+                        1}
+                    </span>
+                    <p>{question.questionText}</p>
+
+                    <label htmlFor="your Answer">
+                      <input
+                        type="text"
+                        name="options"
+                        id="option1"
+                        placeholder="Your Answer"
+                        // value={question.optionA}
                         className="option"
                       />
                     </label>

@@ -402,8 +402,7 @@
 }
 
 .fill-in-the-blanks-options {
-  width: 97% !important;
-  display: block !important;
+  display: none !important;
   margin-left: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;

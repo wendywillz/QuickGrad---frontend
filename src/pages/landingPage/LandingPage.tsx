@@ -12,15 +12,6 @@ function LandingPage() {
   const [userRole, setUserRole] = useState(""); // State to manage user type selection
   const navigate = useNavigate();
   console.log("Navigate function:", navigate);
-  // useEffect(() => {
-  //   axios.get(`http://localhost:3000/${userRole}`).then((res) => {
-  //     if (res.status === 200) {
-  //       if (res.data === "lecturer") {
-  //         navigate("/lecturer_signin");
-  //       }
-  //     }
-  //   });
-  // }, [userRole, navigate]);
 
   const handleUserRoleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setUserRole((event.currentTarget as HTMLSelectElement).value);
@@ -28,7 +19,7 @@ function LandingPage() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log("userRole: ", userRole);
+
     try {
       const res = await axios.get(`http://localhost:3000/${userRole}`);
 

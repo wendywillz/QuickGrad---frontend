@@ -1,6 +1,6 @@
-import SideBar from "../../components/sidebar/sideBar";
-import MainButton from "../../components/buttons/mainButton";
-import { Link, useParams, useNavigate} from "react-router-dom";
+import SideBar from "../../../components/sidebar/sideBar";
+import MainButton from "../../../components/buttons/mainButton";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "./studentTakeExamsInstructions.css";
 
 function StudentTakeExamsInstructions() {

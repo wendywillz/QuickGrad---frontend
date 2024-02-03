@@ -1,6 +1,6 @@
 import "./lec_grade.css";
-import SideBar from "../../components/sidebar/sideBar";
-import Header from "../../components/header/header";
+import SideBar from "../../../components/sidebar/sideBar";
+import Header from "../../../components/header/header";
 import { Link } from "react-router-dom";
 
 function LecturerGrades() {
@@ -15,17 +15,29 @@ function LecturerGrades() {
                   className="img-feat"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-menu.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/lecturers/dashboard" className="text-wrapper-6">
                   Dashboard
                 </Link>
               </div>
-
+              <div className="feature-2">
+                <img
+                  className="img-2"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-book-square.svg"
+                />
+                <Link to="/" className="text-wrapper-6">
+                  Courses
+                </Link>
+              </div>
               <div className="feature-2">
                 <img
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+
+                <Link
+                  to="/lecturers/dashboard/set-exams"
+                  className="text-wrapper-6"
+                >
                   Set Exams
                 </Link>
               </div>
@@ -34,17 +46,22 @@ function LecturerGrades() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/lecturers/dashboard/grade-exams"
+                  className="text-wrapper-6"
+                >
                   Grade Exams
                 </Link>
               </div>
-
               <div className="feature-2">
                 <img
                   className="img-2"
-                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-refresh-square-2.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/lecturers/dashboard/results"
+                  className="text-wrapper-6"
+                >
                   Results
                 </Link>
               </div>

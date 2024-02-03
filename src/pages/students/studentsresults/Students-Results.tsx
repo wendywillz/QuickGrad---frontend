@@ -1,9 +1,11 @@
 import "./Students-Results.css";
-import SideBar from "../../components/sidebar/sideBar";
+import SideBar from "../../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
-import arrowdown from "../../assets/arrowdown.png";
+import arrowdown from "../../../assets/arrowdown.png";
+import { useAuth } from "../../../components/protectedRoutes/protectedRoute";
 
 function StudentsResults() {
+  const { studentData } = useAuth();
   return (
     <div className="students-Results-main-body-wrapper">
       <SideBar>
@@ -15,7 +17,7 @@ function StudentsResults() {
                   className="img-feat"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-menu.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/students/dashboard" className="text-wrapper-6">
                   Dashboard
                 </Link>
               </div>
@@ -24,7 +26,10 @@ function StudentsResults() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-book-square.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/students/dashboard/enrolled-courses"
+                  className="text-wrapper-6"
+                >
                   Enrolled Courses
                 </Link>
               </div>
@@ -33,7 +38,10 @@ function StudentsResults() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/students/dashboard/results"
+                  className="text-wrapper-6"
+                >
                   Results
                 </Link>
               </div>
@@ -49,10 +57,9 @@ function StudentsResults() {
               className="students-Results-header-img"
               src="https://c.animaapp.com/IX1zE9E9/img/notification.svg"
             />
-            <p>Welcome, 22/23/07/019</p>
+            <p>Welcome, {studentData?.firstName}</p>
           </div>
         </div>
-        
 
         <div className="first">
           <div className="results-info">

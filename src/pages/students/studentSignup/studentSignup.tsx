@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import SignUpPage from "../../components/signup/signUpPage";
+import SignUpPage from "../../../components/signup/signUpPage";
 
 export default function StudentSignup() {
   const navigate = useNavigate();

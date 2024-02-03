@@ -6,32 +6,78 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "../landingPage/LandingPage";
 import EnterOtp from "../enter-otp/enter_otp";
 import ResetEnterNewPasswordPage from "../reset-enter-new-password/Reset_enter_new_pw";
-import LecturerDashboard from "../lecturerDashboard/LecturerDashboard";
+import LecturerDashboard from "../lecturers/lecturerDashboard/LecturerDashboard";
 import VerifyEmail from "../verify-email/VerifyEmailPage";
-import StudentEnrolledCourses from "../studentEnrolledCourses/studentEnrolledCourses";
+import StudentEnrolledCourses from "../students/studentEnrolledCourses/studentEnrolledCourses";
 import LecturerSignup from "../../pages/lecturerSignUp/lecturerSignup";
-import StudentSignup from "../../pages/studentSignup/studentSignup";
+import StudentSignup from "../students/studentSignup/studentSignup";
 import { CheckYourEmail } from "../check-you-email/check_your_email";
 import { ForgotPassword } from "../forgotPassword/forget_password";
-import LecturerResults from "../LecturerResultsPage/LecturerResults";
-import { StudentDash } from "../studentDashboard/StudentDash";
-import StudentTakeExamsInstructions from "../studentTakeExamsInstructions/studentTakeExamsInstructions";
-import TakeExamOBJ from "../takeExam/TakeExamOBJ";
-import StudentsChangePassword from "../Students-Change-Password/StudentsChangePassword";
-
-import SetExamPage from "../setExam/setExamPage";
-
+import LecturerResults from "../lecturers/LecturerResultsPage/LecturerResults";
+import { StudentDash } from "../students/studentDashboard/StudentDash";
+import StudentTakeExamsInstructions from "../students/studentTakeExamsInstructions/studentTakeExamsInstructions";
+import TakeExamOBJ from "../students/studentTakeExam/TakeExamOBJ";
+import StudentsChangePassword from "../students/Students-Change-Password/StudentsChangePassword";
+import SetExamPage from "../lecturers/lecturerSetExam/setExamPage";
+import { StudentProtectedRoute } from "../../components/protectedRoutes/protectedRoute";
+import { LecturerProtectedRoute } from "../../components/protectedRoutes/protectedRoute";
 // import CompletedExamOBJ from "../completed exam/completedExamObj";
 
-import StudentsResults from "../studentsresults/Students-Results";
+import StudentsResults from "../students/studentsresults/Students-Results";
 
-import LecturerGrades from "../grade_exam/lec_grade";
+import LecturerGrades from "../lecturers/lecturesGradeExam/lec_grade";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        {/* lectuers proteced routes */}
+
+        <Route
+          path="/lecturers/dashboard/*"
+          element={
+            <LecturerProtectedRoute>
+              <Routes>
+                <Route index element={<LecturerDashboard />} />
+                <Route path="results" element={<LecturerResults />} />
+                <Route path="set-exams" element={<SetExamPage />} />
+                <Route path="grade-exams" element={<LecturerGrades />} />
+              </Routes>
+            </LecturerProtectedRoute>
+          }
+        />
+
+        {/* students protected routes */}
+        <Route
+          path="/students/dashboard/*"
+          element={
+            <StudentProtectedRoute>
+              <Routes>
+                {/* this will render like index */}
+                <Route index element={<StudentDash />} />
+                {/* take exams */}
+                <Route
+                  path="take-exams/:courseCode"
+                  element={<TakeExamOBJ />}
+                />
+                <Route path="results" element={<StudentsResults />} />
+                <Route
+                  path="take-exams/instructions/:courseCode"
+                  element={<StudentTakeExamsInstructions />}
+                />
+                <Route
+                  path="enrolled-courses"
+                  element={<StudentEnrolledCourses />}
+                />
+                <Route
+                  path="change-password"
+                  element={<StudentsChangePassword />}
+                />
+              </Routes>
+            </StudentProtectedRoute>
+          }
+        />
 
         <Route
           path="/students/signin"
@@ -138,55 +184,6 @@ function App() {
               location_text="Proceed to login"
             />
           }
-        />
-
-        <Route path="/lecturers/dashboard" element={<LecturerDashboard />} />
-        <Route path="/lecturers/results" element={<LecturerResults />} />
-        <Route
-          path="/students/dashboard/enrolled-courses"
-          element={<StudentEnrolledCourses />}
-        />
-        {/* take exams instructions  */}
-        <Route
-          path="/students/dashboard/take-exams/instructions/:courseCode"
-          element={<StudentTakeExamsInstructions />}
-        />
-        {/* take exams  */}
-        <Route path="/students/dashboard" element={<StudentDash />} />
-
-        <Route
-          path="/students/dashboard/take-exams/:courseCode"
-          element={<TakeExamOBJ />}
-        />
-
-        <Route
-          path="/students/dashboard/change-password"
-          element={<StudentsChangePassword />}
-        />
-
-        <Route
-          path="/lecturers/dashboard/set-exams"
-          element={<SetExamPage />}
-        />
-
-        {/* <Route
-          path="/students/dashboard/completed-exam-obj"
-          element={<CompletedExamOBJ />}
-        /> */}
-
-        <Route
-          path="/students/dashboard/results"
-          element={<StudentsResults />}
-        />
-
-        {/* <Route
-          path="/students/dashboard/completed-exam-theory"
-          element={<CompletedExamTheory />}
-        /> */}
-
-        <Route
-          path="/lecturers/dashboard/results"
-          element={<LecturerGrades />}
         />
       </Routes>
     </>

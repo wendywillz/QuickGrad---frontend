@@ -1,7 +1,7 @@
 import "./setExamStyle.css";
-import addButton from "../../assets/add_button_logo copy.png";
-
-import SideBar from "../../components/sidebar/sideBar";
+import addButton from "../../../assets/add_button_logo copy.png";
+import { useAuth } from "../../../components/protectedRoutes/protectedRoute";
+import SideBar from "../../../components/sidebar/sideBar";
 import { Link } from "react-router-dom";
 import { useEffect, useState, FormEvent } from "react";
 import axios from "axios";
@@ -21,16 +21,12 @@ interface Section {
 }
 
 function SetExamPage() {
+  const { lecturerData } = useAuth();
   // section handling state
   const [sectionValue, setSectionValue] = useState<Record<string, string>[]>(
     []
   );
 
-  // const [sectionDetail, setSectionDetail] = useState({
-  //   MultipleChoice: { checked: false, value: "Multiple-choice" },
-  //   Theory: { checked: false, value: "Theory" },
-  //   FillInTheBlank: { checked: false, value: "Fill-in-the-blank" },
-  // });
   const [popup, setPopup] = useState(false);
   const toggleAddSectionModal = () => {
     setPopup(!popup);
@@ -43,8 +39,6 @@ function SetExamPage() {
   });
 
   const [section, setSection] = useState("blank-section");
-
-  // const [currentSection, setCurrentSection] = useState(0);
 
   const nextSectionToggle = () => {
     sectionValue.forEach((EachSection, index) => {
@@ -110,6 +104,7 @@ function SetExamPage() {
   const [courseDetails, setCourseDetails] = useState([]);
   useEffect(() => {
     fetchCourseDetails();
+    return;
   }, []);
 
   const fetchCourseDetails = async () => {
@@ -210,7 +205,7 @@ function SetExamPage() {
         session,
         courseTitle,
         faculty,
-        lecturerId: "4eb133a9-6eea-44d4-9d25-a0a119884c0a",
+        lecturerId: lecturerData?.lecturerId,
         department,
         examDate,
         totalScore: Number(totalScore),
@@ -239,7 +234,7 @@ function SetExamPage() {
                   className="img-feat"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-menu.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link to="/lecturers/dashboard" className="text-wrapper-6">
                   Dashboard
                 </Link>
               </div>
@@ -257,7 +252,11 @@ function SetExamPage() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+
+                <Link
+                  to="/lecturers/dashboard/set-exams"
+                  className="text-wrapper-6"
+                >
                   Set Exams
                 </Link>
               </div>
@@ -266,13 +265,22 @@ function SetExamPage() {
                   className="img-2"
                   src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                 />
-                <Link to="/" className="text-wrapper-6">
+                <Link
+                  to="/lecturers/dashboard/grade-exams"
+                  className="text-wrapper-6"
+                >
                   Grade Exams
                 </Link>
               </div>
               <div className="feature-2">
-                <img className="img-2" src="./img/refresh-square-2.png" />
-                <Link to="/" className="text-wrapper-6">
+                <img
+                  className="img-2"
+                  src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-refresh-square-2.svg"
+                />
+                <Link
+                  to="/lecturers/dashboard/results"
+                  className="text-wrapper-6"
+                >
                   Results
                 </Link>
               </div>

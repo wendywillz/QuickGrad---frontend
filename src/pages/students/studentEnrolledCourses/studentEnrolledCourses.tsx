@@ -2,11 +2,11 @@ import "./studentEnrolledCourses.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { format, isBefore, isAfter } from 'date-fns';
-import SideBar from "../../components/sidebar/sideBar";
-import Header from "../../components/header/header";
-import BlueHeader from "../../components/header/blueHeader/blueHeader";
-
+import { format, isBefore, isAfter } from "date-fns";
+import SideBar from "../../../components/sidebar/sideBar";
+import Header from "../../../components/header/header";
+import BlueHeader from "../../../components/header/blueHeader/blueHeader";
+import { useAuth } from "../../../components/protectedRoutes/protectedRoute";
 
 interface Exam {
   examId: string;
@@ -15,21 +15,13 @@ interface Exam {
   examDate: Date;
 }
 
-interface Student {
-  matricNo: string;
-  department: string;
-  faculty: string;
-  firstName: string;
-}
-
-
 function StudentEnrolledCourses() {
-
-  const [studentData, setStudentData] = useState<Student | null>(null);
+  const { studentData } = useAuth();
   const [exams, setExams] = useState<Exam[]>([]);
-  const [selectedSemester, setSelectedSemester] = useState<string>("first semester");
-  
-  const navigate = useNavigate(); 
+  const [selectedSemester, setSelectedSemester] =
+    useState<string>("first semester");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,39 +33,38 @@ function StudentEnrolledCourses() {
             params: { semester: selectedSemester },
           }
         );
-
-        console.log(studentRes.data);
-
-        if (studentRes.status === 200 && studentRes.data) {
-          setStudentData(studentRes.data.student);
+        if (
+          studentRes.status === 200 &&
+          (studentRes.data.noSemesterSelected ||
+            studentRes.data.internalServeError)
+        ) {
+          navigate("/students/signin");
+        } else if (studentRes.status === 200 && studentRes.data.exams) {
           setExams(studentRes.data.exams);
         }
       } catch (error) {
         console.log("Error fetching dashboard data:", error);
-        
-        navigate("/students/signin", { state: { errorMessage: "Unauthorized, kindly login" } });
       }
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSemester]);
 
-  const calculateStatus = (examDate: Date): { status: string; style: React.CSSProperties } => {
-
-    console.log(typeof examDate)
+  const calculateStatus = (
+    examDate: Date
+  ): { status: string; style: React.CSSProperties } => {
+    console.log(typeof examDate);
     const currentDate = new Date();
 
     // const threeHoursAfterExam = new Date(examDate.setHours(examDate.getHours() + 3));
-  
+
     if (isBefore(currentDate, examDate)) {
-      
-      return { status: 'Unavailable', style: { color: 'grey' } };
+      return { status: "Unavailable", style: { color: "grey" } };
     } else if (isAfter(currentDate, examDate)) {
-      
-      return { status: 'Expired', style: {color: 'red'}};
+      return { status: "Expired", style: { color: "red" } };
     } else {
-      
-      return { status: 'Take exam', style: {color: 'green'}};
+      return { status: "Take exam", style: { color: "green" } };
     }
   };
 
@@ -100,7 +91,10 @@ function StudentEnrolledCourses() {
                     className="img-2"
                     src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-book-square.svg"
                   />
-                  <Link to="/students/dashboard/enrolled-courses" className="text-wrapper-6">
+                  <Link
+                    to="/students/dashboard/enrolled-courses"
+                    className="text-wrapper-6"
+                  >
                     Enrolled Courses
                   </Link>
                 </div>
@@ -109,7 +103,10 @@ function StudentEnrolledCourses() {
                     className="img-2"
                     src="https://c.animaapp.com/IX1zE9E9/img/vuesax-bulk-sort.svg"
                   />
-                  <Link to="/students/dashboard/results" className="text-wrapper-6">
+                  <Link
+                    to="/students/dashboard/results"
+                    className="text-wrapper-6"
+                  >
                     Results
                   </Link>
                 </div>
@@ -119,13 +116,10 @@ function StudentEnrolledCourses() {
         </SideBar>
 
         <section className="enrolled-courses-dashboard-container">
-
-        <Header newUser={newUser} />
+          <Header newUser={newUser} />
 
           <main className="enrolled-courses-body">
-            <div className="enrolled-courses-title">
-              Enrolled Courses
-            </div>
+            <div className="enrolled-courses-title">Enrolled Courses</div>
 
             <BlueHeader
               userDetails={{
@@ -141,11 +135,10 @@ function StudentEnrolledCourses() {
               <div className="enrolled-courses-year">
                 <div className="enrolled-courses-semester">
                   <label htmlFor="courses-semester">Semester: </label>
-                  <select name="courses-semester" 
-                  value={selectedSemester}
-                  onChange={(e) => setSelectedSemester(e.target.value)}
-
-                
+                  <select
+                    name="courses-semester"
+                    value={selectedSemester}
+                    onChange={(e) => setSelectedSemester(e.target.value)}
                   >
                     <option value="first semester">First</option>
                     <option value="second semester">Second</option>
@@ -176,22 +169,24 @@ function StudentEnrolledCourses() {
                     </tr>
                   </thead>
                   <tbody className="enrolled-courses-table-body">
-                  { exams.length === 0 && (
-                    <tr>
-                      <td colSpan={5}>No exams found</td>
-                    </tr>
-                  )}
-                  {exams.map((exam) => (
-                    
-                    <tr key={exam.examId}>
-                      <td>{exam.courseCode}</td>
-                      <td>{exam.courseTitle}</td>
-                      <td>{format(exam.examDate, 'd MMM, yyyy / h:mmaaaa')}</td>
-                      <td>Campus E-center</td>
-                      <td style={calculateStatus(exam.examDate).style}>{calculateStatus(exam.examDate).status}</td>
-                    </tr>
+                    {exams.length === 0 && (
+                      <tr>
+                        <td colSpan={5}>No exams found</td>
+                      </tr>
+                    )}
+                    {exams.map((exam) => (
+                      <tr key={exam.examId}>
+                        <td>{exam.courseCode}</td>
+                        <td>{exam.courseTitle}</td>
+                        <td>
+                          {format(exam.examDate, "d MMM, yyyy / h:mmaaaa")}
+                        </td>
+                        <td>Campus E-center</td>
+                        <td style={calculateStatus(exam.examDate).style}>
+                          {calculateStatus(exam.examDate).status}
+                        </td>
+                      </tr>
                     ))}
-
                   </tbody>
                 </table>
               </div>
