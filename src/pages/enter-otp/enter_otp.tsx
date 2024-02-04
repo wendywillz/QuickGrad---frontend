@@ -26,6 +26,7 @@ function EnterOtp(props: EnterOtpProps) {
         : currentRoute.startsWith("/lecturers")
         ? "http://localhost:3000/lecturers"
         : "";
+
       console.log("currentRoute: ", currentRoute);
 
       const res = await axios.post(`${baseUrl}/verify-otp`, {
@@ -40,46 +41,13 @@ function EnterOtp(props: EnterOtpProps) {
       ) {
         navigate(`${baseUrl}/confirm-email`);
       } else if (res.status === 200 && res.data.OtpVerificationSuccess) {
-        navigate("/students/check-your-email");
+        const redirectURL = currentRoute.startsWith("/students")
+          ? "/students"
+          : currentRoute.startsWith("/lecturers")
+          ? "/lecturers"
+          : "";
+        navigate(`${redirectURL}/check-your-email`);
       }
-
-      // if (currentRoute === "/students/confirm-email") {
-      //   const res = await axios.post(
-      //     `http://localhost:3000/students/verify-otp`,
-      //     {
-      //       otp: otp,
-      //     }
-      //   );
-      //   // checking the response
-      //   if (
-      //     res.status === 200 &&
-      //     (res.data.invalidOtp ||
-      //       res.data.expiredOtpError ||
-      //       res.data.internalServerError)
-      //   ) {
-      //     navigate("/students/confirm-email");
-      //   } else if (res.status === 200 && res.data.OtpVerificationSuccess) {
-      //     navigate("/students/check-your-email");
-      //   }
-      // } else if (currentRoute === "/lecturers/confirm-email") {
-      //   const res = await axios.post(
-      //     `http://localhost:3000/lecturers/verify-otp`,
-      //     {
-      //       otp: otp,
-      //     }
-      //   );
-      //   // checking the response
-      //   if (
-      //     res.status === 200 &&
-      //     (res.data.invalidOtp ||
-      //       res.data.expiredOtpError ||
-      //       res.data.internalServerError)
-      //   ) {
-      //     navigate("/lecturers/confirm-email");
-      //   } else if (res.status === 200 && res.data.OtpVerificationSuccess) {
-      //     navigate("/lecturers/check-your-email");
-      //   }
-      // }
     } catch (error) {
       console.log("error", error);
     }
