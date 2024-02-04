@@ -291,12 +291,13 @@ function SetExamPage() {
       {/* Main content */}
       <main className="set-exams-page-main-section">
         {/* set exams heading wrapper */}
-        <div className="set-exams-page-main-section-title-container">
+       <div className="set-exams-inner-wrapper">
+       <div className="set-exams-page-main-section-title-container">
           <h1 className="set-exams-page-main-section-title">Set Exams</h1>
         </div>
         {/* set exam form wrapper */}
         <div className="set-exams-page-all-forms">
-          <div className="set-exams-page-top-form">
+          <div>
             <div className="set-exams-page-session-form-container">
               {/* add modal pop up fixed position */}
               {popup && (
@@ -304,7 +305,7 @@ function SetExamPage() {
                   <div className="inner-pop-up">
                     <h1>Add Section</h1>
                     <form onSubmit={handleAddSectionModalSubmitForm}>
-                      <fieldset>
+                      <fieldset className="set-exam-page-modal-fieldset">
                         <label htmlFor=""> Section</label>
                         <input
                           type="text"
@@ -319,7 +320,7 @@ function SetExamPage() {
                           placeholder="Type section number or alphabet"
                         />
                       </fieldset>
-                      <fieldset>
+                      <fieldset className="set-exam-page-modal-fieldset">
                         <label htmlFor=""> Score obtainable</label>
                         <input
                           type="text"
@@ -338,11 +339,11 @@ function SetExamPage() {
                           <p>
                             {" "}
                             Question Type <br />{" "}
-                            <span>Select one section at a time</span>
+                            <span className="set-exams-page-modal-selection-question">Select 1 section at a time</span>
                           </p>
                         </div>
                         <div className="add-section-type-wrapper">
-                          <fieldset>
+                          <fieldset className="set-exams-page-modal-question-type-input">
                             <input
                               name="setSectionType"
                               type="radio"
@@ -360,7 +361,7 @@ function SetExamPage() {
                               Multiple Choice{" "}
                             </label>
                           </fieldset>
-                          <fieldset>
+                          <fieldset className="set-exams-page-modal-question-type-input">
                             <input
                               name="setSectionType"
                               type="radio"
@@ -378,7 +379,7 @@ function SetExamPage() {
                               Fill in the blanks{" "}
                             </label>
                           </fieldset>
-                          <fieldset>
+                          <fieldset className="set-exams-page-modal-question-type-input">
                             <input
                               name="setSectionType"
                               type="radio"
@@ -406,10 +407,12 @@ function SetExamPage() {
                           </fieldset>
                         </div>
                       </fieldset>
-                      <button type="submit">Add Section</button>
-                      <button type="button" onClick={toggleAddSectionModal}>
+                      <div className="set-exams-page-modal-buttons-continer">
+                      <button className="set-exams-page-modal-button"  type="button" onClick={toggleAddSectionModal}>
                         Cancel
                       </button>
+                      <button className="set-exams-page-modal-button" type="submit">Add Section</button>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -421,6 +424,7 @@ function SetExamPage() {
                 onSubmit={submitQuestions}
               >
                 {/* course details to be fectched from backend */}
+                <div className="set-exams-top-form-wrapper">
                 <div className="set-exams-page-session-form-row">
                   <div className="set-exams-page-form-label-and-inputs">
                     <label
@@ -637,17 +641,22 @@ function SetExamPage() {
                 </div>
 
                 <div className="set-exams-page-session-form-instruction-row">
-                  <input
+<label htmlFor="" className="set-exams-session-date-wrapper">
+  Date
+  <br/>
+<input
                     type="datetime-local"
+                    className="set-exams-page-session-form-date-input"
                     value={examDate}
                     onChange={(e) => setExamDate(e.target.value)}
                   />
+</label>
                   <label
-                    className="set-exams-page-session-form-label"
+                    className="set-exams-session-instructions-wrapper"
                     htmlFor="instructionsInput"
                   >
                     Instructions
-                  </label>{" "}
+                  
                   <br />
                   <input
                     className="set-exams-page-session-form-instructions-input"
@@ -656,6 +665,7 @@ function SetExamPage() {
                     id="instructionsInput"
                     name="instructions"
                   />
+                  </label>{" "}
                 </div>
 
                 <button
@@ -665,8 +675,12 @@ function SetExamPage() {
                   {" "}
                   +{" "}
                 </button>
+                </div>
 
-                {/* add section button wrapper */}
+                
+
+                <div className="set-exams-page-bottom-form">
+                  {/* add section button wrapper */}
                 <div className="set-exams-page-add-section-button-container">
                   <button
                     onClick={toggleAddSectionModal}
@@ -681,8 +695,6 @@ function SetExamPage() {
                     </span>
                   </button>
                 </div>
-
-                <div className="set-exams-page-bottom-form">
                   <div className="set-exams-page-questions-section-container">
                     <div className="set-exams-page-multiple-choice-questions-container">
                       <div className="set-exams-page-multiple-choice-questions-form">
@@ -1057,7 +1069,7 @@ function SetExamPage() {
                                   </div>
                                 )
                               )}
-                              <button
+                              <button className="set-exams-page-add-theory-button"
                                 type="button"
                                 onClick={() => addTheoryQuestion(1)}
                               >
@@ -1219,15 +1231,15 @@ function SetExamPage() {
                       {sectionValue.length >= 2 ? (
                         <>
                           <button
-                            className="set-exams-page-previous-section-text"
+                            className="set-exams-page-change-section-buttons" 
                             type="button"
                             onClick={nextSectionToggle}
                           >
                             Next Section
                           </button>
-                          <button type="submit">Submit</button>
+                          <button className="set-exams-page-change-section-buttons" type="submit">Submit</button>
                           <button
-                            className="set-exams-page-previous-section-text"
+                            className="set-exams-page-change-section-buttons" 
                             type="button"
                             onClick={prevSectionToggle}
                           >
@@ -1244,6 +1256,7 @@ function SetExamPage() {
             </div>
           </div>
         </div>
+       </div>
       </main>
     </div>
   );
